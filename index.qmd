@@ -3,11 +3,6 @@ pagetitle: "Arvind Karunakaran — Stanford University"
 description: "Arvind Karunakaran is an Assistant Professor of Management Science & Engineering (and, by courtesy, Sociology) at Stanford University, studying authority and accountability in the workplace amid technological change."
 image: images/og-image.png
 toc: false
-format:
-  html:
-    include-in-header:
-      text: |
-        <style>html { font-size: 16px !important; }</style>
 ---
 
 ::: {.profile-header}

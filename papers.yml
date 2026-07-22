@@ -1,0 +1,183 @@
+# =============================================================================
+# papers.yml — single source of truth for the Publications page.
+#
+# The Publications page (publications.qmd) renders from this file via a Quarto
+# listing + custom template (_templates/publications.ejs). To add a paper, add
+# one entry here (or run `python scripts/add_paper.py ...`). Do NOT edit the
+# publications page HTML directly.
+#
+# Fields:
+#   title    (required)  Paper title, no trailing period.
+#   author   (required)  Full author string. "Karunakaran, A." is auto-bolded.
+#   year     (required)  Publication year (integer). Used for grouping/sorting.
+#   venue    (required)  Journal or book title (rendered in italics).
+#   volume / issue / pages   (optional) Bibliographic detail.
+#   doi      (optional)  Bare DOI, e.g. 10.1177/00018392241256303 (no URL).
+#   pdf      (optional)  Filename in files/papers/ — shows a PDF button.
+#   equal    (optional)  true -> shows an "Equal Contribution" badge.
+#   type     (required)  "Journal Article" | "Book Chapter" | "Working Paper".
+#   categories (required) List used by the on-page filter (usually [<type>]).
+#   date     (required)  YYYY-MM-DD, used by Quarto listing to sort (newest first).
+# =============================================================================
+
+- title: "Artificial Intelligence at Work: An Integrative Review on the Impact of AI on Workplace Inequality"
+  author: "Karunakaran, A., Lebovitz, S., Narayanan, D., Rahman, H."
+  year: 2025
+  venue: "Academy of Management Annals"
+  volume: 19
+  issue: 2
+  doi: 10.5465/annals.2023.0230
+  equal: true
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2025-07-01"
+
+- title: "Revisiting Exploration and Exploitation: Temporal Structuring for Innovation at Work"
+  author: "Garud, R., Turunen, M., Karunakaran, A."
+  year: 2025
+  venue: "Organization Theory"
+  volume: 6
+  issue: 1
+  doi: 10.1177/26317877251346798
+  equal: true
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2025-03-01"
+
+- title: "Expert Authority and the Public Sphere: Media Intermediaries, Professional Norm Violation, and the Market for Expertise"
+  author: "Benjamin-Pollak, N.A., Karunakaran, A."
+  year: 2026
+  venue: "Expertise in and Around Organizations (Research in the Sociology of Organizations)"
+  volume: 97
+  pages: "249–269"
+  doi: 10.1108/S0733-558X20250000097011
+  type: "Book Chapter"
+  categories: ["Book Chapter"]
+  date: "2026-01-01"
+
+- title: "Frontline Professionals in the Wake of Social Media Scrutiny: Examining the Processes of Obscured Accountability"
+  author: "Karunakaran, A."
+  year: 2024
+  venue: "Administrative Science Quarterly"
+  volume: 69
+  issue: 3
+  pages: "747–790"
+  doi: 10.1177/00018392241256303
+  pdf: 2024-asq-obscured-accountability.pdf
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2024-09-01"
+
+- title: "Taming Platform Power: Taking Accountability into Account in the Management of Platforms"
+  author: "Rahman, H., Karunakaran, A., Cameron, L."
+  year: 2024
+  venue: "Academy of Management Annals"
+  volume: 18
+  issue: 2
+  pages: "251–294"
+  doi: 10.5465/annals.2022.0090
+  equal: true
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2024-06-01"
+
+- title: "Beyond the Buzz: Scholarly Approaches to the Study of Work"
+  author: "Monteiro, P., Nicolini, D., Erickson, I., Cohen, L.E., Dokko, G., Corporaal, G.F., Karunakaran, A., Bechky, B.A., O'Mahony, S."
+  year: 2024
+  venue: "Journal of Management Inquiry"
+  doi: 10.1177/10564926241261259
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2024-03-01"
+
+- title: "Anchored Inferential Learning: Platform-specific Uncertainty, Venture Capital Investments by the Platform Owner, and the Impact on Complementors"
+  author: "Van Angeren, J., Karunakaran, A."
+  year: 2023
+  venue: "Organization Science"
+  doi: 10.1287/orsc.2022.1607
+  equal: true
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2023-09-01"
+
+- title: "The Experimental Hand: Examining How Platform-based Experimentation Reconfigures Worker Autonomy"
+  author: "Rahman, H., Weiss, T., Karunakaran, A."
+  year: 2023
+  venue: "Academy of Management Journal"
+  doi: 10.5465/amj.2022.0638
+  equal: true
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2023-06-01"
+
+- title: "Status-Authority Asymmetry between Professions: The Case of 911 Dispatchers and Police Officers"
+  author: "Karunakaran, A."
+  year: 2022
+  venue: "Administrative Science Quarterly"
+  volume: 67
+  issue: 2
+  pages: "423–468"
+  doi: 10.1177/00018392211059505
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2022-06-01"
+
+- title: "In Cloud We Trust? Co-opting Occupational Gatekeepers to Produce Normalized Trust in Platform-mediated Interorganizational Relationships"
+  author: "Karunakaran, A."
+  year: 2022
+  venue: "Organization Science"
+  volume: 33
+  issue: 3
+  pages: "1188–1211"
+  doi: 10.1287/orsc.2021.1469
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2022-05-01"
+
+- title: "Crowd-based Accountability: Examining how Social Media Commentary Reconfigures Organizational Accountability"
+  author: "Karunakaran, A., Orlikowski, W.J., Scott, S.V."
+  year: 2022
+  venue: "Organization Science"
+  volume: 33
+  issue: 1
+  pages: "170–193"
+  doi: 10.1287/orsc.2021.1546
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2022-01-01"
+
+- title: "Process-based Ideology of Participative Experimentation to Foster Identity-challenging Innovations: The Case of Gmail and AdSense"
+  author: "Garud, R., Karunakaran, A."
+  year: 2018
+  venue: "Strategic Organization"
+  volume: 16
+  issue: 3
+  pages: "273–303"
+  doi: 10.1177/1476127017708583
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2018-08-01"
+
+- title: "Boundaries, Breaches, and Bridges: The Case of Climategate"
+  author: "Garud, R., Gehman, J., Karunakaran, A."
+  year: 2014
+  venue: "Research Policy"
+  volume: 43
+  issue: 1
+  pages: "60–73"
+  doi: 10.1016/j.respol.2013.07.007
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2014-01-01"
+
+- title: "Toward a Model of Collaborative Information Behavior in Organizations"
+  author: "Karunakaran, A., Reddy, M.C., Spence, P.R."
+  year: 2013
+  venue: "Journal of the American Society for Information Science and Technology"
+  volume: 64
+  issue: 12
+  pages: "2437–2451"
+  doi: 10.1002/asi.22943
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2013-12-01"

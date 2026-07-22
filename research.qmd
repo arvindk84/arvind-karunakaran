@@ -1,0 +1,63 @@
+---
+title: "Research"
+pagetitle: "Research — Arvind Karunakaran"
+description: "Research on authority and accountability in the workplace, professions, organization theory, and technological and organizational change."
+---
+
+::: {.lede}
+My research examines **authority and accountability in the workplace**,
+especially in the context of technological change. I am currently focused on
+**human–AI augmentation** in the workplace — how emerging AI systems reshape
+the authority of professionals, the accountability of organizations, and the
+distribution of skill and opportunity at work.
+:::
+
+## Approach
+
+I use **ethnographic and field-based methods** — participant observation and
+interviews — as my primary lens, complemented by **comparative-historical
+analysis** of archival data and **computational analysis** of large text
+corpora. Combining these approaches lets me trace how work is actually done on
+the ground while situating those practices within longer historical arcs and
+larger populations of cases.
+
+## Areas
+
+::: {.stack-list}
+- **Sociology of work, occupations, and professions.** How occupational groups
+  claim, contest, and lose authority; how the boundaries between professions
+  are drawn and redrawn.
+- **Organization theory.** Accountability, coordination, and control inside and
+  across organizations — including meso-level dynamics between individuals,
+  groups, and institutions.
+- **Technological and organizational change.** How new technologies —
+  platforms, social media, and AI — reconfigure work, authority, and
+  accountability, and how organizations respond.
+:::
+
+## Topics
+
+::: {.stack-list}
+- **Authority in the workplace.** The bases of workplace authority and how
+  status asymmetries between professions shape collaboration and conflict.
+- **Professional, organizational, and algorithmic accountability.** How
+  accountability is produced, obscured, and redistributed as evaluation moves
+  from institutions to crowds and algorithms.
+- **Human–AI augmentation and reskilling.** How AI systems augment (or
+  displace) professional judgment, and the reskilling that augmentation demands.
+- **Social media scrutiny.** How public, crowd-based scrutiny reconfigures the
+  accountability of frontline professionals and the organizations that employ
+  them.
+:::
+
+## Selected Themes in Recent Work
+
+Several recent papers develop the idea of **obscured accountability** — the
+ways in which social-media scrutiny and platform intermediation can diffuse
+responsibility rather than concentrate it (*ASQ* 2024; *Organization Science*
+2022). A parallel line of work examines **status–authority asymmetry** between
+adjacent professions (*ASQ* 2022), and a growing body of collaborative work
+maps the **impact of AI on workplace inequality** and the governance of
+**platform power** (*Academy of Management Annals* 2024, 2025).
+
+[See all publications →](publications.qmd)

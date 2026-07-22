@@ -1,0 +1,63 @@
+---
+title: "Publications"
+pagetitle: "Publications — Arvind Karunakaran"
+description: "Peer-reviewed articles and book chapters by Arvind Karunakaran."
+listing:
+  - id: publications
+    contents: papers.yml
+    template: _templates/publications.ejs
+    sort: "date desc"
+    sort-ui: false
+    filter-ui: false
+    page-size: 200
+---
+
+Full list below, newest first. &ldquo;**Equal Contribution**&rdquo; denotes
+equal authorship. DOI links resolve to the publisher of record; a **PDF**
+button appears where a copy is hosted here.
+
+<nav class="pub-filter" aria-label="Filter publications by type">
+  <button class="pub-filter-btn active" data-filter="all" aria-pressed="true">All</button>
+  <button class="pub-filter-btn" data-filter="journal" aria-pressed="false">Journal Articles</button>
+  <button class="pub-filter-btn" data-filter="chapter" aria-pressed="false">Book Chapters</button>
+  <button class="pub-filter-btn" data-filter="working" aria-pressed="false">Working Papers</button>
+</nav>
+
+:::{#publications}
+:::
+
+<script>
+// Lightweight, dependency-free type filter over the year-grouped list.
+(function () {
+  const btns = document.querySelectorAll('.pub-filter-btn');
+  const scope = document.getElementById('publications');
+  if (!scope) return;
+  const items = Array.prototype.slice.call(scope.querySelectorAll('.pub-item'));
+  const heads = Array.prototype.slice.call(scope.querySelectorAll('.pub-year'));
+  function yearClass(el) {
+    return (el.className.match(/\by\d{4}\b/) || [null])[0];
+  }
+  function apply(filter) {
+    items.forEach(function (el) {
+      const match = filter === 'all' || el.classList.contains('type-' + filter);
+      el.style.display = match ? '' : 'none';
+    });
+    // Hide a year header when no visible item shares its year.
+    heads.forEach(function (h) {
+      const yc = yearClass(h);
+      const anyVisible = items.some(function (el) {
+        return el.classList.contains(yc) && el.style.display !== 'none';
+      });
+      h.style.display = anyVisible ? '' : 'none';
+    });
+  }
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      btns.forEach(function (x) { x.classList.remove('active'); x.setAttribute('aria-pressed', 'false'); });
+      b.classList.add('active');
+      b.setAttribute('aria-pressed', 'true');
+      apply(b.getAttribute('data-filter'));
+    });
+  });
+})();
+</script>

@@ -1,0 +1,62 @@
+<%- (function () {
+  // Emits Quarto MARKDOWN. Uses CLASSES only (no key="value" attributes,
+  // which get mangled), and buckets explicitly by year so headers are unique
+  // and sorted regardless of the order Quarto hands us the items.
+  function boldMe(s) {
+    return String(s || "").replace(/Karunakaran,\s*A\./g,
+      "[Karunakaran, A.]{.me}");
+  }
+  function slug(t) {
+    if (t === "Book Chapter") return "chapter";
+    if (t === "Working Paper") return "working";
+    return "journal";
+  }
+
+  var byYear = {};
+  for (var i = 0; i < items.length; i++) {
+    var it = items[i];
+    (byYear[it.year] = byYear[it.year] || []).push(it);
+  }
+  var years = Object.keys(byYear).map(Number).sort(function (a, b) {
+    return b - a;
+  });
+
+  var out = [];
+  for (var y = 0; y < years.length; y++) {
+    var year = years[y];
+    var grp = byYear[year].slice().sort(function (a, b) {
+      return String(b.date || b.year).localeCompare(String(a.date || a.year));
+    });
+
+    out.push("");
+    out.push("[" + year + "]{.pub-year .y" + year + "}");
+
+    for (var j = 0; j < grp.length; j++) {
+      var item = grp[j];
+
+      var meta = "";
+      if (item.volume) {
+        meta = String(item.volume);
+        if (item.issue) meta += "(" + item.issue + ")";
+      }
+      if (item.pages) meta += (meta ? ", " : "") + item.pages;
+      var metaPart = meta ? ", [" + meta + "]{.pub-meta}" : "";
+      var equalPart = item.equal ? " [Equal Contribution]{.equal-contrib}" : "";
+
+      var cite = boldMe(item.author) + " (" + item.year + "). " +
+        "[“" + item.title + ".”]{.pub-title} " +
+        "*" + item.venue + "*" + metaPart + "." + equalPart;
+
+      var links = [];
+      if (item.doi) links.push("[DOI](https://doi.org/" + item.doi + "){.doclink}");
+      if (item.pdf) links.push("[PDF](files/papers/" + item.pdf + "){.doclink}");
+      var line = cite + (links.length ? " " + links.join(" ") : "");
+
+      out.push("");
+      out.push("::: {.pub-item .type-" + slug(item.type) + " .y" + item.year + "}");
+      out.push(line);
+      out.push(":::");
+    }
+  }
+  return out.join("\n") + "\n";
+})() %>

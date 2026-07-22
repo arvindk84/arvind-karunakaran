@@ -1,0 +1,68 @@
+---
+title: "Curriculum Vitae"
+pagetitle: "CV — Arvind Karunakaran"
+description: "Curriculum vitae of Arvind Karunakaran, including appointments, education, and honors and awards."
+---
+
+[Download CV (PDF)](files/cv/cv.pdf){.btn-doc .no-underline}
+
+::: {.cv-embed}
+<object data="files/cv/cv.pdf" type="application/pdf" width="100%" height="600" aria-label="Curriculum vitae PDF">
+  <p>Your browser cannot display the embedded PDF.
+  <a href="files/cv/cv.pdf">Download the CV (PDF)</a> instead.</p>
+</object>
+:::
+
+## Appointments
+
+::: {.stack-list}
+- **Assistant Professor of Management Science & Engineering**, and by courtesy
+  of Sociology — Stanford University
+- Core faculty — Center for Work, Technology, and Organization (WTO)
+- Core faculty — Stanford Technology Ventures Program (STVP)
+- Faculty affiliate — Stanford Institute for Human-Centered AI (HAI)
+- Faculty affiliate — Digital Economy Lab
+:::
+
+## Education
+
+::: {.stack-list}
+- **Ph.D.**, MIT Sloan School of Management, 2018
+:::
+
+## Honors & Awards
+
+::: {.stack-list}
+- [2025]{.year} — Thinkers50 Radar
+- [2025]{.year} — Ascendant Scholar, Western Academy of Management
+- [2025]{.year} — Best Published Paper Award, Communications, Information Technologies, & Media Sociology Section, American Sociological Association
+- [2025]{.year} — Gerard J. Tellis Best Junior Faculty Paper Award, 5th Artificial Intelligence in Management (AIM) Conference
+- [2024]{.year} — W. Richard Scott Article Award, Organizations, Occupations, and Work (OOW) Section, American Sociological Association
+- [2024]{.year} — Responsible Research in Management Award, RRBM and Academy of Management Fellows Group
+- [2024]{.year} — Future of Organizations Inaugural Fellowship, Organization Design Community
+- [2023]{.year} — Runner-up, ASQ Best Paper based on a Dissertation
+- [2023]{.year} — LERA/AILR Best Papers, Labor and Employment Relations Association Annual Meeting
+- [2023]{.year} — Fellowship, CASBS Summer Institute
+- [2023]{.year} — Finalist, Best Conference Paper Award, OMT Division, AOM Annual Meeting
+- [2022]{.year} — Jagdeep & Roshni Singh Faculty Fellow, Stanford University
+- [2022]{.year} — Best Published Paper, Communications, Information Technologies, and Media Sociology, American Sociological Association
+- [2022]{.year} — Giarratani Rising Star Award, Industry Studies Association
+- [2022]{.year} — Runner-up, Best Paper in Innovation and Entrepreneurship, Industry Studies Association
+- [2019]{.year} — William H. Newman Best Dissertation Paper, Academy of Management
+- [2019]{.year} — Louis Pondy Best Dissertation Paper, OMT Division, Academy of Management
+- [2019]{.year} — Honorable Mention, Junior Theorist Award, Theory Section, American Sociological Association
+- [2019]{.year} — Gerardine DeSanctis Best Dissertation Paper, CTO Division, Academy of Management
+- [2019]{.year} — Best Conference Paper, CTO Division, Academy of Management
+- [2019]{.year} — Emerging Scholar in Innovation and Entrepreneurship, Industry Studies Association
+- [2019 · 2021 · 2022]{.year} — LERA Best Papers, Labor and Employment Relations Association
+- [2019]{.year} — Finalist, Best Submission with Practical Implications, MOC Division / Behavioral Science and Policy Association, AOM
+- [2019]{.year} — Runner-up, Best Working Paper Award, Technology, Innovation Management, and Entrepreneurship, INFORMS
+- [2018]{.year} — Best Doctoral Dissertation, Association for Information Systems (AIS) / Association for Computing Machinery (ACM)
+- [2018]{.year} — Honorable Mention, Shils-Coleman Memorial Award, Theory Section, American Sociological Association
+- [2017]{.year} — Best Graduate Student Paper, Communications, Information Technologies, and Media Sociology, American Sociological Association
+- [2017]{.year} — Best Paper (Macro Track), East Coast Doctoral Conference (Columbia University and NYU)
+- [2017]{.year} — Ethnography Fellow, Department of Sociology, University of Chicago
+- [2016]{.year} — Donald R. Cressey Award for the Most Outstanding Dissertation Project, Horowitz Foundation for Social Policy
+- [2013]{.year} — Above & Beyond Call of Duty Award (top 2% of reviewers), OMT Division, AOM
+- [2012]{.year} — Vincent Cerf Graduate Student Paper Award, Design Science Research in Information Systems and Technologies
+:::

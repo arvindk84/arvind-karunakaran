@@ -1,0 +1,38 @@
+/* styles.css — small overrides layered on top of theme.scss */
+
+::selection {
+  background: rgba(140, 21, 21, 0.15);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Inline year in publication entries */
+.pub-year-inline {
+  color: #6f6f68;
+}
+
+/* Give the home "Selected Publications" DOI chip a little top spacing */
+.pub-item .pub-links {
+  display: inline;
+}
+
+/* Print: hide chrome, keep content legible */
+@media print {
+  .navbar,
+  .nav-footer,
+  .pub-filter,
+  .btn-doc {
+    display: none !important;
+  }
+  a {
+    border-bottom: none;
+    color: #000;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+}

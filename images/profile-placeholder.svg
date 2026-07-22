@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" role="img"
+     aria-label="Portrait placeholder">
+  <rect width="400" height="480" fill="#f1efe8"/>
+  <rect x="0.5" y="0.5" width="399" height="479" fill="none" stroke="#e4e1d9"/>
+  <circle cx="200" cy="185" r="78" fill="#d9d5cb"/>
+  <path d="M70 440 C70 350 130 300 200 300 C270 300 330 350 330 440 Z" fill="#d9d5cb"/>
+  <text x="200" y="200" font-family="Georgia, serif" font-size="64" font-weight="600"
+        text-anchor="middle" fill="#8c1515" opacity="0.85">AK</text>
+  <text x="200" y="465" font-family="-apple-system, Segoe UI, sans-serif" font-size="15"
+        text-anchor="middle" fill="#6f6f68">Replace with images/profile.jpg</text>
+</svg>

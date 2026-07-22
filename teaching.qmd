@@ -1,0 +1,43 @@
+---
+title: "Teaching"
+pagetitle: "Teaching — Arvind Karunakaran"
+description: "Courses taught by Arvind Karunakaran at Stanford University in Management Science & Engineering and Sociology."
+---
+
+I teach courses on organizations, organizational behavior, and the study of
+technology and work — at the undergraduate, master's, and doctoral levels.
+Syllabus PDFs are linked where available.
+
+## Undergraduate & Master's
+
+::: {.stack-list}
+- [Spring]{.year}<br>
+  **MS&E 180 — Organizations: Theory and Management.** An introduction to
+  organization theory and its application to the design and management of
+  organizations.
+  [Syllabus (PDF)](files/syllabi/msande180-spring2026.pdf){.no-underline .pub-links}
+- [Spring]{.year}<br>
+  **MS&E 280 — Organizational Behavior: Evidence in Action.** Evidence-based
+  approaches to individual and group behavior in organizations.
+:::
+
+## Doctoral
+
+::: {.stack-list}
+- [Spring]{.year}<br>
+  **MS&E 382 / SOC 386 — Meso-Organizational Theory.** A doctoral seminar
+  bridging micro and macro perspectives on organizations.
+- [Spring]{.year}<br>
+  **MS&E 386 / SOC 360 — Doctoral Research Seminar on Technology &
+  Organizations.** A research seminar on the study of technology, work, and
+  organizations.
+- [Autumn · Winter · Spring · Summer]{.year}<br>
+  **MS&E 408 — Directed Reading and Research.** Individually supervised reading
+  and research.
+:::
+
+## Executive & Professional Education
+
+I also teach in executive and professional education programs on organizations,
+technological change, and the future of work. Details and materials available
+on request.

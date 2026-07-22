@@ -1,0 +1,83 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+  resources:
+    - "files/**"
+    - "images/**"
+    - "CNAME"
+
+website:
+  title: "Arvind Karunakaran"
+  description: "Arvind Karunakaran — Assistant Professor of Management Science & Engineering (and, by courtesy, Sociology) at Stanford University. Research on authority, accountability, and technological change in the workplace."
+  # Placeholder — set this to your real custom domain (must match CNAME).
+  site-url: "https://www.example.com"
+  favicon: images/favicon.svg
+  open-graph: true
+  twitter-card:
+    card-style: summary_large_image
+  image: images/og-image.png
+  search: false
+  navbar:
+    pinned: true
+    logo: ""
+    title: "Arvind Karunakaran"
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Research"
+        href: research.qmd
+      - text: "Publications"
+        href: publications.qmd
+      - text: "Teaching"
+        href: teaching.qmd
+      - text: "People"
+        href: people.qmd
+      - text: "News"
+        href: news.qmd
+      - text: "CV"
+        href: cv.qmd
+      - text: "Contact"
+        href: contact.qmd
+    right:
+      - icon: envelope
+        href: "mailto:arvindka@stanford.edu"
+        aria-label: "Email"
+      - text: "ORCID"
+        href: "https://orcid.org/0000-0002-6755-5815"
+        aria-label: "ORCID"
+      - icon: mortarboard-fill
+        href: "https://scholar.google.com/"
+        aria-label: "Google Scholar"
+  page-footer:
+    border: true
+    left: |
+      &copy; 2026 Arvind Karunakaran
+    center: |
+      Last updated {{< meta build-date >}}
+    right:
+      - text: "ORCID"
+        href: "https://orcid.org/0000-0002-6755-5815"
+      - text: "Google Scholar"
+        href: "https://scholar.google.com/"
+      - text: "Email"
+        href: "mailto:arvindka@stanford.edu"
+
+filters:
+  - build-date.lua
+
+format:
+  html:
+    theme:
+      - theme.scss
+    css: styles.css
+    toc: false
+    anchor-sections: true
+    link-external-newwindow: true
+    link-external-icon: false
+    smooth-scroll: true
+    grid:
+      body-width: 820px
+    email-obfuscation: references
+    lang: en

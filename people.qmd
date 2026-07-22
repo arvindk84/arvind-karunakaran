@@ -1,0 +1,43 @@
+---
+title: "People"
+pagetitle: "People & Advisees — Arvind Karunakaran"
+description: "Doctoral and master's students advised by Arvind Karunakaran at Stanford University."
+---
+
+I advise doctoral and master's students working at the intersection of
+organizations, technology, and work. Prospective students should review my
+[research](research.qmd) before reaching out.
+
+## Doctoral Advisees
+
+[Dissertation Advisor]{.eyebrow}
+
+::: {.stack-list}
+- **Noah Benjamin-Pollak**
+- **Devesh Narayanan**
+:::
+
+[Dissertation Reader]{.eyebrow}
+
+::: {.stack-list}
+- **Emma Casey**
+- **Allie Cemalovic**
+- **Brian Lattimore**
+:::
+
+## Master's Advisees
+
+::: {.stack-list}
+- Eamon Aalipour
+- Sambhav Aggarwal
+- Shikoh Hirabayashi
+- Sanjana Khurana
+- Jackie King
+- Grace Metri
+- Merve Ondogan
+- Armin Rezaiean-Asel
+- Jesus Santos Aranda
+- Emna Sellami
+- Jiecong Tan
+- Aaron Thompson
+:::

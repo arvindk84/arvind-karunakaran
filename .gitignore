@@ -1,0 +1,16 @@
+# Quarto
+/_site/
+/.quarto/
+*.quarto_ipynb
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*~
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+**/*.quarto_ipynb

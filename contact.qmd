@@ -1,0 +1,24 @@
+---
+title: "Contact"
+pagetitle: "Contact — Arvind Karunakaran"
+description: "How to reach Arvind Karunakaran at Stanford University."
+---
+
+::: {.stack-list}
+- [Email]{.year}<br>
+  [arvindka@stanford.edu](mailto:arvindka@stanford.edu)
+- [Department]{.year}<br>
+  Management Science & Engineering, Stanford University
+- [Mailing address]{.year}<br>
+  Huang Engineering Center, 475 Via Ortega, Stanford, CA 94305<br>
+  [(Office / mail code — update in `contact.qmd`)]{.pub-meta}
+- [ORCID]{.year}<br>
+  [0000-0002-6755-5815](https://orcid.org/0000-0002-6755-5815)
+- [Google Scholar]{.year}<br>
+  [Google Scholar profile](https://scholar.google.com/){.no-underline} [(replace with your profile URL)]{.pub-meta}
+- [Administrative contact]{.year}<br>
+  Jenny Lam — [lamjenny@stanford.edu](mailto:lamjenny@stanford.edu)
+:::
+
+For prospective students: please review my [research](research.qmd) and
+[publications](publications.qmd) before getting in touch.

@@ -1,0 +1,352 @@
+/*-- scss:defaults --*/
+
+// ---------------------------------------------------------------------------
+// Palette — restrained, typography-first academic aesthetic.
+// Off-white paper, near-black ink, one subtle Stanford-cardinal accent.
+// ---------------------------------------------------------------------------
+$paper:        #fbfaf7;   // off-white background
+$ink:          #1a1a1a;   // near-black body text
+$ink-soft:     #4a4a46;   // secondary text
+$ink-faint:    #6f6f68;   // muted / metadata text
+$rule:         #e4e1d9;   // hairline rules & borders
+$cardinal:     #8c1515;   // Stanford cardinal — the single accent
+$cardinal-dk:  #6f1010;   // hover / active
+
+// Bootstrap variable overrides
+$body-bg:            $paper;
+$body-color:         $ink;
+$link-color:         $cardinal;
+$link-hover-color:   $cardinal-dk;
+$primary:            $cardinal;
+$border-color:       $rule;
+
+// Typography — system font stacks only (no web-font requests → fast, offline-safe)
+$font-family-serif:  "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, "Times New Roman", serif;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+$font-family-base:   #{$font-family-serif};
+$headings-font-family: #{$font-family-serif};
+
+$font-size-root:     19px;
+$line-height-base:   1.7;
+$headings-font-weight: 600;
+$headings-line-height: 1.25;
+
+$toc-color:          $ink-faint;
+$toc-active-border:  $cardinal;
+
+/*-- scss:rules --*/
+
+// ---------------------------------------------------------------------------
+// Reading measure — cap text width for readability (~70ch)
+// ---------------------------------------------------------------------------
+main.content {
+  max-width: 70ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p, ul, ol, blockquote {
+  max-width: 70ch;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+}
+
+// ---------------------------------------------------------------------------
+// Headings
+// ---------------------------------------------------------------------------
+h1, .h1 {
+  font-size: 2.15rem;
+  letter-spacing: -0.01em;
+  margin-top: 0;
+  margin-bottom: 0.6em;
+}
+h2, .h2 {
+  font-size: 1.5rem;
+  margin-top: 2.2rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid $rule;
+}
+h3, .h3 { font-size: 1.2rem; margin-top: 1.8rem; }
+
+.title {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+// ---------------------------------------------------------------------------
+// Links — restrained underline that thickens on hover
+// ---------------------------------------------------------------------------
+a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba($cardinal, 0.35);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+a:hover { border-bottom-color: $cardinal; }
+
+.navbar a, .nav-link, .footer a, a.btn, a.no-underline { border-bottom: none; }
+
+// ---------------------------------------------------------------------------
+// Navbar — quiet, letter-spaced, sits on the paper
+// ---------------------------------------------------------------------------
+.navbar {
+  background-color: $paper !important;
+  border-bottom: 1px solid $rule;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  font-family: $font-family-sans-serif;
+}
+.navbar .navbar-brand {
+  font-family: $font-family-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: $ink !important;
+}
+.navbar .nav-link {
+  color: $ink-soft !important;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: $cardinal !important;
+}
+
+// ---------------------------------------------------------------------------
+// Footer
+// ---------------------------------------------------------------------------
+.nav-footer {
+  border-top: 1px solid $rule;
+  background-color: $paper;
+  font-family: $font-family-sans-serif;
+  font-size: 0.8rem;
+  color: $ink-faint;
+}
+.nav-footer a { color: $ink-faint; }
+.nav-footer a:hover { color: $cardinal; }
+
+// ---------------------------------------------------------------------------
+// Home / lede
+// ---------------------------------------------------------------------------
+.lede {
+  font-size: 1.12rem;
+  color: $ink-soft;
+  line-height: 1.65;
+}
+
+.profile-header {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.profile-photo {
+  flex: 0 0 200px;
+  width: 200px;
+  border-radius: 4px;
+  border: 1px solid $rule;
+  background: #fff;
+}
+.profile-intro { flex: 1 1 320px; }
+.profile-affil {
+  font-family: $font-family-sans-serif;
+  font-size: 0.9rem;
+  color: $ink-faint;
+  line-height: 1.5;
+}
+
+// ---------------------------------------------------------------------------
+// Section label (small caps eyebrow)
+// ---------------------------------------------------------------------------
+.eyebrow {
+  font-family: $font-family-sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: $cardinal;
+  margin-bottom: 0.4rem;
+}
+
+// ---------------------------------------------------------------------------
+// Publications listing (rendered from papers.yml via _templates/publications.ejs)
+// ---------------------------------------------------------------------------
+.pub-year-group { margin-top: 2.4rem; }
+.pub-year {
+  display: block;
+  font-family: $font-family-sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: $cardinal;
+  border-bottom: 2px solid $rule;
+  padding-bottom: 0.25rem;
+  margin-top: 2.4rem;
+  margin-bottom: 1.1rem;
+}
+// The year span sits inside a <p>; strip the paragraph's own spacing.
+.pub-list p:has(> .pub-year),
+p > .pub-year { margin-bottom: 0; }
+.pub-item {
+  margin-bottom: 1.4rem;
+  padding-left: 0;
+}
+.pub-title {
+  font-weight: 600;
+  color: $ink;
+}
+.pub-authors { color: $ink-soft; }
+.pub-authors .me { color: $ink; font-weight: 600; }
+.pub-venue { font-style: italic; color: $ink-soft; }
+.pub-meta { color: $ink-faint; }
+.pub-links {
+  margin-top: 0.35rem;
+  font-family: $font-family-sans-serif;
+  font-size: 0.78rem;
+}
+.pub-links a,
+a.doclink {
+  display: inline-block;
+  font-family: $font-family-sans-serif;
+  font-size: 0.78rem;
+  border: 1px solid $rule;
+  border-radius: 3px;
+  padding: 0.12rem 0.55rem;
+  margin-right: 0.4rem;
+  margin-top: 0.3rem;
+  color: $ink-soft;
+  letter-spacing: 0.03em;
+}
+.pub-links a:hover,
+a.doclink:hover {
+  border-color: $cardinal;
+  color: $cardinal;
+  background: rgba($cardinal, 0.04);
+}
+.equal-contrib {
+  display: inline-block;
+  font-family: $font-family-sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $cardinal;
+  border: 1px solid rgba($cardinal, 0.4);
+  border-radius: 3px;
+  padding: 0.02rem 0.4rem;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+}
+
+// Type filter (publications.qmd)
+.pub-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.4rem 0 0.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid $rule;
+}
+.pub-filter-btn {
+  font-family: $font-family-sans-serif;
+  font-size: 0.76rem;
+  letter-spacing: 0.03em;
+  color: $ink-soft;
+  background: transparent;
+  border: 1px solid $rule;
+  border-radius: 3px;
+  padding: 0.28rem 0.7rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.pub-filter-btn:hover { border-color: $cardinal; color: $cardinal; }
+.pub-filter-btn.active {
+  background: $cardinal;
+  border-color: $cardinal;
+  color: #fff;
+}
+
+// Category filter cloud (Quarto listing categories)
+.quarto-listing-category .category {
+  font-family: $font-family-sans-serif;
+  font-size: 0.8rem;
+}
+.quarto-listing-category .category.active { color: $cardinal; font-weight: 600; }
+
+// ---------------------------------------------------------------------------
+// Selected publications / news cards on home
+// ---------------------------------------------------------------------------
+.news-list { list-style: none; padding-left: 0; }
+.news-list li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid $rule;
+  display: flex;
+  gap: 1rem;
+}
+.news-date {
+  flex: 0 0 6.5rem;
+  font-family: $font-family-sans-serif;
+  font-size: 0.8rem;
+  color: $ink-faint;
+  padding-top: 0.15rem;
+}
+.news-body { flex: 1 1 auto; }
+
+// ---------------------------------------------------------------------------
+// Buttons (CV, syllabus)
+// ---------------------------------------------------------------------------
+.btn-doc {
+  display: inline-block;
+  font-family: $font-family-sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  background: $cardinal;
+  color: #fff !important;
+  border: 1px solid $cardinal;
+  border-radius: 3px;
+  padding: 0.45rem 1.1rem;
+  border-bottom: 1px solid $cardinal;
+}
+.btn-doc:hover { background: $cardinal-dk; border-color: $cardinal-dk; }
+
+.cv-embed {
+  margin: 1.4rem 0 2rem;
+  border: 1px solid $rule;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+}
+
+// ---------------------------------------------------------------------------
+// Definition-style lists (courses, honors)
+// ---------------------------------------------------------------------------
+.stack-list { list-style: none; padding-left: 0; }
+.stack-list > li {
+  padding: 0.55rem 0;
+  border-bottom: 1px solid $rule;
+}
+.stack-list .year {
+  font-family: $font-family-sans-serif;
+  font-size: 0.8rem;
+  color: $ink-faint;
+}
+
+// ---------------------------------------------------------------------------
+// Responsive
+// ---------------------------------------------------------------------------
+@media (max-width: 575px) {
+  :root { font-size: 17px; }
+  .profile-photo { flex-basis: 140px; width: 140px; }
+  .news-list li { flex-direction: column; gap: 0.15rem; }
+  .news-date { flex-basis: auto; }
+}
+
+// Respect reduced-motion
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}

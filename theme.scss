@@ -27,7 +27,7 @@ $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
 $font-family-base:   #{$font-family-serif};
 $headings-font-family: #{$font-family-serif};
 
-$font-size-root:     19px;
+$font-size-root:     18px;
 $line-height-base:   1.7;
 $headings-font-weight: 600;
 $headings-line-height: 1.25;
@@ -109,8 +109,11 @@ a:hover { border-bottom-color: $cardinal; }
 .navbar .nav-link {
   color: $ink-soft !important;
   font-size: 0.82rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
+  white-space: nowrap;          // keep multi-word items (e.g. "Speaking & Advising") on one line
+  padding-left: 0.55rem;
+  padding-right: 0.55rem;
 }
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
@@ -142,11 +145,13 @@ a:hover { border-bottom-color: $cardinal; }
 .profile-header {
   display: flex;
   gap: 2rem;
-  align-items: flex-start;
+  align-items: center;   // vertically center the photo against the name + affiliation block
   flex-wrap: wrap;
   margin-bottom: 1rem;
 }
+.profile-header > p { margin: 0; }   // strip the wrapper paragraph's margins so the photo centers exactly
 .profile-photo {
+  display: block;      // remove inline baseline gap under the image
   flex: 0 0 200px;
   width: 200px;
   border-radius: 4px;

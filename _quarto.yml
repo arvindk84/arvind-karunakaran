@@ -32,6 +32,8 @@ website:
         href: publications.qmd
       - text: "Teaching"
         href: teaching.qmd
+      - text: "Speaking & Advising"
+        href: speaking.qmd
       - text: "People"
         href: people.qmd
       - text: "News"

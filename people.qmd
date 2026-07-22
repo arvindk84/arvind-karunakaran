@@ -15,6 +15,7 @@ organizations, technology, and work. Prospective students should review my
 ::: {.stack-list}
 - **Noah Benjamin-Pollak**
 - **Devesh Narayanan**
+- **Brian Lattimore**
 :::
 
 [Dissertation Reader]{.eyebrow}
@@ -22,7 +23,6 @@ organizations, technology, and work. Prospective students should review my
 ::: {.stack-list}
 - **Emma Casey**
 - **Allie Cemalovic**
-- **Brian Lattimore**
 :::
 
 ## Master's Advisees

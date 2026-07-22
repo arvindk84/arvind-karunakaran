@@ -6,7 +6,6 @@ description: "Courses taught by Arvind Karunakaran at Stanford University in Man
 
 I teach courses on organizations, organizational behavior, and the study of
 technology and work — at the undergraduate, master's, and doctoral levels.
-Syllabus PDFs are linked where available.
 
 ## Undergraduate & Master's
 
@@ -15,7 +14,6 @@ Syllabus PDFs are linked where available.
   **MS&E 180 — Organizations: Theory and Management.** An introduction to
   organization theory and its application to the design and management of
   organizations.
-  [Syllabus (PDF)](files/syllabi/msande180-spring2026.pdf){.no-underline .pub-links}
 - [Spring]{.year}<br>
   **MS&E 280 — Organizational Behavior: Evidence in Action.** Evidence-based
   approaches to individual and group behavior in organizations.

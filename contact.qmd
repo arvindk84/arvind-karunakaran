@@ -10,8 +10,7 @@ description: "How to reach Arvind Karunakaran at Stanford University."
 - [Department]{.year}<br>
   Management Science & Engineering, Stanford University
 - [Mailing address]{.year}<br>
-  Huang Engineering Center, 475 Via Ortega, Stanford, CA 94305<br>
-  [(Office / mail code — update in `contact.qmd`)]{.pub-meta}
+  Huang Engineering Center, 475 Via Ortega, Stanford, CA 94305
 - [ORCID]{.year}<br>
   [0000-0002-6755-5815](https://orcid.org/0000-0002-6755-5815)
 - [Google Scholar]{.year}<br>

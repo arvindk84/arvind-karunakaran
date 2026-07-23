@@ -4,57 +4,71 @@ pagetitle: "News — Arvind Karunakaran"
 description: "Recent updates from Arvind Karunakaran: awards, new papers, and talks."
 ---
 
-Recent updates — awards, new papers, and talks. Newest first.
-<!-- To post news: copy an existing item and add it at the TOP of the list
+Recent updates — awards, new papers, and talks. Newest first. <!-- To post news: copy an existing item and add it at the TOP of the list
      below (each item = a news-date block followed by a news-body block). -->
 
-::: {.news-list}
-- ::: {.news-date}
+::: news-list
+- ::: news-date
   2025
   :::
-  ::: {.news-body}
+
+  ::: news-body
   Named to the **Thinkers50 Radar** cohort, recognizing management thinkers most likely to shape the future of how organizations are run.
   :::
-- ::: {.news-date}
+
+- ::: news-date
   2025
   :::
-  ::: {.news-body}
+
+  ::: news-body
   Recognized as an **Ascendant Scholar** by the Western Academy of Management.
   :::
-- ::: {.news-date}
+
+- ::: news-date
   2025
   :::
-  ::: {.news-body}
-  &ldquo;Artificial Intelligence at Work: An Integrative Review on the Impact of AI on Workplace Inequality&rdquo; (with S. Lebovitz, D. Narayanan & H. Rahman) published in *Academy of Management Annals*.
+
+  ::: news-body
+  “Artificial Intelligence at Work: An Integrative Review on the Impact of AI on Workplace Inequality” (with S. Lebovitz, D. Narayanan & H. Rahman) published in *Academy of Management Annals*.
   :::
-- ::: {.news-date}
+
+- ::: news-date
   2025
   :::
-  ::: {.news-body}
+
+  ::: news-body
   Received the **Best Published Paper Award** from the Communications, Information Technologies, & Media Sociology Section of the American Sociological Association, and the **Gerard J. Tellis Best Junior Faculty Paper Award** at the AIM Conference.
   :::
-- ::: {.news-date}
+
+- ::: news-date
   2024
   :::
-  ::: {.news-body}
-  &ldquo;Frontline Professionals in the Wake of Social Media Scrutiny&rdquo; published in *Administrative Science Quarterly*.
+
+  ::: news-body
+  “Frontline Professionals in the Wake of Social Media Scrutiny” published in *Administrative Science Quarterly*.
   :::
-- ::: {.news-date}
+
+- ::: news-date
   2024
   :::
-  ::: {.news-body}
+
+  ::: news-body
   Received the **W. Richard Scott Article Award** (ASA, Organizations, Occupations, and Work Section) and the **Responsible Research in Management Award** (RRBM / AOM Fellows Group).
   :::
-- ::: {.news-date}
+
+- ::: news-date
   2023
   :::
-  ::: {.news-body}
+
+  ::: news-body
   Named a **CASBS Summer Institute Fellow** and runner-up for the **ASQ Best Paper based on a Dissertation**.
   :::
-- ::: {.news-date}
+
+- ::: news-date
   2022
   :::
-  ::: {.news-body}
+
+  ::: news-body
   Appointed **Jagdeep & Roshni Singh Faculty Fellow** at Stanford University; received the **Giarratani Rising Star Award** from the Industry Studies Association.
   :::
 :::

@@ -9,7 +9,7 @@ toc: false
 ::: {.speaker-hero}
 ::: {.speaker-hero-intro}
 ::: {.lede}
-I help senior leaders navigate the **organizational** side of AI. My sessions
+I help senior leaders navigate the **strategic** and **organizational** aspects of AI. My sessions
 translate multi-year field research inside organizations undergoing AI-driven
 transformation into practical frameworks, enterprise case studies, and hands-on
 exercises — spanning AI strategy, execution and scaling, human–AI augmentation,

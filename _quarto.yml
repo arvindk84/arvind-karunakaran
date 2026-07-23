@@ -11,8 +11,7 @@ project:
 website:
   title: "Arvind Karunakaran"
   description: "Arvind Karunakaran — Assistant Professor of Management Science & Engineering (and, by courtesy, Sociology) at Stanford University. Research on authority, accountability, and technological change in the workplace."
-  # Placeholder — set this to your real custom domain (must match CNAME).
-  site-url: "https://www.example.com"
+  site-url: "https://www.arvindkarunakaran.com"
   favicon: images/favicon.svg
   open-graph: true
   twitter-card:

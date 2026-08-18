@@ -65,7 +65,8 @@ auto-bolded), `year`, `venue` (italicized), optional `volume`/`issue`/`pages`,
 
 ## Placeholders to replace before go-live
 
-- `CNAME` and `site-url` in `_quarto.yml` (custom domain).
-- `images/profile-placeholder.svg` (real photo), `images/og-image.png`
-  (1200×630), Google Scholar URL in `_quarto.yml` + `contact.qmd`, and the
-  office/mail-code line in `contact.qmd`.
+- `images/og-image.png` (needs a real 1200×630 card) and the office/mail-code
+  line in `contact.qmd`.
+
+Done: `CNAME` + `site-url`, the profile photo (`images/profile.jpg`), and the
+Google Scholar URL in `_quarto.yml` + `contact.qmd`.

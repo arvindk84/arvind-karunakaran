@@ -14,7 +14,7 @@ description: "How to reach Arvind Karunakaran at Stanford University."
 - [ORCID]{.year}<br>
   [0000-0002-6755-5815](https://orcid.org/0000-0002-6755-5815)
 - [Google Scholar]{.year}<br>
-  [Google Scholar profile](https://scholar.google.com/){.no-underline} [(replace with your profile URL)]{.pub-meta}
+  [Google Scholar profile](https://scholar.google.com/citations?user=kNGnWBwAAAAJ&hl=en){.no-underline}
 - [Administrative contact]{.year}<br>
   Jenny Lam — [lamjenny@stanford.edu](mailto:lamjenny@stanford.edu)
 :::

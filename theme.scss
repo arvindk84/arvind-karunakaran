@@ -166,11 +166,10 @@ a:hover { border-bottom-color: $cardinal; }
 .profile-header > p { margin: 0; }   // strip the wrapper paragraph's margins so the photo centers exactly
 .profile-photo {
   display: block;      // remove inline baseline gap under the image
-  flex: 0 0 180px;
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
+  flex: 0 0 200px;
+  width: 200px;
+  border-radius: 4px;
+  border: 1px solid $rule;
   background: #fff;
 }
 .profile-intro { flex: 1 1 320px; }
@@ -395,7 +394,7 @@ a.doclink:hover {
 // Responsive
 // ---------------------------------------------------------------------------
 @media (max-width: 575px) {
-  .profile-photo { flex-basis: 120px; width: 120px; height: 120px; }
+  .profile-photo { flex-basis: 140px; width: 140px; }
   .callout-speaking img { display: none; }
   .news-list li { flex-direction: column; gap: 0.15rem; }
   .news-date { flex-basis: auto; }

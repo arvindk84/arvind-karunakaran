@@ -394,6 +394,9 @@ a.doclink:hover {
 // Responsive
 // ---------------------------------------------------------------------------
 @media (max-width: 575px) {
+  // Phone menu bar: at 1.2rem the name was cut off ("Arvind Karunak…").
+  // Smaller type plus no right margin fits the full name down to 360px wide.
+  .navbar .navbar-brand { font-size: 1.05rem; margin-right: 0; }
   .profile-photo { flex-basis: 140px; width: 140px; }
   .callout-speaking img { display: none; }
   .news-list li { flex-direction: column; gap: 0.15rem; }

@@ -4,8 +4,9 @@ pagetitle: "News — Arvind Karunakaran"
 description: "Recent updates from Arvind Karunakaran: awards, new papers, and talks."
 ---
 
-Recent updates — awards, new papers, and talks. Newest first. <!-- To post news: copy an existing item and add it at the TOP of the list
-     below (each item = a news-date block followed by a news-body block). -->
+<!-- To post news: copy an existing item and add it at the TOP of the list
+     below (each item = a news-date block followed by a news-body block).
+     The intro line under the page title comes from `description` above. -->
 
 ::: news-list
 - ::: news-date

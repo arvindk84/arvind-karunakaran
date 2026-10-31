@@ -7,7 +7,7 @@ description: "Curriculum vitae of Arvind Karunakaran, including appointments, ed
 [Download CV (PDF)](files/cv/cv.pdf){.btn-doc .no-underline}
 
 ::: {.cv-embed}
-<object data="files/cv/cv.pdf" type="application/pdf" width="100%" height="600" aria-label="Curriculum vitae PDF">
+<object data="files/cv/cv.pdf" type="application/pdf" width="100%" height="820" aria-label="Curriculum vitae PDF">
   <p>Your browser cannot display the embedded PDF.
   <a href="files/cv/cv.pdf">Download the CV (PDF)</a> instead.</p>
 </object>

@@ -12,7 +12,9 @@ toc: false
 # Arvind Karunakaran
 
 ::: profile-affil
-Assistant Professor of Management Science & Engineering, and (by courtesy) of Sociology<br> Stanford University<br> Core faculty — Center for Work, Technology, and Organization (WTO) · Stanford Technology Ventures Program (STVP)<br> Faculty affiliate — Stanford Institute for Human-Centered AI (HAI) · Digital Economy Lab
+**Assistant Professor of Management Science & Engineering, and (by courtesy) of Sociology, Stanford University**<br>
+Core faculty, Center for Work, Technology, and Organization (WTO) and Stanford Technology Ventures Program (STVP)<br>
+Faculty affiliate, Stanford Institute for Human-Centered AI (HAI) and Digital Economy Lab
 :::
 ::::
 :::::
@@ -21,7 +23,19 @@ Assistant Professor of Management Science & Engineering, and (by courtesy) of So
 I study **authority and accountability in the workplace**, especially in the context of technological change. My current work examines **human–AI augmentation** and its consequences for professionals and organizations. I use ethnographic and field-based methods, complemented by comparative-historical analysis of archival data and computational analysis of large text corpora. My research appears in *Administrative Science Quarterly*, *Organization Science*, *Academy of Management Journal*, *Academy of Management Annals*, *Annals of the Academy of Political and Social Science*, *Research Policy*, *JASIST*, and *HBR.*
 :::
 
-[Research](research.qmd){.btn-doc}   [Publications](publications.qmd){.btn-doc}
+::: home-actions
+[Research](research.qmd){.btn-doc .no-underline} [Publications](publications.qmd){.btn-doc .btn-outline .no-underline} [CV](cv.qmd){.btn-doc .btn-outline .no-underline}
+:::
+
+```{=html}
+<a class="callout-speaking no-underline" href="speaking.html">
+  <img src="images/speaking/gallery-podium.jpg" alt="" loading="lazy">
+  <span>
+    <span class="callout-title">Speaking &amp; advising</span>
+    <span class="callout-body">Keynotes and executive sessions on AI strategy, adoption, and organizational change, drawn from field research inside companies adopting AI. <span class="callout-link">See talks and videos &rarr;</span></span>
+  </span>
+</a>
+```
 
 ## Selected Publications
 

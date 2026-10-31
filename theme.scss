@@ -27,7 +27,7 @@ $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
 $font-family-base:   #{$font-family-serif};
 $headings-font-family: #{$font-family-serif};
 
-$font-size-root:     16px;
+$font-size-root:     17px;
 $line-height-base:   1.7;
 $headings-font-weight: 600;
 $headings-line-height: 1.25;
@@ -38,18 +38,11 @@ $toc-active-border:  $cardinal;
 /*-- scss:rules --*/
 
 // ---------------------------------------------------------------------------
-// Reading measure — cap text width for readability (~70ch)
+// Reading measure — set by `grid: body-width` in _quarto.yml.
+// (A previous `main.content { max-width: 70ch; margin: auto }` rule centered
+// the body inside the grid column, so page titles, which Quarto renders
+// outside <main>, no longer lined up with the text below them.)
 // ---------------------------------------------------------------------------
-main.content {
-  max-width: 70ch;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-p, ul, ol, blockquote {
-  max-width: 70ch;
-}
-
 body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -108,17 +101,36 @@ a:hover { border-bottom-color: $cardinal; }
 }
 .navbar .nav-link {
   color: $ink-soft !important;
-  font-size: 0.82rem;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  white-space: nowrap;          // keep multi-word items (e.g. "Speaking & Advising") on one line
-  padding-left: 0.55rem;
-  padding-right: 0.55rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;          // keep multi-word items on one line
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
 }
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
   color: $cardinal !important;
 }
+// Underline marker for the current page (desktop only)
+@media (min-width: 1200px) {
+  .navbar .nav-link.active {
+    box-shadow: inset 0 -2px 0 $cardinal;
+  }
+}
+.navbar .navbar-collapse.show,
+.navbar .navbar-collapse.collapsing {
+  padding-top: 0.5rem;
+  border-top: 1px solid $rule;
+  margin-top: 0.5rem;
+}
+
+// ---------------------------------------------------------------------------
+// Page title block — align with body text, quieter spacing
+// ---------------------------------------------------------------------------
+#title-block-header { margin-bottom: 1.5rem; }
+#title-block-header .title { margin-bottom: 0.25rem; }
+#title-block-header .description,
+#title-block-header .subtitle { color: $ink-faint; }
 
 // ---------------------------------------------------------------------------
 // Footer
@@ -147,24 +159,62 @@ a:hover { border-bottom-color: $cardinal; }
   gap: 2rem;
   align-items: center;   // vertically center the photo against the name + affiliation block
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0 1.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid $rule;
 }
 .profile-header > p { margin: 0; }   // strip the wrapper paragraph's margins so the photo centers exactly
 .profile-photo {
   display: block;      // remove inline baseline gap under the image
-  flex: 0 0 200px;
-  width: 200px;
-  border-radius: 4px;
-  border: 1px solid $rule;
+  flex: 0 0 180px;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
   background: #fff;
 }
 .profile-intro { flex: 1 1 320px; }
+.profile-intro h1 { margin-bottom: 0.5rem; }
 .profile-affil {
   font-family: $font-family-sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: $ink-faint;
-  line-height: 1.5;
+  line-height: 1.6;
 }
+.profile-affil strong { color: $ink-soft; font-weight: 600; }
+
+// Home: compact action row and speaking callout
+.home-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.2rem 0 0.5rem; }
+.home-actions p { margin: 0; }
+.btn-doc.btn-outline {
+  background: transparent;
+  color: $cardinal !important;
+}
+.btn-doc.btn-outline:hover { background: rgba($cardinal, 0.06); }
+
+.callout-speaking {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin: 2.5rem 0 0.5rem;
+  padding: 1.1rem 1.25rem;
+  background: #fff;
+  border: 1px solid $rule;
+  border-left: 3px solid $cardinal;
+  border-radius: 4px;
+}
+.callout-speaking img {
+  flex: 0 0 120px;
+  width: 120px;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 3px;
+}
+a.callout-speaking { color: $ink; transition: border-color 0.15s ease; }
+a.callout-speaking:hover { border-color: $cardinal; }
+.callout-speaking .callout-title { display: block; font-weight: 600; margin-bottom: 0.2rem; }
+.callout-speaking .callout-body { display: block; color: $ink-soft; font-size: 0.95rem; line-height: 1.5; }
+.callout-speaking .callout-link { color: $cardinal; white-space: nowrap; }
 
 // ---------------------------------------------------------------------------
 // Section label (small caps eyebrow)
@@ -345,8 +395,8 @@ a.doclink:hover {
 // Responsive
 // ---------------------------------------------------------------------------
 @media (max-width: 575px) {
-  :root { font-size: 17px; }
-  .profile-photo { flex-basis: 140px; width: 140px; }
+  .profile-photo { flex-basis: 120px; width: 120px; height: 120px; }
+  .callout-speaking img { display: none; }
   .news-list li { flex-direction: column; gap: 0.15rem; }
   .news-date { flex-basis: auto; }
 }

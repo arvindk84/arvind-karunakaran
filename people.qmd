@@ -27,7 +27,7 @@ organizations, technology, and work. Prospective students should review my
 
 ## Master's Advisees
 
-::: {.stack-list}
+::: {.name-grid}
 - Eamon Aalipour
 - Sambhav Aggarwal
 - Shikoh Hirabayashi

@@ -20,6 +20,7 @@ website:
   search: false
   navbar:
     pinned: true
+    collapse-below: xl   # 9 items + brand don't fit below ~1200px; use the menu button instead of wrapping
     logo: ""
     title: "Arvind Karunakaran"
     left:
@@ -45,9 +46,9 @@ website:
       - icon: envelope
         href: "mailto:arvindka@stanford.edu"
         aria-label: "Email"
-      - text: "ORCID"
-        href: "https://orcid.org/0000-0002-6755-5815"
-        aria-label: "ORCID"
+      - icon: linkedin
+        href: "https://www.linkedin.com/in/arvind-karunakaran-7930509/"
+        aria-label: "LinkedIn"
       - icon: mortarboard-fill
         href: "https://scholar.google.com/citations?user=kNGnWBwAAAAJ&hl=en"
         aria-label: "Google Scholar"
@@ -79,6 +80,6 @@ format:
     link-external-icon: false
     smooth-scroll: true
     grid:
-      body-width: 820px
+      body-width: 760px
     email-obfuscation: references
     lang: en

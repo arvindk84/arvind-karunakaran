@@ -32,6 +32,85 @@ Times, The Wall Street Journal, the Financial Times, and MSNBC
 ::::
 :::::
 
+## Watch & Listen
+
+```{=html}
+<!--
+  SHOW REEL: when the reel is on YouTube or Vimeo, uncomment this block and
+  paste the video ID. YouTube: https://www.youtube-nocookie.com/embed/VIDEO_ID
+  Vimeo: https://player.vimeo.com/video/VIDEO_ID
+
+<div class="featured-video">
+  <div class="video-frame">
+    <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Arvind Karunakaran speaker reel" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <p class="video-caption"><strong>Speaker reel</strong> · Highlights from recent keynotes and panels</p>
+</div>
+-->
+
+<!--
+  NY Fed panel, Oct 6, 2026. The recording is the full 3.5-hour conference;
+  &t=10599 starts playback at 2:56:39, just before Arvind's first answer.
+-->
+<div class="lead-talk" id="nyfed-panel">
+  <div class="video-frame">
+    <iframe src="https://players.brightcove.net/62612260001/ZvrDIQ1n6X_default/index.html?videoId=6406544535112&amp;t=10599" title="AI in the Workplace: Behaviors, Incentives &amp; Inequality, Federal Reserve Bank of New York, October 6, 2026" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <div class="lead-talk-body">
+    <img src="images/speaking/nyfed-panel.jpg" alt="Arvind Karunakaran speaking on a panel at the Federal Reserve Bank of New York" loading="lazy">
+    <div>
+      <p class="lead-talk-kicker">Panel · Federal Reserve Bank of New York · October 6, 2026</p>
+      <p class="lead-talk-title">AI in the Workplace: Behaviors, Incentives &amp; Inequality</p>
+      <p>Governance &amp; Culture Reform Conference. Moderated by Kartik Athreya, Head of Research &amp; Statistics at the New York Fed, with Roshni Raveendhran (UVA Darden).</p>
+      <p class="lead-talk-note">The video starts where Arvind begins speaking (2:56:39 in the full conference recording). <a href="https://players.brightcove.net/62612260001/ZvrDIQ1n6X_default/index.html?videoId=6406544535112&amp;t=10599" target="_blank" rel="noopener">Open in a new tab</a> · <a href="https://www.newyorkfed.org/newsevents/events/banking/2026/1006-2026" target="_blank" rel="noopener">Event page</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="video-grid">
+  <a class="video-card" href="https://www.youtube.com/watch?v=KdVAApuFC4w">
+    <span class="video-thumb"><img src="https://i.ytimg.com/vi/KdVAApuFC4w/hqdefault.jpg" alt="" loading="lazy"><i class="bi bi-play-fill" aria-hidden="true"></i></span>
+    <span class="video-title">Upskilling vs. Deskilling Spirals in the Wake of Gen AI within Organizations</span>
+    <span class="video-src">Talk · AI at Wharton, Business &amp; Generative AI Workshop, San Francisco (20 min)</span>
+  </a>
+  <a class="video-card" href="https://www.youtube.com/watch?v=orSe5rEKOuo">
+    <span class="video-thumb"><img src="https://i.ytimg.com/vi/orSe5rEKOuo/hqdefault.jpg" alt="" loading="lazy"><i class="bi bi-play-fill" aria-hidden="true"></i></span>
+    <span class="video-title">The Future of AI at Work</span>
+    <span class="video-src">Podcast · Stanford Engineering, <em>The Future of Everything</em> with Russ Altman (32 min)</span>
+  </a>
+  <a class="video-card" href="https://www.youtube.com/watch?v=ZByKqo03krQ">
+    <span class="video-thumb"><img src="https://i.ytimg.com/vi/ZByKqo03krQ/hqdefault.jpg" alt="" loading="lazy"><i class="bi bi-play-fill" aria-hidden="true"></i></span>
+    <span class="video-title">HAI Seminar: Industry Conversation with Instacart</span>
+    <span class="video-src">Seminar · Stanford HAI, with Alexandr Lenk of Instacart (2026)</span>
+  </a>
+  <a class="video-card" href="https://www.youtube.com/watch?v=U4QWzTPg1gI">
+    <span class="video-thumb"><img src="https://i.ytimg.com/vi/U4QWzTPg1gI/hqdefault.jpg" alt="" loading="lazy"><i class="bi bi-play-fill" aria-hidden="true"></i></span>
+    <span class="video-title">AI in the Workplace: Rethinking Skill Development</span>
+    <span class="video-src">Webinar · Stanford Online (57 min)</span>
+  </a>
+  <a class="video-card" href="https://www.youtube.com/watch?v=kIZGrqoiGZ8&amp;t=130s">
+    <span class="video-thumb"><img src="https://i.ytimg.com/vi/kIZGrqoiGZ8/hqdefault.jpg" alt="" loading="lazy"><i class="bi bi-play-fill" aria-hidden="true"></i></span>
+    <span class="video-title">Foundation Models in the Workplace</span>
+    <span class="video-src">Keynote · Notre Dame–IBM Technology Ethics Lab symposium (24 min)</span>
+  </a>
+  <a class="video-card" href="https://www.youtube.com/watch?v=d2RIsD0cFi0">
+    <span class="video-thumb"><img src="https://i.ytimg.com/vi/d2RIsD0cFi0/hqdefault.jpg" alt="" loading="lazy"><i class="bi bi-play-fill" aria-hidden="true"></i></span>
+    <span class="video-title">How ChatGPT and Generative AI Will Shape the Future of Work</span>
+    <span class="video-src">Webinar · Stanford Online (26 min)</span>
+  </a>
+</div>
+<p class="video-caption">The Future of AI at Work is also on <a href="https://podcasts.apple.com/us/podcast/the-future-of-ai-at-work/id1235836821?i=1000668622477">Apple Podcasts</a>.</p>
+
+<div class="photo-grid">
+  <figure><img src="images/speaking/gallery-podium.jpg" alt="Arvind at the podium" loading="lazy"><figcaption>Wharton Business &amp; Generative AI Conference</figcaption></figure>
+  <figure><img src="images/speaking/gallery-sydney.jpg" alt="Arvind leading an executive briefing in a wood-paneled room" loading="lazy"><figcaption>Executive briefing, Sydney</figcaption></figure>
+  <figure><img src="images/speaking/gallery-iia-panel.jpg" alt="Arvind speaking on a panel" loading="lazy"><figcaption>Imagination in Action AI Summit at Google</figcaption></figure>
+  <figure><img src="images/speaking/gallery-workshop.jpg" alt="Arvind leading an executive workshop at round tables" loading="lazy"><figcaption>Executive workshop</figcaption></figure>
+  <figure><img src="images/speaking/gallery-audience.jpg" alt="Arvind presenting to a seated audience" loading="lazy"><figcaption>Wharton Business &amp; Generative AI Conference</figcaption></figure>
+  <figure><img src="images/speaking/gallery-workshop-room.jpg" alt="A large executive workshop audience" loading="lazy"><figcaption>Executive program</figcaption></figure>
+</div>
+```
+
 ## Signature Talks
 
 Every talk can be delivered as a keynote or expanded into a working session,
@@ -178,72 +257,6 @@ Sessions most often requested for executive education and in-house programs.
   expansion.
 :::
 
-## Watch & Listen
-
-```{=html}
-<!--
-  SHOW REEL: when the reel is on YouTube or Vimeo, uncomment this block and
-  paste the video ID. YouTube: https://www.youtube-nocookie.com/embed/VIDEO_ID
-  Vimeo: https://player.vimeo.com/video/VIDEO_ID
-
-<div class="featured-video">
-  <div class="video-frame">
-    <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Arvind Karunakaran speaker reel" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </div>
-  <p class="video-caption"><strong>Speaker reel</strong> · Highlights from recent keynotes and panels</p>
-</div>
--->
-
-<div class="featured-video">
-  <div class="video-frame">
-    <iframe src="https://www.youtube-nocookie.com/embed/KdVAApuFC4w" title="Upskilling vs. Deskilling Spirals in the Wake of Gen AI within Organizations" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </div>
-  <p class="video-caption"><strong>Upskilling vs. Deskilling Spirals in the Wake of Gen AI within Organizations</strong> · AI at Wharton, Business &amp; Generative AI Workshop, San Francisco (20 min)</p>
-</div>
-
-<div class="video-grid">
-  <a class="video-card" href="https://www.youtube.com/watch?v=orSe5rEKOuo">
-    <span class="video-thumb"><img src="https://i.ytimg.com/vi/orSe5rEKOuo/hqdefault.jpg" alt="" loading="lazy"><i class="bi bi-play-fill" aria-hidden="true"></i></span>
-    <span class="video-title">The Future of AI at Work</span>
-    <span class="video-src">Podcast · Stanford Engineering, <em>The Future of Everything</em> with Russ Altman (32 min)</span>
-  </a>
-  <a class="video-card" href="https://www.youtube.com/watch?v=ZByKqo03krQ">
-    <span class="video-thumb"><img src="https://i.ytimg.com/vi/ZByKqo03krQ/hqdefault.jpg" alt="" loading="lazy"><i class="bi bi-play-fill" aria-hidden="true"></i></span>
-    <span class="video-title">HAI Seminar: Industry Conversation with Instacart</span>
-    <span class="video-src">Seminar · Stanford HAI, with Alexandr Lenk of Instacart (2026)</span>
-  </a>
-  <a class="video-card" href="https://www.youtube.com/watch?v=U4QWzTPg1gI">
-    <span class="video-thumb"><img src="https://i.ytimg.com/vi/U4QWzTPg1gI/hqdefault.jpg" alt="" loading="lazy"><i class="bi bi-play-fill" aria-hidden="true"></i></span>
-    <span class="video-title">AI in the Workplace: Rethinking Skill Development</span>
-    <span class="video-src">Webinar · Stanford Online (57 min)</span>
-  </a>
-  <a class="video-card" href="https://www.youtube.com/watch?v=kIZGrqoiGZ8&amp;t=130s">
-    <span class="video-thumb"><img src="https://i.ytimg.com/vi/kIZGrqoiGZ8/hqdefault.jpg" alt="" loading="lazy"><i class="bi bi-play-fill" aria-hidden="true"></i></span>
-    <span class="video-title">Foundation Models in the Workplace</span>
-    <span class="video-src">Keynote · Notre Dame–IBM Technology Ethics Lab symposium (24 min)</span>
-  </a>
-  <a class="video-card" href="https://www.youtube.com/watch?v=d2RIsD0cFi0">
-    <span class="video-thumb"><img src="https://i.ytimg.com/vi/d2RIsD0cFi0/hqdefault.jpg" alt="" loading="lazy"><i class="bi bi-play-fill" aria-hidden="true"></i></span>
-    <span class="video-title">How ChatGPT and Generative AI Will Shape the Future of Work</span>
-    <span class="video-src">Webinar · Stanford Online (26 min)</span>
-  </a>
-  <a class="video-card" href="https://podcasts.apple.com/us/podcast/the-future-of-ai-at-work/id1235836821?i=1000668622477">
-    <span class="video-thumb video-thumb-text"><i class="bi bi-mic-fill" aria-hidden="true"></i></span>
-    <span class="video-title">The Future of AI at Work on Apple Podcasts</span>
-    <span class="video-src">Listen · audio edition of the Future of Everything episode</span>
-  </a>
-</div>
-
-<div class="photo-grid">
-  <figure><img src="images/speaking/gallery-podium.jpg" alt="Arvind at the podium" loading="lazy"><figcaption>Wharton Business &amp; Generative AI Conference</figcaption></figure>
-  <figure><img src="images/speaking/gallery-sydney.jpg" alt="Arvind leading an executive briefing in a wood-paneled room" loading="lazy"><figcaption>Executive briefing, Sydney</figcaption></figure>
-  <figure><img src="images/speaking/gallery-iia-panel.jpg" alt="Arvind speaking on a panel" loading="lazy"><figcaption>Imagination in Action AI Summit at Google</figcaption></figure>
-  <figure><img src="images/speaking/gallery-workshop.jpg" alt="Arvind leading an executive workshop at round tables" loading="lazy"><figcaption>Executive workshop</figcaption></figure>
-  <figure><img src="images/speaking/gallery-audience.jpg" alt="Arvind presenting to a seated audience" loading="lazy"><figcaption>Wharton Business &amp; Generative AI Conference</figcaption></figure>
-  <figure><img src="images/speaking/gallery-workshop-room.jpg" alt="A large executive workshop audience" loading="lazy"><figcaption>Executive program</figcaption></figure>
-</div>
-```
-
 ## Selected Clients
 
 Executive sessions for leaders at organizations including:
@@ -296,7 +309,7 @@ and Stanford HAI.
 - [Oct 6, 2026]{.year}<br>
   [Federal Reserve Bank of New York](https://www.newyorkfed.org/newsevents/events/banking/2026/1006-2026),
   Governance & Culture Reform Conference. Panel: "AI in the Workplace:
-  Behaviors, Incentives & Inequality"
+  Behaviors, Incentives & Inequality". [Watch the panel](#nyfed-panel)
 - [Sept 14, 2026]{.year}<br>
   Imagination in Action AI Summit at Google. Panel: "Who Does the Work Now"
 :::

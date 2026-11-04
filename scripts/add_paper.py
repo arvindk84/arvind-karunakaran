@@ -182,7 +182,7 @@ def main():
         f.write(new_body)
 
     print(f"{action} entry in papers.yml: \"{args.title}\" ({args.year})")
-    print("Run `quarto render` (or `quarto preview`) to rebuild the site.")
+    print("Run `python scripts/build_site.py` to update research.html, then commit both files.")
 
 
 if __name__ == "__main__":

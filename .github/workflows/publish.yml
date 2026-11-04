@@ -1,5 +1,11 @@
 name: Publish
 
+# Builds the static site and publishes it to the gh-pages branch on every push to main.
+# GitHub Pages keeps serving from gh-pages, so no Pages settings need to change.
+#
+# Replaced the Quarto render step in Nov 2026 (the site is now plain HTML/CSS).
+# The .qmd files and _quarto.yml are kept in the repo for reference but are not built.
+
 on:
   push:
     branches: [main]
@@ -8,6 +14,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: publish
+  cancel-in-progress: true
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -15,14 +25,27 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-
-      # No Python/R runtime is needed: the Publications page renders from
-      # papers.yml via a native Quarto listing + EJS template.
-      - name: Render and publish to gh-pages
-        uses: quarto-dev/quarto-actions/publish@v2
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          target: gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          python-version: "3.12"
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      # Renders papers.yml into research.html, syncs the shared header/footer,
+      # and assembles the public files into _site/ with a "Last updated" date.
+      - name: Build site
+        run: python scripts/build_site.py --out _site
+
+      # Fails the deploy on broken internal links, missing files, or placeholder text.
+      - name: Check links and pages
+        run: python scripts/check_site.py _site
+
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./_site
+          commit_message: "Publish ${{ github.sha }}"

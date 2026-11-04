@@ -66,6 +66,45 @@ img {
 .profile-intro .btn-doc { margin-top: 0.9rem; }
 .profile-intro .profile-affil { margin-top: 0.4rem; }
 
+/* Lead talk (NY Fed panel, first in Sample Talks and Panels): video on top, photo + details below,
+   framed like the booking box so it stands out without a new visual style */
+.lead-talk {
+  margin: 1rem 0 0.5rem;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--cardinal);
+  border-radius: 4px;
+}
+.lead-talk-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 1.1rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+.lead-talk-body img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+.lead-talk-body p,
+.lead-talk-text p { margin: 0 0 0.5rem; font-size: 0.95rem; color: var(--ink-soft); }
+.lead-talk-text { margin-top: 0.9rem; }
+.lead-talk + .lead-talk { margin-top: 1.25rem; }
+.lead-talk-kicker {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem !important;
+  font-weight: 700;
+  color: var(--cardinal) !important;
+}
+.lead-talk-title { font-size: 1.1rem !important; font-weight: 600; color: var(--ink) !important; line-height: 1.35; }
+.lead-talk-note { font-family: var(--sans); font-size: 0.8rem !important; color: var(--ink-faint) !important; }
+
 /* Signature talks: numbered list in the site's hairline-rule style */
 .talk-list ol {
   list-style: none;
@@ -267,6 +306,8 @@ a.video-card:hover .video-title { color: var(--cardinal); }
 
 /* Speaking page — responsive */
 @media (max-width: 640px) {
+  .lead-talk { padding: 0.75rem; }
+  .lead-talk-body { grid-template-columns: 1fr; }
   .video-grid { grid-template-columns: 1fr; }
   .photo-grid { grid-template-columns: repeat(2, 1fr); }
   .logo-wall { grid-template-columns: repeat(3, 1fr); --logo-scale: 0.75; }

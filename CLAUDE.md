@@ -1,72 +1,60 @@
-# CLAUDE.md — project conventions for Claude Code
+# CLAUDE.md: project conventions
 
-This is a **Quarto website** for Arvind Karunakaran (Stanford), deployed to
-GitHub Pages (`gh-pages`) with a custom domain. Static output only; no heavy
-JS. Read this before making changes.
+This is a **static HTML/CSS website** for Arvind Karunakaran (Stanford). On every push to `main`, a GitHub Action builds it and publishes it to the `gh-pages` branch. GitHub Pages serves that branch at www.arvindkarunakaran.com. There is no framework and no build tool beyond one Python script. Read this file before you change anything.
+
+The site moved off Quarto in November 2026. The `.qmd` files, `_quarto.yml`, `theme.scss`, `styles.css`, `build-date.lua`, and `_templates/` are still in the repo for reference. **None of them is built anymore.** Do not edit them to change the site.
 
 ## Hard rules (do not violate)
 
-- **Never delete files in `/files/`.** They are the hosted PDFs (papers,
-  syllabi, CV) that live links point to.
-- **Never rename `files/cv/cv.pdf`.** The CV link depends on this exact
-  filename. To update the CV, overwrite the file in place.
-- **Always update `papers.yml`** to change publications — never edit the
-  rendered HTML or hardcode citations into `publications.qmd`. The Publications
-  page renders from `papers.yml` via `_templates/publications.ejs`.
+- **Never delete files in `/files/`.** Live links point to these hosted PDFs (papers, syllabi, CV).
+- **Never rename `files/cv/cv.pdf`.** To update the CV, overwrite the file in place.
+- **Always change publications in `papers.yml`.** `scripts/build_site.py` renders it into `research.html` between `<!-- PUBS:START -->` and `<!-- PUBS:END -->`. Never hand-edit that block.
+- **Edit the shared header and footer only in `partials/`,** then run the build. Each page carries a copy between the `HEADER:START/END` and `FOOTER:START/END` markers.
+- **Keep the old URLs working.** `publications.html`, `teaching.html`, and `people.html` are redirect stubs. Do not delete them.
 
 ## Architecture
 
-- Pages are `.qmd` files at the repo root; site config is `_quarto.yml`.
-- Design system lives in `theme.scss` (SCSS variables + component rules);
-  small overrides in `styles.css`. Keep the restrained palette: off-white
-  `#fbfaf7`, near-black `#1a1a1a`, one accent — Stanford cardinal `#8c1515`.
-  Serif body via system font stack (no web-font downloads).
-- `build-date.lua` injects the render date into the footer ("Last updated ...").
-  Do not hardcode a date in the footer.
-- Publications: `papers.yml` (data) → Quarto `listing` in `publications.qmd`
-  → `_templates/publications.ejs` (renders year groups, DOI/PDF links,
-  Equal Contribution badge). The on-page type filter is vanilla JS inside
-  `publications.qmd`.
+| Path | What it is |
+|---|---|
+| `index.html`, `research.html`, `speaking.html`, `writing.html`, `about.html`, `cv.html`, `contact.html`, `news.html` | Pages. Main nav: Research · Speaking & Advising · Writing & Media · About · CV · Contact. |
+| `publications.html`, `teaching.html`, `people.html` | Redirects to `research.html#publications`, `about.html#teaching`, `about.html#students` |
+| `404.html` | Not-found page (root-relative links; no partial markers) |
+| `css/site.css` | The whole design system. Tokens live in `:root`. |
+| `js/site.js` | Small enhancements: mobile menu, publication filters, click-to-load videos, copy buttons, sub-nav scrollspy. Every page works without it. |
+| `fonts/` | Self-hosted Manrope, Inter, IBM Plex Mono (woff2, OFL) |
+| `partials/header.html`, `partials/footer.html` | The single source for the header and footer |
+| `papers.yml` | Single source of truth for publications |
+| `scripts/build_site.py` | Renders publications, syncs partials, and (with `--out`) assembles `_site/` with sitemap, robots, `.nojekyll`, and a "Last updated" date |
+| `scripts/check_site.py` | Link and page checks (the deploy fails if this fails) |
+| `scripts/add_paper.py` | Adds or updates a `papers.yml` entry and copies its PDF |
+| `.github/workflows/publish.yml` | Build → check → publish `_site/` to `gh-pages` |
+
+Design: modern minimal sans. Manrope for headings, Inter for body, IBM Plex Mono for small labels. Paper `#FBFAF7`, ink `#15171B`, and one accent, Stanford cardinal `#8C1515`. Academic pages stay quiet. The Speaking & Advising page uses bands, cards, and media. Details and component HTML are in the `academic-speaker-site` skill.
 
 ## Content conventions
 
-### Document folders and naming
-- `files/papers/`  → `YYYY-<venue>-<slug>.pdf` (e.g.
-  `2024-asq-obscured-accountability.pdf`)
-- `files/syllabi/` → `msandeNNN-termYEAR.pdf` (e.g. `msande180-spring2026.pdf`)
-- `files/cv/cv.pdf` → the CV, always this name
-- `files/misc/`    → everything else (slides, media, appendices)
-
-### papers.yml entry fields
-`title` (no trailing period), `author` (full string; `Karunakaran, A.` is
-auto-bolded), `year`, `venue` (italicized), optional `volume`/`issue`/`pages`,
-`doi` (bare, no URL), optional `pdf` (filename in `files/papers/`), optional
-`equal: true`, `type` (`Journal Article` | `Book Chapter` | `Working Paper`),
-`categories: [<type>]`, and `date` (`YYYY-MM-DD`, controls sort order).
+- File naming: `files/papers/YYYY-<venue>-<slug>.pdf`, `files/syllabi/msandeNNN-termYEAR.pdf`, `files/cv/cv.pdf`, `files/misc/` for everything else.
+- `papers.yml` fields: `title` (no trailing period), `author` (`Karunakaran, A.` is bolded automatically), `year`, `venue`, optional `volume`/`issue`/`pages`, `doi` (bare), optional `pdf` (filename in `files/papers/`), optional `equal: true`, `type` (`Journal Article` | `Book Chapter` | `Working Paper`), `categories`, `date` (`YYYY-MM-DD`, controls order within a year), and optional `note` (a one-line takeaway shown under the entry).
+- Copy: academic pages in first person, the speaking page in third person. Avoid em dashes. Never invent clients, quotes, statistics, or links.
+- Images: always set `width`/`height` to the file's real pixel size.
 
 ## How to add content
 
-- **Add a paper:** `python scripts/add_paper.py --title ... --authors ...
-  --year ... --venue ... --doi ... [--pdf path] [--equal]
-  [--type "Book Chapter"]`. Or hand-edit `papers.yml` (copy an entry). Match is
-  by DOI (updates in place, else appends).
-- **Add a syllabus:** put the PDF in `files/syllabi/` (naming above), then link
-  it from `teaching.qmd`.
-- **Update the CV:** overwrite `files/cv/cv.pdf` (same filename).
-- **Post news:** add an item at the TOP of the list in `news.qmd`; optionally
-  mirror on `index.qmd`.
+- **Paper:** `python scripts/add_paper.py --title … --authors … --year … --venue … --doi … [--pdf path] [--equal] [--type "Book Chapter"]`, or edit `papers.yml` by hand. Then `python scripts/build_site.py`.
+- **Syllabus:** put the PDF in `files/syllabi/` and add a chip link on the course row in `about.html#teaching`.
+- **CV:** overwrite `files/cv/cv.pdf`.
+- **News:** add an item at the top of the list in `news.html`, and mirror the newest three in `index.html` → Recent news.
+- **Talk video, appearance, client logo, writing:** see the recipes in the `academic-speaker-site` skill (`references/maintenance.md`).
+- **Nav or footer change:** edit `partials/`, then `python scripts/build_site.py`.
 
 ## Build / verify
 
-- Preview: `quarto preview`. Full build: `quarto render` (outputs to `_site/`).
-- After content changes, run `quarto render` and confirm it completes without
-  errors before committing.
-- Deploy is automatic on push to `main` (`.github/workflows/publish.yml`).
+```bash
+pip install pyyaml                         # once
+python scripts/build_site.py               # update pages in place
+python scripts/build_site.py --out _site   # full public build, same as CI
+python scripts/check_site.py _site         # must report 0 errors
+python -m http.server 8000 --directory _site   # preview at http://localhost:8000
+```
 
-## Placeholders to replace before go-live
-
-- `images/og-image.png` (needs a real 1200×630 card) and the office/mail-code
-  line in `contact.qmd`.
-
-Done: `CNAME` + `site-url`, the profile photo (`images/profile.jpg`), and the
-Google Scholar URL in `_quarto.yml` + `contact.qmd`.
+Commit the updated `.html` files together with the `papers.yml` or partial changes, so the repo and the live site match. Deploy is automatic on push to `main`.

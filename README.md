@@ -1,119 +1,51 @@
-# Arvind Karunakaran — Academic Website
+# Arvind Karunakaran: personal website
 
-A [Quarto](https://quarto.org) website for Arvind Karunakaran (Stanford
-University). Clean, typography-first, static output. Deploys to GitHub Pages
-(`gh-pages` branch) on every push to `main`.
-
-## Prerequisites
-
-- [Quarto](https://quarto.org/docs/get-started/) (v1.4+)
-- Python 3 (only for the `scripts/add_paper.py` helper — the site itself
-  renders without it)
+Source for [www.arvindkarunakaran.com](https://www.arvindkarunakaran.com): plain HTML and CSS, published to GitHub Pages. The site has two registers that share one design. The academic pages (research, publications, CV) are quiet and text-led. The Speaking & Advising page is built for event organizers, with signature talks, video, formats, clients, an organizer kit, and an enquiry link.
 
 ## Preview locally
 
 ```bash
-quarto preview
+pip install pyyaml
+python scripts/build_site.py --out _site
+python -m http.server 8000 --directory _site
 ```
 
-This serves the site with live reload at `http://localhost:port`. To do a
-one-off full build into `_site/`:
-
-```bash
-quarto render
-```
+Then open http://localhost:8000.
 
 ## Project layout
 
 ```
-_quarto.yml          Site config: nav, footer, theme, OpenGraph
-theme.scss           Design system (palette, typography, components)
-styles.css           Small extra CSS overrides
-build-date.lua       Injects the render date into the footer ("Last updated")
-index.qmd            Home
-research.qmd         Research statement + areas/topics
-publications.qmd     Publications (renders from papers.yml — do not hardcode)
-teaching.qmd         Courses + syllabus links
-people.qmd           Doctoral & master's advisees
-cv.qmd               Embedded CV PDF + honors/education
-news.qmd             Reverse-chronological updates
-contact.qmd          Email, ORCID, Scholar, address
-papers.yml           SINGLE SOURCE OF TRUTH for publications
-_templates/
-  publications.ejs   Custom listing template (year grouping, DOI/PDF, badges)
-files/
-  papers/            Paper PDFs   (e.g. 2024-asq-obscured-accountability.pdf)
-  syllabi/           Syllabi      (e.g. msande180-spring2026.pdf)
-  cv/cv.pdf          The CV — ALWAYS this filename so links never break
-  misc/              Slides, media, appendices
-images/              favicon.svg, profile placeholder, OG image
-scripts/add_paper.py Helper to add a paper (+ copy its PDF)
-.github/workflows/publish.yml   Auto-deploy on push to main
-CNAME                Custom-domain placeholder (edit before going live)
+index.html … news.html   Pages (edit these directly, except the generated blocks)
+publications.html,
+teaching.html, people.html   Redirect stubs for old URLs
+404.html                  Not-found page
+css/site.css              Design system
+js/site.js                Small progressive enhancements
+fonts/                    Self-hosted Manrope, Inter, IBM Plex Mono
+partials/                 Shared header and footer (copied into every page by the build)
+papers.yml                SINGLE SOURCE OF TRUTH for publications
+scripts/build_site.py     Renders papers.yml → research.html, syncs partials, assembles _site/
+scripts/check_site.py     Link and page checks
+scripts/add_paper.py      Helper to add a paper (+ copy its PDF)
+files/                    Hosted PDFs: papers/, syllabi/, cv/cv.pdf, misc/
+images/                   Photos, logos, favicon, social cards
+.github/workflows/publish.yml   Build, check, and publish to gh-pages on every push to main
 ```
+
+Legacy Quarto sources (`*.qmd`, `_quarto.yml`, `theme.scss`, `styles.css`, `build-date.lua`, `_templates/`) are kept for reference only. They are no longer built.
 
 ## Common tasks
 
-### Add a publication
+**Add a publication:** `python scripts/add_paper.py --title "…" --authors "Karunakaran, A., Coauthor, B." --year 2026 --venue "…" --doi 10.xxxx/… [--pdf ~/Downloads/paper.pdf] [--equal]`, or edit `papers.yml`. Then run `python scripts/build_site.py` and commit `papers.yml` and `research.html`.
 
-Publications live **only** in `papers.yml`. Either add a one-item block by hand
-(copy an existing entry and edit the fields — see the header comment in
-`papers.yml`), or use the helper:
+**Update the CV:** replace `files/cv/cv.pdf`. Keep the filename.
 
-```bash
-python scripts/add_paper.py \
-  --title "Paper Title" \
-  --authors "Karunakaran, A., Coauthor, B." \
-  --year 2025 --venue "Organization Science" \
-  --volume 36 --issue 2 --pages "1-20" \
-  --doi 10.1287/orsc.2025.xxxx \
-  --pdf ~/Downloads/paper.pdf        # optional; copied + auto-named
-```
+**Post news:** add an item at the top of `news.html`, and mirror the newest three on `index.html`.
 
-Add `--equal` for equal-contribution papers, and
-`--type "Book Chapter"` or `--type "Working Paper"` to change the section.
-Matching is by DOI: an existing DOI is updated in place, otherwise appended.
-Then run `quarto render` (or keep `quarto preview` running).
-
-### Add a syllabus
-
-1. Drop the PDF in `files/syllabi/`, named `msandeNNN-termYEAR.pdf`
-   (e.g. `msande180-spring2026.pdf`).
-2. Link it from `teaching.qmd`:
-   `[Syllabus (PDF)](files/syllabi/msande180-spring2026.pdf){.no-underline .pub-links}`
-
-### Update the CV
-
-Replace `files/cv/cv.pdf`. **Keep the filename `cv.pdf`** so the link on the CV
-page never breaks. No other edits needed.
-
-### Post news
-
-Edit `news.qmd` and add a new item at the **top** of the list. Copy the format
-of an existing entry (a `.news-date` block followed by a `.news-body` block).
-Optionally mirror the biggest items on the Home page (`index.qmd`).
-
-### Replace the photo / favicon / social image
-
-- Home photo: replace `images/profile-placeholder.svg` (or add
-  `images/profile.jpg` and point `index.qmd` at it).
-- Favicon: `images/favicon.svg`.
-- Social preview: `images/og-image.png` — a real 1200×630 PNG renders best on
-  social platforms.
+**Change the nav or footer:** edit `partials/header.html` or `partials/footer.html`, then run `python scripts/build_site.py`.
 
 ## Deploy
 
-Pushing to `main` triggers `.github/workflows/publish.yml`, which renders the
-site and publishes it to the `gh-pages` branch (equivalent to
-`quarto publish gh-pages`). In the repo's **Settings → Pages**, set the source
-to the `gh-pages` branch.
+Every push to `main` runs `.github/workflows/publish.yml`. The workflow builds `_site/`, fails if `check_site.py` finds broken links, and publishes `_site/` to the `gh-pages` branch. In **Settings → Pages**, the source stays **Deploy from a branch: `gh-pages`**. The `CNAME` file keeps the custom domain.
 
-### Custom domain
-
-1. Edit `CNAME` to your domain (e.g. `www.yourdomain.edu`).
-2. Set `site-url` in `_quarto.yml` to the same domain (used for OpenGraph URLs).
-3. Configure the DNS record with your domain registrar.
-
-## License / content
-
-Site content © Arvind Karunakaran. Built with Quarto.
+Site content © Arvind Karunakaran.

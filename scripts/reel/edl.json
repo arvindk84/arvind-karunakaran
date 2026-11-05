@@ -1,0 +1,49 @@
+{
+  "note": "Speaker reel edit list. Times are seconds in the files in reel-source/ (raw footage, never published). Every cut sits on a pause in the speech. A 'card' covers the first seconds of a clip while the voice runs on (J-cut), then dissolves to the speaker. 'cuts' switch the framing mid-clip with unbroken audio.",
+  "crf": 22,
+  "segments": [
+    {"id": "hook-hai", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 1570.55, "out": 1580.0, "frame": "hai",
+     "overlays": [{"png": "overlay-lower.png", "at": 0.4, "dur": 6.0}, {"png": "overlay-venue-hai.png", "at": 0.4, "dur": 6.0}]},
+
+    {"id": "title-iia", "type": "clip", "src": "02 - Imagination in Action - Who Does the Work Now [T92uogShQoQ].mkv", "in": 584.55, "out": 598.2, "frame": "iia-wide",
+     "card": {"png": "card-title.png", "dur": 3.6},
+     "overlays": [{"png": "overlay-venue-iia.png", "at": 3.9, "dur": 4.5}]},
+
+    {"id": "stat-wharton", "type": "clip", "src": "03 - Wharton - Upskilling vs Deskilling [KdVAApuFC4w].mkv", "in": 433.25, "out": 447.25, "frame": "wharton-speaker",
+     "card": {"png": "card-stat.png", "dur": 3.8},
+     "cuts": [{"at": 6.2, "frame": "wharton-slide"}, {"at": 10.05, "frame": "wharton-speaker"}],
+     "overlays": [{"png": "overlay-venue-wharton.png", "at": 10.2, "dur": 3.6}]},
+
+    {"id": "hai-2", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 1807.55, "out": 1817.6, "frame": "hai",
+     "overlays": [{"png": "overlay-venue-hai.png", "at": 0.3, "dur": 3.5}]},
+
+    {"id": "clients-wharton", "type": "clip", "src": "03 - Wharton - Upskilling vs Deskilling [KdVAApuFC4w].mkv", "in": 805.25, "out": 818.1, "frame": "wharton-speaker",
+     "card": {"png": "card-clients.png", "dur": 3.6},
+     "overlays": [{"png": "overlay-venue-wharton.png", "at": 3.9, "dur": 3.5}]},
+
+    {"id": "iia-2", "type": "clip", "src": "02 - Imagination in Action - Who Does the Work Now [T92uogShQoQ].mkv", "in": 963.45, "out": 974.95, "frame": "iia-wide",
+     "overlays": [{"png": "overlay-venue-iia.png", "at": 0.3, "dur": 3.5}]},
+
+    {"id": "talks-hai", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 2054.9, "out": 2066.75, "frame": "hai",
+     "card": {"png": "card-talks.png", "dur": 4.2},
+     "overlays": [{"png": "overlay-venue-hai.png", "at": 4.5, "dur": 3.5}]},
+
+    {"id": "wharton-c", "type": "clip", "src": "03 - Wharton - Upskilling vs Deskilling [KdVAApuFC4w].mkv", "in": 664.2, "out": 676.25, "frame": "wharton-speaker",
+     "overlays": [{"png": "overlay-venue-wharton.png", "at": 0.3, "dur": 3.5}]},
+
+    {"id": "creds-hai", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 2285.0, "out": 2296.5, "frame": "hai",
+     "card": {"png": "card-creds.png", "dur": 3.8}},
+
+    {"id": "close-wharton", "type": "clip", "src": "03 - Wharton - Upskilling vs Deskilling [KdVAApuFC4w].mkv", "in": 910.25, "out": 921.4, "frame": "wharton-speaker",
+     "overlays": [{"png": "overlay-lower.png", "at": 0.4, "dur": 5.0}]},
+
+    {"id": "end", "type": "card", "png": "card-end.png", "dur": 5.0}
+  ],
+  "cuts": [
+    {"out": "files/misc/arvind-karunakaran-speaker-reel.mp4", "title": "Arvind Karunakaran · Speaker reel",
+     "poster": "images/speaking/reel-poster.jpg", "poster_at": 7.6,
+     "segments": ["hook-hai", "title-iia", "stat-wharton", "hai-2", "clients-wharton", "iia-2", "talks-hai", "wharton-c", "creds-hai", "close-wharton", "end"]},
+    {"out": "files/misc/arvind-karunakaran-speaker-reel-60s.mp4", "title": "Arvind Karunakaran · Speaker reel (1 minute)",
+     "segments": ["hook-hai", "title-iia", "stat-wharton", "clients-wharton", "end"]}
+  ]
+}

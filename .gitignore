@@ -3,6 +3,9 @@
 /.quarto/
 *.quarto_ipynb
 
+# Raw talk footage for the speaker reel (large files; never publish)
+/reel-source/
+
 # OS / editor
 .DS_Store
 Thumbs.db
@@ -14,3 +17,6 @@ __pycache__/
 .venv/
 
 **/*.quarto_ipynb
+
+# One-sheet render preview (generated)
+/scripts/one-sheet/preview.png

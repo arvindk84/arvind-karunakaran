@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Arvind Karunakaran · Speaker one-sheet</title>
+<!--
+  Source for files/misc/arvind-karunakaran-speaker-one-sheet.pdf (US Letter, one page).
+  Render with: NODE_PATH=<node_modules with puppeteer-core and @sparticuz/chromium> node scripts/one-sheet/render.js
+  Every fact here must match speaking.html. Never add a client, quote, or number that is not on the site.
+-->
+<style>
+  @font-face { font-family: "Manrope"; src: url("../../fonts/manrope-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800; }
+  @font-face { font-family: "Inter"; src: url("../../fonts/inter-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; }
+  @font-face { font-family: "Inter"; src: url("../../fonts/inter-latin-wght-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; }
+  @font-face { font-family: "IBM Plex Mono"; src: url("../../fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+
+  @page { size: 8.5in 11in; margin: 0; }
+  :root {
+    --paper: #FBFAF7; --paper-2: #F3F1EC; --card: #FFFFFF;
+    --ink: #15171B; --ink-2: #444951; --ink-3: #676C74;
+    --rule: #E2DED6; --accent: #8C1515;
+    --night: #14171C; --night-2: #1C2128; --on-night: #F4F2EE; --on-night-2: #B3B9C2;
+    --accent-on-night: #F29C91; --rule-night: #2C323A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 8.5in; height: 11in; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: "Inter", sans-serif; font-size: 8.6pt; line-height: 1.45;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    -webkit-font-smoothing: antialiased;
+  }
+  .sheet { width: 8.5in; height: 11in; display: flex; flex-direction: column; overflow: hidden; }
+
+  .mono, .eyebrow, .label, .creds, .num { font-family: "IBM Plex Mono", monospace; font-weight: 500; text-transform: uppercase; }
+  .eyebrow { display: flex; align-items: center; gap: .55em; font-size: 6.9pt; letter-spacing: .14em; color: var(--accent); }
+  .eyebrow::before { content: ""; flex: none; width: .5em; height: .5em; border-radius: 50%; background: currentColor; }
+  .label { font-size: 6.4pt; letter-spacing: .12em; color: var(--ink-3); }
+
+  /* Hero */
+  .hero { background: var(--night); color: var(--on-night); display: grid; grid-template-columns: minmax(0, 1fr) 2.3in; height: 2.92in; }
+  .hero-copy { padding: .36in .3in .26in .5in; display: flex; flex-direction: column; }
+  .hero .eyebrow { color: var(--accent-on-night); }
+  h1 { margin-top: .11in; font-family: "Manrope"; font-weight: 600; font-size: 24pt; letter-spacing: -0.03em; line-height: 1.02; }
+  .title { margin-top: .05in; font-size: 8.6pt; color: var(--on-night-2); }
+  .display { margin-top: .15in; font-family: "Manrope"; font-weight: 300; font-size: 20pt; letter-spacing: -0.035em; line-height: 1.07; }
+  .display strong { font-weight: 700; }
+  .creds { list-style: none; margin-top: auto; padding-top: .09in; border-top: 1px solid var(--rule-night); display: flex; flex-wrap: wrap; gap: .03in .2in; font-size: 6.3pt; letter-spacing: .09em; color: var(--on-night-2); }
+  .hero-media { position: relative; background: var(--night-2); overflow: hidden; }
+  .hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 14%; }
+  .hero-media::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--night) 0%, rgba(20, 23, 28, 0) 30%); }
+
+  /* Body */
+  .body { flex: 1; padding: .18in .5in .1in; display: flex; flex-direction: column; gap: .115in; }
+  .lead { font-size: 9.3pt; line-height: 1.5; color: var(--ink-2); }
+  .lead strong { color: var(--ink); font-weight: 600; }
+
+  .flag { display: grid; grid-template-columns: minmax(0, 1fr) 1.95in; gap: .22in; padding: .12in .18in; background: var(--card); border: 1px solid var(--rule); border-left: 3px solid var(--accent); border-radius: 7px; }
+  .flag h2 { margin-top: .04in; font-family: "Manrope"; font-weight: 600; font-size: 13pt; letter-spacing: -0.02em; line-height: 1.15; }
+  .flag .sub { margin-top: .02in; font-family: "Manrope"; font-weight: 500; font-size: 9pt; color: var(--ink-3); }
+  .flag p.desc { margin-top: .05in; color: var(--ink-2); }
+  .flag dl { display: grid; gap: .08in; align-content: center; }
+  .flag dl div { padding-top: .06in; border-top: 1px solid var(--rule); }
+  .flag dd { margin-top: .02in; color: var(--ink-2); font-size: 8pt; line-height: 1.4; }
+
+  .sect-h { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: .07in; }
+  .talks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .06in; }
+  .talk { display: grid; grid-template-columns: .3in minmax(0, 1fr); column-gap: .02in; align-items: baseline; align-content: start; padding: .08in .11in .09in .1in; background: var(--card); border: 1px solid var(--rule); border-radius: 7px; }
+  .talk .num { grid-row: span 2; font-family: "Manrope"; font-weight: 300; font-size: 13pt; line-height: 1; letter-spacing: -0.05em; color: var(--accent); text-transform: none; }
+  .talk h3 { margin-top: 0; font-family: "Manrope"; font-weight: 600; font-size: 9.6pt; letter-spacing: -0.012em; line-height: 1.2; }
+  .talk p { margin-top: .02in; font-size: 7.9pt; line-height: 1.35; color: var(--ink-3); }
+
+  .row2 { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: .22in; }
+  .evidence { padding: .11in .15in; background: var(--night); color: var(--on-night); border-radius: 7px; }
+  .evidence .eyebrow { color: var(--accent-on-night); }
+  .evidence p { margin-top: .06in; color: var(--on-night-2); font-size: 8pt; line-height: 1.4; }
+  .stats { display: flex; gap: .26in; margin-top: .08in; }
+  .stat b { display: block; font-family: "Manrope"; font-weight: 300; font-size: 21pt; line-height: .95; letter-spacing: -0.05em; color: var(--on-night); }
+  .stat b sup { font-size: .45em; font-weight: 400; vertical-align: .85em; margin-left: .03em; color: var(--accent-on-night); }
+  .stat span { display: block; margin-top: .03in; font-size: 7.6pt; color: var(--on-night-2); }
+  .evidence .src { margin-top: .07in; font-family: "IBM Plex Mono"; font-size: 6.2pt; letter-spacing: .06em; text-transform: uppercase; color: var(--on-night-2); }
+
+  .formats { list-style: none; border-top: 1px solid var(--rule); }
+  .formats li { display: flex; justify-content: space-between; gap: .1in; padding: .045in 0; border-bottom: 1px solid var(--rule); }
+  .formats li b { font-weight: 600; }
+  .formats li span { font-family: "IBM Plex Mono"; font-size: 7.4pt; color: var(--accent); white-space: nowrap; }
+  .formats-note { margin-top: .06in; font-size: 7.8pt; color: var(--ink-3); }
+
+  .clients { display: grid; grid-template-columns: 1.15in minmax(0, 1fr); align-items: center; gap: .18in; padding: .08in 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .logos { display: flex; flex-wrap: wrap; align-items: center; gap: .1in .2in; }
+  .logos img { height: 15px; width: auto; max-width: 78px; object-fit: contain; filter: grayscale(1) contrast(1.1); opacity: .8; }
+  .logos img.sq { height: 24px; }
+  .logos .logo-text { font-family: "Manrope"; font-weight: 800; font-size: 9pt; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); }
+
+  .facts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .22in; }
+  .facts p { margin-top: .04in; color: var(--ink-2); font-size: 8.1pt; line-height: 1.45; }
+  .facts em { font-style: italic; }
+
+  /* Footer */
+  .foot { margin-top: auto; background: var(--night); color: var(--on-night); display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .3in; padding: .15in .5in; }
+  .foot .eyebrow { color: var(--accent-on-night); }
+  .foot h2 { margin-top: .05in; font-family: "Manrope"; font-weight: 300; font-size: 14pt; letter-spacing: -0.03em; line-height: 1.12; }
+  .foot h2 strong { font-weight: 700; }
+  .foot .contact { margin-top: .07in; display: flex; flex-wrap: wrap; gap: .03in .22in; font-size: 8.4pt; color: var(--on-night-2); }
+  .foot .contact b { color: var(--on-night); font-weight: 600; }
+  .qr { display: flex; align-items: center; gap: .12in; }
+  .qr img { width: .74in; height: .74in; padding: .05in; background: #fff; border-radius: 4px; }
+  .qr span { max-width: .9in; font-family: "IBM Plex Mono"; font-size: 6.1pt; letter-spacing: .08em; line-height: 1.4; text-transform: uppercase; color: var(--on-night-2); }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Keynotes · Executive sessions · Workshops</p>
+      <h1>Arvind Karunakaran</h1>
+      <p class="title">Assistant Professor of Management Science &amp; Engineering, Stanford University</p>
+      <p class="display">An <span style="white-space:nowrap">evidence-based</span> voice on <strong>enterprise AI</strong>.</p>
+      <ul class="creds">
+        <li>Thinkers50 Radar</li>
+        <li>Faculty affiliate, Stanford HAI</li>
+                <li>PhD, MIT Sloan</li>
+      </ul>
+    </div>
+    <div class="hero-media"><img src="../../images/speaking/portrait-studio.jpg" alt="Arvind Karunakaran"></div>
+  </header>
+
+  <main class="body">
+    <p class="lead">Arvind’s talks draw on years of fieldwork inside companies adopting AI, not forecasts, so they focus on what actually moves value and adoption: <strong>strategy, structure, roles, and metrics</strong>.</p>
+
+    <section class="flag">
+      <div>
+        <p class="eyebrow">Signature framework</p>
+        <h2>The Workflow Redesign Playbook</h2>
+        <p class="sub">Redesigning work around AI with the people who do it</p>
+        <p class="desc">Teams map a workflow task by task, decide where AI should substitute for, augment, or expand the work, and then redesign roles, hand-offs, decision rights, and metrics with the people who do it, so the change holds after the pilot ends. It is the core of his <span style="white-space:nowrap">in-house</span> workshops with leadership teams.</p>
+      </div>
+      <dl>
+        <div><dt class="label">Formats</dt><dd>Keynote, or a hands-on working session (half or full day) built around the team’s own workflows</dd></div>
+        <div><dt class="label">Best for</dt><dd>COOs and transformation leaders, functional heads, HR and change leaders, in-house AI programs</dd></div>
+      </dl>
+    </section>
+
+    <section>
+      <div class="sect-h"><p class="eyebrow">Signature talks</p><p class="label">Keynote or working session</p></div>
+      <div class="talks">
+        <div class="talk"><span class="num">01</span><h3>Same Models, Different Results</h3><p>Where lasting AI advantage comes from</p></div>
+        <div class="talk"><span class="num">02</span><h3>Escaping Pilot Purgatory</h3><p>Turning AI experiments into enterprise value</p></div>
+        <div class="talk"><span class="num">03</span><h3>Stop Selling AI as a Productivity Tool</h3><p>How leaders get people to embrace AI</p></div>
+        <div class="talk"><span class="num">04</span><h3>What Is AI Really Worth?</h3><p>Measuring value, not volume</p></div>
+        <div class="talk"><span class="num">05</span><h3>Agentic AI in the Enterprise</h3><p>From demo to dependable</p></div>
+        <div class="talk"><span class="num">06</span><h3>The Organization Is the Bottleneck</h3><p>Leading change in the AI era</p></div>
+      </div>
+    </section>
+
+    <section class="row2">
+      <div class="evidence">
+        <p class="eyebrow">From the field</p>
+        <p>In a study of nearly two years inside a law firm, the team whose manager framed AI as a way to enrich their jobs, and backed that up with time, training, and new metrics, pulled far ahead.</p>
+        <div class="stats">
+          <div class="stat"><b>58<sup>%</sup></b><span>more use of the same AI tool</span></div>
+          <div class="stat"><b>70<sup>%</sup></b><span>more experimentation with it</span></div>
+        </div>
+        <p class="src">Source: Stanford HAI, Oct 2026</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:.07in">Formats</p>
+        <ul class="formats">
+          <li><b>Keynote</b><span>45–60 min</span></li>
+          <li><b>Interactive executive session</b><span>90 min</span></li>
+          <li><b>Working session</b><span>Half or full day</span></li>
+          <li><b>Executive program</b><span>Multi-day</span></li>
+        </ul>
+        <p class="formats-note">In person or virtual. Every engagement is tailored after a short scoping call with the sponsor.</p>
+      </div>
+    </section>
+
+    <section class="clients">
+      <p class="label">Executive sessions for leaders at</p>
+      <div class="logos">
+        <img src="../../images/logos/mckinsey.svg" alt="McKinsey &amp; Company">
+        <img class="sq" src="../../images/logos/bcg.svg" alt="Boston Consulting Group">
+        <img src="../../images/logos/accenture.svg" alt="Accenture">
+        <span class="logo-text">Walmart</span>
+        <img src="../../images/logos/pepsico.svg" alt="PepsiCo">
+        <span class="logo-text">Nike</span>
+        <img src="../../images/logos/barclays.svg" alt="Barclays">
+        <img class="sq" src="../../images/logos/schwab.svg" alt="Charles Schwab">
+        <img class="sq" src="../../images/logos/novonordisk.svg" alt="Novo Nordisk">
+      </div>
+    </section>
+
+    <section class="facts">
+      <div>
+        <p class="eyebrow">Stages</p>
+        <p>The AI Summit New York · Federal Reserve Bank of New York · Imagination in Action AI Summit at Google · World Economic Forum · Wharton · Harvard Business School · MIT Sloan · Stanford HAI. Nearly 50 talks, keynotes, and workshops in the past year.</p>
+      </div>
+      <div>
+        <p class="eyebrow">Research &amp; press</p>
+        <p>Research in <em>Administrative Science Quarterly</em>, <em>Organization Science</em>, and <em>Harvard Business Review</em>. Covered by The New York Times, The Wall Street Journal, The Washington Post, the Financial Times, and MSNBC.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div>
+      <p class="eyebrow">Enquire</p>
+      <h2>Planning a keynote, executive session, or <strong>workshop?</strong></h2>
+      <p class="contact"><b>arvindka@stanford.edu</b><span>arvindkarunakaran.com/speaking.html</span></p>
+    </div>
+    <div class="qr"><img src="qr-speaking.svg" alt="QR code for arvindkarunakaran.com/speaking.html"><span>Speaker reel, talks, and bios</span></div>
+  </footer>
+
+</div>
+</body>
+</html>

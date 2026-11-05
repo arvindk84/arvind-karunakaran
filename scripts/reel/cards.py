@@ -4,8 +4,9 @@
     python scripts/reel/cards.py <cards_dir>
     NODE_PATH=... node scripts/reel/render_cards.js <cards_dir>     # -> PNGs
 
-Every fact on a card must match speaking.html (talk titles, clients, numbers, press). Never add
-a client, quote, or statistic that is not on the site.
+Every fact on a card must match speaking.html (talk titles, clients, numbers, press) or the one-sheet.
+Never add a client, quote, or statistic that is not on the site. The framework card copies page 5 of
+Arvind's redesign slides word for word.
 """
 import pathlib
 import sys
@@ -158,12 +159,69 @@ CARDS["overlay-lower.html"] = page("""
   <div class="lower"><div class="nm">Arvind Karunakaran</div><div class="rl">Stanford University · Management Science &amp; Engineering</div></div>
 </div>""", css=OVERLAY_CSS, transparent=True)
 
+# Opening: "what he studies" over silent B-roll. Wording from the speaking-page bio.
+CARDS["overlay-studies.html"] = page("""
+<div class="wrap"><div class="lscrim"></div>
+  <div class="studies">
+    <p class="eyebrow" style="color:var(--accent-on-night)">What he studies</p>
+    <p class="st">What actually happens inside organizations when they adopt AI, and why <strong>the bottleneck is rarely the technology</strong>.</p>
+  </div>
+</div>""", css=OVERLAY_CSS + """
+.lscrim { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,12,15,.9) 0%, rgba(10,12,15,.78) 40%, rgba(10,12,15,0) 66%); }
+.studies { position: absolute; left: 140px; top: 50%; transform: translateY(-50%); width: 880px; color: var(--on-night); }
+.st { margin-top: 34px; font-family: Manrope; font-weight: 300; font-size: 64px; line-height: 1.12; letter-spacing: -0.03em; }
+.st strong { font-weight: 700; }
+""", transparent=True)
+
+# Recreated from page 5 of "Workflow, Job, Org Redesign and Value" (Arvind's slides). Keep the slide's
+# wording exactly: title, the four lens names and questions, and the citations as printed on the slide.
+LENSES = [
+    ("BUNDLES", "Is the job splittable at all?", "Garicano, Li &amp; Wu (2026)"),
+    ("CHAINS", "Are the AI-able steps next to each other?", "Demirer, Horton, Immorlica, Lucier &amp; Shahidi (2026)"),
+    ("BOTTLENECKS", "Where is the weak link?", "Gans &amp; Goldfarb (2026)"),
+    ("VACANCY CHAINS", "Where do the displaced tasks land?", "Karunakaran, 2026"),
+]
+lenses = "".join(f'<div class="lens"><p class="ln">{n}</p><p class="lq">{q}</p><p class="lc">{c}</p></div>' for n, q, c in LENSES)
+CARDS["card-framework.html"] = page(f"""
+<div class="card paper fw">
+  <p class="eyebrow">Framework</p>
+  <h2 class="fw-h">A framework for job, workflow, and organizational redesign</h2>
+  <div class="lenses">{lenses}</div>
+</div>""", css=f"""
+@font-face {{ font-family: Inter; src: url("{FONTS}/inter-latin-wght-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; }}
+.fw {{ padding: 0 140px; }}
+.fw-h {{ margin-top: 34px; font-family: Manrope; font-weight: 500; font-size: 76px; line-height: 1.06; letter-spacing: -0.035em; max-width: 1450px; }}
+.lenses {{ margin-top: 72px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }}
+.lens {{ background: var(--paper-2); border-top: 4px solid var(--accent); border-radius: 0 0 14px 14px; padding: 36px 34px 32px;
+  min-height: 400px; display: flex; flex-direction: column; }}
+.ln {{ font-family: "IBM Plex Mono"; font-weight: 500; font-size: 25px; letter-spacing: .12em; color: var(--accent); }}
+.lq {{ margin-top: 24px; font-family: Manrope; font-weight: 600; font-size: 46px; line-height: 1.12; letter-spacing: -0.025em; color: var(--ink); }}
+.lc {{ margin-top: auto; padding-top: 26px; font-size: 21px; line-height: 1.35; font-style: italic; color: var(--ink-3); }}
+""")
+
+# The speaker one-sheet (scripts/one-sheet/preview.png, rendered with the PDF) next to where to get it.
+ONESHEET = (ROOT / "scripts" / "one-sheet" / "preview.png").as_uri()
+CARDS["card-onesheet.html"] = page(f"""
+<div class="card night os">
+  <div class="os-text">
+    <p class="eyebrow">For organizers</p>
+    <h2 class="os-h">Speaker<br>one-sheet</h2>
+    <p class="os-url">arvindkarunakaran.com/speaking.html</p>
+  </div>
+  <img class="os-img" src="{ONESHEET}" alt="">
+</div>""", css="""
+.os { flex-direction: row; align-items: center; justify-content: space-between; padding: 0 170px 0 160px; }
+.os-h { margin-top: 40px; font-family: Manrope; font-weight: 600; font-size: 124px; line-height: 1.0; letter-spacing: -0.045em; }
+.os-url { margin-top: 56px; font-family: Manrope; font-weight: 600; font-size: 42px; color: var(--accent-on-night); letter-spacing: -0.015em; }
+.os-img { height: 920px; width: auto; border-radius: 6px; box-shadow: 0 34px 90px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08); }
+""")
+
 VENUES = {
     "iia": "Imagination in Action AI Summit at Google · 2026",
     "wharton": "Wharton · Business &amp; Generative AI Workshop · 2024",
     "nyfed": "Federal Reserve Bank of New York · 2026",
     "notredame": "Notre Dame–IBM Technology Ethics Lab",
-    "hai": "Stanford HAI",
+    "hai": "Stanford HAI · 2026",
     "podcast": "Stanford Engineering · The Future of Everything",
     "online": "Stanford Online",
 }

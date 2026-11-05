@@ -1,56 +1,73 @@
 {
-  "note": "Speaker reel edit list. Times are seconds in the files in reel-source/ (raw footage, never published). Every cut sits on a pause in the speech. A 'card' covers the first seconds of a clip while the voice runs on (J-cut), then dissolves to the speaker. 'cuts' switch the framing mid-clip with unbroken audio.",
-  "crf": 22,
+  "note": "Speaker reel edit list. Only two recordings appear: the Stanford HAI seminar (05, Sept 23, 2026) and the New York Fed panel (01, Oct 6, 2026). Times are seconds in the files in reel-source/ (raw footage, never published). The opening is a silent 'sequence' of cards and B-roll with original music (scripts/reel/music.py) that fades out as the first speech clip starts. Speech clips alternate HAI and NY Fed and are cut on pauses: each in-point sits about 0.12 s before the first word after a pause, each out-point about 0.12 s after the last word before one. HAI topics come from OCR of the slides behind him; NY Fed topics from the moderator's questions (camera, voice, and pause structure locate Arvind's answers). See the reel report for confidence.",
+  "crf": 24,
   "segments": [
-    {"id": "hook-hai", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 1570.55, "out": 1580.0, "frame": "hai",
-     "overlays": [{"png": "overlay-lower.png", "at": 0.4, "dur": 6.0}, {"png": "overlay-venue-hai.png", "at": 0.4, "dur": 6.0}]},
+    {"id": "open-main", "type": "sequence", "xfade": 0.4, "fade_in": 0.5,
+     "items": [
+       {"png": "card-title.png", "dur": 3.125},
+       {"src": "01 - New York Fed - AI in the Workplace - speaker section [6406544535112].mp4", "in": 63.0, "frame": "full", "dur": 4.375,
+        "overlays": [{"png": "overlay-studies.png", "at": 0.15, "dur": 4.0, "fade_in": 0.45, "fade_out": 0.35}]},
+       {"png": "card-framework.png", "dur": 6.25},
+       {"png": "card-stat.png", "dur": 4.375},
+       {"png": "card-clients.png", "dur": 3.125},
+       {"png": "card-onesheet.png", "dur": 3.75}
+     ]},
 
-    {"id": "title-iia", "type": "clip", "src": "02 - Imagination in Action - Who Does the Work Now [T92uogShQoQ].mkv", "in": 584.55, "out": 598.2, "frame": "iia-wide",
-     "card": {"png": "card-title.png", "dur": 3.6},
-     "overlays": [{"png": "overlay-venue-iia.png", "at": 3.9, "dur": 4.5}]},
+    {"id": "open-short", "type": "sequence", "xfade": 0.4, "fade_in": 0.5,
+     "items": [
+       {"png": "card-title.png", "dur": 3.125},
+       {"png": "card-framework.png", "dur": 5.625},
+       {"png": "card-clients.png", "dur": 3.15}
+     ]},
 
-    {"id": "stat-wharton", "type": "clip", "src": "03 - Wharton - Upskilling vs Deskilling [KdVAApuFC4w].mkv", "in": 433.25, "out": 447.25, "frame": "wharton-speaker",
-     "card": {"png": "card-stat.png", "dur": 3.8},
-     "cuts": [{"at": 6.2, "frame": "wharton-slide"}, {"at": 10.05, "frame": "wharton-speaker"}],
-     "overlays": [{"png": "overlay-venue-wharton.png", "at": 10.2, "dur": 3.6}]},
+    {"id": "h1-absorption", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 1335.09, "out": 1347.43, "frame": "hai",
+     "overlays": [{"png": "overlay-lower.png", "at": 0.4, "dur": 5.4}, {"png": "overlay-venue-hai.png", "at": 0.4, "dur": 5.4}]},
 
-    {"id": "hai-2", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 1807.55, "out": 1817.6, "frame": "hai",
+    {"id": "f1-overview", "type": "clip", "src": "01 - New York Fed - AI in the Workplace - speaker section [6406544535112].mp4", "in": 192.96, "out": 203.07, "frame": "full",
+     "overlays": [{"png": "overlay-venue-nyfed.png", "at": 0.3, "dur": 3.8}]},
+
+    {"id": "h2-two-divisions", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 1489.72, "out": 1502.53, "frame": "hai",
      "overlays": [{"png": "overlay-venue-hai.png", "at": 0.3, "dur": 3.5}]},
 
-    {"id": "clients-wharton", "type": "clip", "src": "03 - Wharton - Upskilling vs Deskilling [KdVAApuFC4w].mkv", "in": 805.25, "out": 818.1, "frame": "wharton-speaker",
-     "card": {"png": "card-clients.png", "dur": 3.6},
-     "overlays": [{"png": "overlay-venue-wharton.png", "at": 3.9, "dur": 3.5}]},
+    {"id": "f2-paralegals", "type": "clip", "src": "01 - New York Fed - AI in the Workplace - speaker section [6406544535112].mp4", "in": 777.51, "out": 789.63, "frame": "full",
+     "overlays": [{"png": "overlay-venue-nyfed.png", "at": 0.3, "dur": 3.5}]},
 
-    {"id": "nyfed", "type": "clip", "src": "01 - New York Fed - AI in the Workplace - speaker section [6406544535112].mp4", "in": 12.25, "out": 25.1, "frame": "full",
-     "overlays": [{"png": "overlay-venue-nyfed.png", "at": 0.3, "dur": 4.0}]},
+    {"id": "f2-paralegals-stat", "type": "clip", "src": "01 - New York Fed - AI in the Workplace - speaker section [6406544535112].mp4", "in": 777.51, "out": 789.63, "frame": "full",
+     "card": {"png": "card-stat.png", "dur": 4.0},
+     "overlays": [{"png": "overlay-venue-nyfed.png", "at": 4.3, "dur": 3.5}]},
 
-    {"id": "nyfed-clients", "type": "clip", "src": "01 - New York Fed - AI in the Workplace - speaker section [6406544535112].mp4", "in": 12.25, "out": 25.1, "frame": "full",
-     "card": {"png": "card-clients.png", "dur": 3.6},
-     "overlays": [{"png": "overlay-venue-nyfed.png", "at": 3.9, "dur": 4.0}]},
+    {"id": "h3-productivity-framing", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 1796.92, "out": 1807.25, "frame": "hai",
+     "overlays": [{"png": "overlay-venue-hai.png", "at": 0.3, "dur": 3.5}]},
 
-    {"id": "iia-2", "type": "clip", "src": "02 - Imagination in Action - Who Does the Work Now [T92uogShQoQ].mkv", "in": 963.45, "out": 974.95, "frame": "iia-wide",
-     "overlays": [{"png": "overlay-venue-iia.png", "at": 0.3, "dur": 3.5}]},
+    {"id": "f3-divisions", "type": "clip", "src": "01 - New York Fed - AI in the Workplace - speaker section [6406544535112].mp4", "in": 879.75, "out": 890.36, "frame": "full",
+     "card": {"png": "card-creds.png", "dur": 3.8},
+     "overlays": [{"png": "overlay-venue-nyfed.png", "at": 4.1, "dur": 3.5}]},
 
-    {"id": "talks-hai", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 2054.9, "out": 2066.75, "frame": "hai",
+    {"id": "h4-enrichment", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 1911.03, "out": 1921.13, "frame": "hai",
+     "overlays": [{"png": "overlay-venue-hai.png", "at": 0.3, "dur": 3.5}]},
+
+    {"id": "f4-evaluation", "type": "clip", "src": "01 - New York Fed - AI in the Workplace - speaker section [6406544535112].mp4", "in": 1248.26, "out": 1260.23, "frame": "full",
+     "overlays": [{"png": "overlay-venue-nyfed.png", "at": 0.3, "dur": 3.5}]},
+
+    {"id": "h5-metrics", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 2352.52, "out": 2362.26, "frame": "hai",
+     "overlays": [{"png": "overlay-venue-hai.png", "at": 0.3, "dur": 3.5}]},
+
+    {"id": "f5-implementation", "type": "clip", "src": "01 - New York Fed - AI in the Workplace - speaker section [6406544535112].mp4", "in": 1817.36, "out": 1829.47, "frame": "full",
      "card": {"png": "card-talks.png", "dur": 4.2},
-     "overlays": [{"png": "overlay-venue-hai.png", "at": 4.5, "dur": 3.5}]},
+     "overlays": [{"png": "overlay-venue-nyfed.png", "at": 4.5, "dur": 3.5}]},
 
-    {"id": "wharton-c", "type": "clip", "src": "03 - Wharton - Upskilling vs Deskilling [KdVAApuFC4w].mkv", "in": 664.2, "out": 676.25, "frame": "wharton-speaker",
-     "overlays": [{"png": "overlay-venue-wharton.png", "at": 0.3, "dur": 3.5}]},
-
-    {"id": "creds-hai", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 2285.0, "out": 2296.5, "frame": "hai",
-     "card": {"png": "card-creds.png", "dur": 3.8}},
-
-    {"id": "close-wharton", "type": "clip", "src": "03 - Wharton - Upskilling vs Deskilling [KdVAApuFC4w].mkv", "in": 910.25, "out": 921.4, "frame": "wharton-speaker",
-     "overlays": [{"png": "overlay-lower.png", "at": 0.4, "dur": 5.0}]},
-
-    {"id": "end", "type": "card", "png": "card-end.png", "dur": 5.0}
+    {"id": "end", "type": "card", "png": "card-end.png", "dur": 5.0},
+    {"id": "end-short", "type": "card", "png": "card-end.png", "dur": 4.0}
   ],
   "cuts": [
     {"out": "files/misc/arvind-karunakaran-speaker-reel.mp4", "title": "Arvind Karunakaran · Speaker reel",
-     "poster": "images/speaking/reel-poster.jpg", "poster_at": 7.6,
-     "segments": ["hook-hai", "title-iia", "stat-wharton", "hai-2", "clients-wharton", "nyfed", "iia-2", "talks-hai", "wharton-c", "creds-hai", "close-wharton", "end"]},
+     "music": {"wav": "music-main.wav", "lufs": -20},
+     "poster": "images/speaking/reel-poster.jpg",
+     "poster_src": {"src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "at": 2859.6, "frame": "hai"},
+     "segments": ["open-main", "h1-absorption", "f1-overview", "h2-two-divisions", "f2-paralegals", "h3-productivity-framing",
+                  "f3-divisions", "h4-enrichment", "f4-evaluation", "h5-metrics", "f5-implementation", "end"]},
     {"out": "files/misc/arvind-karunakaran-speaker-reel-60s.mp4", "title": "Arvind Karunakaran · Speaker reel (1 minute)",
-     "segments": ["hook-hai", "title-iia", "stat-wharton", "nyfed-clients", "end"]}
+     "music": {"wav": "music-short.wav", "lufs": -20},
+     "segments": ["open-short", "h1-absorption", "f2-paralegals-stat", "h4-enrichment", "f4-evaluation", "end-short"]}
   ]
 }

@@ -21,6 +21,13 @@
      "card": {"png": "card-clients.png", "dur": 3.6},
      "overlays": [{"png": "overlay-venue-wharton.png", "at": 3.9, "dur": 3.5}]},
 
+    {"id": "nyfed", "type": "clip", "src": "01 - New York Fed - AI in the Workplace - speaker section [6406544535112].mp4", "in": 12.25, "out": 25.1, "frame": "full",
+     "overlays": [{"png": "overlay-venue-nyfed.png", "at": 0.3, "dur": 4.0}]},
+
+    {"id": "nyfed-clients", "type": "clip", "src": "01 - New York Fed - AI in the Workplace - speaker section [6406544535112].mp4", "in": 12.25, "out": 25.1, "frame": "full",
+     "card": {"png": "card-clients.png", "dur": 3.6},
+     "overlays": [{"png": "overlay-venue-nyfed.png", "at": 3.9, "dur": 4.0}]},
+
     {"id": "iia-2", "type": "clip", "src": "02 - Imagination in Action - Who Does the Work Now [T92uogShQoQ].mkv", "in": 963.45, "out": 974.95, "frame": "iia-wide",
      "overlays": [{"png": "overlay-venue-iia.png", "at": 0.3, "dur": 3.5}]},
 
@@ -42,8 +49,8 @@
   "cuts": [
     {"out": "files/misc/arvind-karunakaran-speaker-reel.mp4", "title": "Arvind Karunakaran · Speaker reel",
      "poster": "images/speaking/reel-poster.jpg", "poster_at": 7.6,
-     "segments": ["hook-hai", "title-iia", "stat-wharton", "hai-2", "clients-wharton", "iia-2", "talks-hai", "wharton-c", "creds-hai", "close-wharton", "end"]},
+     "segments": ["hook-hai", "title-iia", "stat-wharton", "hai-2", "clients-wharton", "nyfed", "iia-2", "talks-hai", "wharton-c", "creds-hai", "close-wharton", "end"]},
     {"out": "files/misc/arvind-karunakaran-speaker-reel-60s.mp4", "title": "Arvind Karunakaran · Speaker reel (1 minute)",
-     "segments": ["hook-hai", "title-iia", "stat-wharton", "clients-wharton", "end"]}
+     "segments": ["hook-hai", "title-iia", "stat-wharton", "nyfed-clients", "end"]}
   ]
 }

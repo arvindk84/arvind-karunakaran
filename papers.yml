@@ -1,31 +1,62 @@
 # =============================================================================
-# papers.yml — single source of truth for the Publications page.
+# papers.yml: single source of truth for the publications list on research.html.
 #
-# The Publications page (publications.qmd) renders from this file via a Quarto
-# listing + custom template (_templates/publications.ejs). To add a paper, add
-# one entry here (or run `python scripts/add_paper.py ...`). Do NOT edit the
-# publications page HTML directly.
+# scripts/build_site.py renders this file into research.html between
+# <!-- PUBS:START --> and <!-- PUBS:END -->. To add a paper, add one entry here
+# (or run `python scripts/add_paper.py ...`), then run `python scripts/build_site.py`.
+# Do NOT edit the publications HTML directly. Keep this list in sync with the
+# "Publications" section of the CV (files/cv/cv.pdf).
 #
 # Fields:
 #   title    (required)  Paper title, no trailing period.
 #   author   (required)  Full author string. "Karunakaran, A." is auto-bolded.
-#   year     (required)  Publication year (integer). Used for grouping/sorting.
+#   year     (required)  Publication year (integer). Used for sorting.
 #   venue    (required)  Journal or book title (rendered in italics).
 #   volume / issue / pages   (optional) Bibliographic detail.
 #   doi      (optional)  Bare DOI, e.g. 10.1177/00018392241256303 (no URL).
-#   pdf      (optional)  Filename in files/papers/ — shows a PDF button.
-#   equal    (optional)  true -> shows an "Equal Contribution" badge.
+#   pdf      (optional)  Filename in files/papers/ (shows a PDF button).
+#   equal    (optional)  true -> shows an "Equal contribution" chip.
+#   status   (optional)  e.g. "Forthcoming"; shown instead of the year and sorted first.
+#   note     (optional)  One line shown under the entry.
 #   type     (required)  "Journal Article" | "Book Chapter" | "Working Paper".
-#   categories (required) List used by the on-page filter (usually [<type>]).
-#   date     (required)  YYYY-MM-DD, used by Quarto listing to sort (newest first).
+#   categories (required) List (usually [<type>]).
+#   date     (required)  YYYY-MM-DD, orders entries within a year (newest first).
 # =============================================================================
 
+- title: "Not Just a Job: Processes and Consequences of Collaborative Job Design in Nascent Organizations"
+  author: "Mahabadi, S., Cohen, L., Karunakaran, A."
+  year: 2026
+  status: "Forthcoming"
+  venue: "Administrative Science Quarterly"
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2026-12-03"
+
+- title: "Skilling in the Age of Artificial Intelligence"
+  author: "Karunakaran, A., Ramjee, P., Narayanan, D."
+  year: 2026
+  status: "Forthcoming"
+  venue: "Research in Organizational Behavior"
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2026-12-02"
+
+- title: "Moving Beyond Benchmarks: The Mirage of Public Accountability in AI Research"
+  author: "Lepp, H., Narayanan, D., Karunakaran, A."
+  year: 2026
+  status: "Forthcoming"
+  venue: "The ANNALS of the American Academy of Political and Social Science"
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2026-12-01"
+
 - title: "Artificial Intelligence at Work: An Integrative Review on the Impact of AI on Workplace Inequality"
-  author: "Karunakaran, A., Lebovitz, S., Narayanan, D., Rahman, H."
+  author: "Karunakaran, A., Lebovitz, S., Narayanan, D., Rahman, H.A."
   year: 2025
   venue: "Academy of Management Annals"
   volume: 19
   issue: 2
+  pages: "693–735"
   doi: 10.5465/annals.2023.0230
   equal: true
   type: "Journal Article"
@@ -46,14 +77,14 @@
 
 - title: "Expert Authority and the Public Sphere: Media Intermediaries, Professional Norm Violation, and the Market for Expertise"
   author: "Benjamin-Pollak, N.A., Karunakaran, A."
-  year: 2026
+  year: 2025
   venue: "Expertise in and Around Organizations (Research in the Sociology of Organizations)"
   volume: 97
   pages: "249–269"
   doi: 10.1108/S0733-558X20250000097011
   type: "Book Chapter"
   categories: ["Book Chapter"]
-  date: "2026-01-01"
+  date: "2025-12-01"
 
 - title: "Frontline Professionals in the Wake of Social Media Scrutiny: Examining the Processes of Obscured Accountability"
   author: "Karunakaran, A."
@@ -73,7 +104,7 @@
   year: 2024
   venue: "Academy of Management Annals"
   volume: 18
-  issue: 2
+  issue: 1
   pages: "251–294"
   doi: 10.5465/annals.2022.0090
   equal: true
@@ -85,7 +116,11 @@
   author: "Monteiro, P., Nicolini, D., Erickson, I., Cohen, L.E., Dokko, G., Corporaal, G.F., Karunakaran, A., Bechky, B.A., O'Mahony, S."
   year: 2024
   venue: "Journal of Management Inquiry"
+  volume: 34
+  issue: 1
+  pages: "19–40"
   doi: 10.1177/10564926241261259
+  note: "Curated article. My contribution: “Persistence of Occupational Recognition Gaps: Examining the Mismatch between Classification Systems and the Expertise Needed to Accomplish Occupational Work.”"
   type: "Journal Article"
   categories: ["Journal Article"]
   date: "2024-03-01"
@@ -94,6 +129,9 @@
   author: "Van Angeren, J., Karunakaran, A."
   year: 2023
   venue: "Organization Science"
+  volume: 34
+  issue: 3
+  pages: "1027–1050"
   doi: 10.1287/orsc.2022.1607
   equal: true
   type: "Journal Article"
@@ -104,6 +142,9 @@
   author: "Rahman, H., Weiss, T., Karunakaran, A."
   year: 2023
   venue: "Academy of Management Journal"
+  volume: 66
+  issue: 6
+  pages: "1803–1830"
   doi: 10.5465/amj.2022.0638
   equal: true
   type: "Journal Article"
@@ -154,6 +195,7 @@
   issue: 3
   pages: "273–303"
   doi: 10.1177/1476127017708583
+  equal: true
   type: "Journal Article"
   categories: ["Journal Article"]
   date: "2018-08-01"
@@ -166,6 +208,7 @@
   issue: 1
   pages: "60–73"
   doi: 10.1016/j.respol.2013.07.007
+  equal: true
   type: "Journal Article"
   categories: ["Journal Article"]
   date: "2014-01-01"

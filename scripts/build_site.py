@@ -79,8 +79,11 @@ def render_pub(p):
         chips.append('<span class="chip chip--note">Working paper</span>')
     note = f'\n            <p class="pub-note">{esc(p["note"])}</p>' if p.get("note") else ""
 
+    # Optional `status` (e.g. "Forthcoming") replaces the year label for accepted, not-yet-issued papers.
+    year_label = esc(p["status"]) if p.get("status") else esc(p["year"])
+
     return f"""        <li class="pub" data-type="{slug}">
-          <div class="pub-year">{esc(p['year'])}</div>
+          <div class="pub-year">{year_label}</div>
           <div>
             <h3 class="pub-title">{title_html}</h3>
             <p class="pub-authors">{authors}</p>
@@ -91,8 +94,8 @@ def render_pub(p):
 
 
 def render_publications(papers):
-    # Newest first: by year, then by date within the year (same order as the old listing).
-    papers = sorted(papers, key=lambda p: (int(p["year"]), str(p.get("date") or p["year"])), reverse=True)
+    # Newest first: forthcoming (has `status`) on top, then by year, then by date within the year.
+    papers = sorted(papers, key=lambda p: (1 if p.get("status") else 0, int(p["year"]), str(p.get("date") or p["year"])), reverse=True)
     present = []
     for p in papers:
         s = TYPE_SLUG.get(p.get("type"))

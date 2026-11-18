@@ -59,12 +59,20 @@
   --radius-sm: 8px;
   --header-h: 4.25rem;
   --shadow: 0 18px 40px -24px rgba(20, 23, 28, 0.35);
+  --scrim: rgba(20, 23, 28, 0.38);
 }
+/* Phones: secondary text (card descriptions, author lines, list notes) goes from 15px to 16px,
+   and chips, labels and dates from 12-13px to 13-14px, so they stay readable at arm's length. */
+@media (max-width: 599px) { :root { --fs-small: 1rem; --fs-micro: .8125rem; --fs-meta: .875rem; } }
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 1.25rem); }
-html.has-subnav { scroll-padding-top: calc(var(--header-h) + 4rem); }
+/* Header (68px) + sticky sub-nav (about 56px) + breathing room, so anchors never land under the sub-nav */
+html.has-subnav { scroll-padding-top: calc(var(--header-h) + 5rem); }
+/* Mobile menu open: lock the page behind it (class set by site.js). Only on <html>: putting
+   overflow: hidden on <body> as well would turn body into a scroll container and break the sticky header. */
+html.nav-open { overflow: hidden; }
 body {
   margin: 0;
   background: var(--paper);
@@ -96,6 +104,8 @@ a {
 }
 a:hover { color: var(--accent); text-decoration-color: currentColor; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+/* Cardinal on night is under 2:1, so focus rings on dark surfaces use the light accent */
+.band-night :focus-visible, .door--night:focus-visible, .talk--flagship :focus-visible { outline-color: var(--accent-on-night); }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
@@ -122,7 +132,10 @@ p, li, dd { text-wrap: pretty; }
 
 /* ---------- Layout ---------- */
 .container { width: min(100% - 2 * var(--gutter), var(--container)); margin-inline: auto; }
-.container--narrow { width: min(100% - 2 * var(--gutter), 52rem); margin-inline: auto; }
+/* Narrow measure, but left-aligned with the page head above it (centring it left the News list
+   offset from its own heading on wide screens) */
+.container--narrow { width: min(100% - 2 * var(--gutter), var(--container)); margin-inline: auto; }
+.container--narrow > * { max-width: 52rem; }
 .section { padding-block: var(--section); }
 .section--tight { padding-block: calc(var(--section) * 0.55); }
 .section:not([class*="band-"]) + .section:not([class*="band-"]) { padding-top: 0; }
@@ -145,6 +158,8 @@ p, li, dd { text-wrap: pretty; }
   .split-aside { position: sticky; top: calc(var(--header-h) + 2rem); align-self: start; }
   .has-subnav .split-aside { top: calc(var(--header-h) + 5rem); }
 }
+/* A heading-only aside: drop the subhead's bottom margin so the stacked layout has one gap, not two */
+.split-aside > .subhead:last-child { margin-bottom: 0; }
 
 .stack > * + * { margin-top: var(--stack, 1rem); }
 
@@ -196,6 +211,7 @@ p, li, dd { text-wrap: pretty; }
 .btn--light { background: var(--on-night); color: var(--night); }
 .btn--light:hover { background: #fff; color: var(--night); }
 .btn--sm { padding: .7em 1.1em; font-size: .875rem; }
+@media (pointer: coarse) { .btn--sm { min-height: 2.75rem; } }
 .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
 
 .more { display: inline-flex; align-items: center; gap: .45em; font-weight: 600; font-size: var(--fs-small); color: var(--accent); text-decoration: none; }
@@ -203,6 +219,16 @@ p, li, dd { text-wrap: pretty; }
 .more:hover { color: var(--accent-strong); }
 .more:hover::after { transform: translateX(3px); }
 .band-night .more { color: var(--accent-on-night); }
+/* Hit areas: small text links and chips keep their look but get a taller invisible
+   target (at least 44px) so they are easy to tap. The pseudo-element is transparent. */
+a.more, a.chip, .footer-base a, .headshot figcaption a, .dated .what > a { position: relative; }
+a.more::before, a.chip::before, .footer-base a::before, .headshot figcaption a::before, .dated .what > a::before { content: ""; position: absolute; inset: -10px -4px; }
+.dated .what > a::before { inset: -5px -3px; }   /* a smaller pad: a second link can sit just below */
+/* Card titles and contact links: a taller box with matching negative margins (same layout, 44px target) */
+.media-card h3 a, .now-card h3 a { display: block; padding-block: .65rem; margin-block: -.65rem; }
+.kv dd a, .footer-grid p a { display: inline-block; padding-block: .6rem; margin-block: -.6rem; }
+a.chip::before { inset: -11px -3px; }
+.footer-base a::before { inset: -12px -4px; }
 
 .chip {
   display: inline-flex; align-items: center; gap: .4em;
@@ -219,27 +245,41 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 /* ---------- Header & nav ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: color-mix(in srgb, var(--paper) 90%, transparent);
-  -webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color .2s ease;
+}
+/* The frosted background lives on a pseudo-element. A backdrop-filter on the header itself
+   makes it the containing block for the fixed mobile menu, and iOS Safari then clips the
+   menu to the header's 68px box, so the page links never appear on phones. */
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: var(--paper);
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px);
 }
 .site-header.is-scrolled, .has-subnav .site-header { border-bottom-color: var(--rule); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: var(--header-h); }
 .wordmark { font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; letter-spacing: -0.015em; color: var(--ink); text-decoration: none; white-space: nowrap; }
 .wordmark:hover { color: var(--ink); }
+.header-inner .wordmark { padding-block: .6rem; min-width: 0; white-space: normal; line-height: 1.15; }   /* 44px+ tap target; wraps only if text is enlarged */
 .nav ul { display: flex; align-items: center; gap: clamp(1rem, 1.9vw, 1.9rem); list-style: none; }
 .nav a { position: relative; display: block; padding: .5rem 0; font-size: .9375rem; font-weight: 500; color: var(--ink-2); text-decoration: none; white-space: nowrap; }
 .nav a:hover { color: var(--ink); }
 .nav a[aria-current="page"] { color: var(--ink); }
 .nav a[aria-current="page"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: .05rem; height: 2px; border-radius: 2px; background: var(--accent); }
 .nav-toggle { display: none; }
+@media (min-width: 940px) and (pointer: coarse) {
+  .nav a { padding: .75rem .35rem; }
+  .nav a[aria-current="page"]::after { left: .35rem; right: .35rem; bottom: .5rem; }
+}
 
 @media (max-width: 939px) {
   .nav-toggle {
-    display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; margin-right: -.6rem;
+    display: inline-flex; align-items: center; gap: .6rem; height: 2.75rem; padding: 0 .6rem; margin-right: -.6rem;
     border: 0; background: transparent; color: var(--ink); cursor: pointer; border-radius: 8px;
+    font: 600 .875rem/1 var(--font-body);
   }
+  .nav-toggle-text { letter-spacing: .01em; }
   .nav-toggle .bars, .nav-toggle .bars::before, .nav-toggle .bars::after { display: block; width: 1.25rem; height: 1.5px; background: currentColor; border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
   .nav-toggle .bars { position: relative; }
   .nav-toggle .bars::before, .nav-toggle .bars::after { content: ""; position: absolute; left: 0; }
@@ -250,8 +290,12 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
   .nav-toggle[aria-expanded="true"] .bars::after { transform: translateY(-6px) rotate(-45deg); }
   .nav {
     position: fixed; inset: var(--header-h) 0 auto 0; z-index: 49;
-    max-height: calc(100dvh - var(--header-h)); overflow-y: auto;
-    background: var(--paper); border-bottom: 1px solid var(--rule); box-shadow: var(--shadow);
+    max-height: calc(100dvh - var(--header-h)); overflow-y: auto; overscroll-behavior: contain;
+    background: var(--paper); border-bottom: 1px solid var(--rule);
+    /* The second shadow is a scrim that dims the page below the open menu. clip-path keeps it
+       off the header bar. (Both sit on the menu itself, never on an ancestor: see .site-header::before.) */
+    box-shadow: var(--shadow), 0 0 0 100vmax var(--scrim);
+    -webkit-clip-path: inset(0 0 -100vmax 0); clip-path: inset(0 0 -100vmax 0);
     padding: .5rem var(--gutter) 1.5rem;
     visibility: hidden; opacity: 0; transform: translateY(-8px);
     transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
@@ -260,7 +304,13 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
   .nav ul { flex-direction: column; align-items: stretch; gap: 0; }
   .nav li + li { border-top: 1px solid var(--rule); }
   .nav a { padding: 1rem 0; font-size: 1.0625rem; }
+  .nav a[aria-current="page"] { font-weight: 600; }
   .nav a[aria-current="page"]::after { left: auto; right: 0; top: 50%; bottom: auto; width: .45rem; height: .45rem; border-radius: 50%; transform: translateY(-50%); }
+  .nav a:focus-visible { outline-offset: -2px; }
+}
+@media (max-width: 939px) and (max-height: 500px) {
+  .nav { padding-block: .25rem .75rem; }
+  .nav a { padding: .6rem 0; font-size: 1rem; }
 }
 
 /* ---------- Footer ---------- */
@@ -273,6 +323,21 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 .footer-grid ul { list-style: none; display: grid; gap: .5rem; }
 .footer-grid a { text-decoration: none; }
 .footer-grid a:hover { text-decoration: underline; }
+/* Phones: name and contact span the row, Explore and Profiles sit side by side (halves the footer's length) */
+@media (max-width: 599px) {
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.25rem; }
+  .footer-grid .footer-id, .footer-grid > :last-child { grid-column: 1 / -1; }
+}
+/* Tablets: name on its own row, then three even columns (no lone Contact column on a second row) */
+@media (min-width: 600px) and (max-width: 899px) {
+  .footer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .footer-grid .footer-id { grid-column: 1 / -1; }
+}
+/* Touch screens: footer links become 44px-tall rows */
+@media (pointer: coarse) {
+  .footer-grid ul { gap: 0; }
+  .footer-grid li a { display: inline-block; padding-block: .7rem; line-height: 1.5; }
+}
 .footer-base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule-strong); font-size: var(--fs-meta); color: var(--ink-3); }
 .footer-base a { text-decoration: none; }
 
@@ -326,6 +391,13 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 /* ---------- Definition grids (areas, topics, advising) ---------- */
 .defs { display: grid; gap: 2rem clamp(1.5rem, 3vw, 3rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); }
 .defs--3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+/* Fixed column counts so no grid ends with a lone item (auto-fit gave 3 + 1 and 4 + 2 on wide screens) */
+@media (min-width: 700px) {
+  .defs:not(.defs--3) { grid-template-columns: repeat(2, minmax(0, 1fr)); }           /* two-up */
+  .defs--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }                      /* six items: 3 rows of 2 */
+  .defs--3:not(:has(> :nth-child(4))) { grid-template-columns: repeat(3, minmax(0, 1fr)); } /* three items: one row */
+}
+@media (min-width: 1000px) { .defs--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .def { padding-top: 1.1rem; border-top: 1px solid var(--ink); }
 .def h3 { font-size: 1.125rem; margin-bottom: .5rem; }
 .def p { color: var(--ink-2); font-size: var(--fs-small); line-height: 1.6; margin: 0; }
@@ -344,11 +416,15 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 }
 .filter:hover { border-color: var(--ink); color: var(--ink); }
 .filter[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-.filter .count { margin-left: .35em; font-family: var(--font-mono); font-size: .75rem; opacity: .7; }
+/* Dimmed with tokens, not opacity: 70% opacity put the 12px count at 3.8:1 on stone (below AA) */
+.filter .count { margin-left: .35em; font-family: var(--font-mono); font-size: .75rem; color: var(--ink-3); }
+.filter[aria-pressed="true"] .count { color: var(--on-night-2); }
+@media (pointer: coarse) { .filter { min-height: 2.75rem; padding-inline: 1.15em; } }
 
 .pubs { list-style: none; border-top: 1px solid var(--rule); }
 .pub { display: grid; gap: .3rem 2rem; padding: 1.6rem 0; border-bottom: 1px solid var(--rule); }
-@media (min-width: 760px) { .pub { grid-template-columns: 5rem minmax(0, 1fr); } }
+/* 6rem fits the longest year label ("Forthcoming") inside its column */
+@media (min-width: 760px) { .pub { grid-template-columns: 6rem minmax(0, 1fr); } }
 .pub[hidden] { display: none; }
 .pub-year { font-family: var(--font-mono); font-size: var(--fs-meta); color: var(--ink-3); padding-top: .3rem; }
 .pub-title { font-size: var(--fs-h3); font-weight: 600; line-height: 1.32; letter-spacing: -0.012em; margin-bottom: .45rem; max-width: 46rem; }
@@ -382,9 +458,11 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 /* ---------- Simple list with rules (courses, appointments) ---------- */
 .rows { list-style: none; border-top: 1px solid var(--rule); }
 .rows > li { display: grid; gap: .3rem 2rem; padding: 1.25rem 0; border-bottom: 1px solid var(--rule); }
-@media (min-width: 760px) { .rows > li { grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; } }
+/* fit-content(40%): a short label ("Spring") keeps its width; a long one ("Stanford University,
+   School of Engineering · 2022–present") wraps at 40% instead of squeezing the title to 7 lines */
+@media (min-width: 760px) { .rows > li { grid-template-columns: minmax(0, 1fr) fit-content(40%); align-items: baseline; } }
 .rows h3 { font-size: 1.0625rem; }
-.rows p { grid-column: 1 / -1; margin: 0; color: var(--ink-2); font-size: var(--fs-small); }
+.rows p { grid-column: 1 / -1; margin: 0; color: var(--ink-2); font-size: var(--fs-small); max-width: 40rem; }
 .rows .label { line-height: 1.5; }
 @media (min-width: 760px) { .rows .label { max-width: 22rem; text-align: right; } }
 
@@ -406,18 +484,47 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
   .s-hero-media { height: auto; min-height: 100%; }
   .s-hero-media::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--night) 0%, color-mix(in srgb, var(--night) 0%, transparent) 22%); pointer-events: none; }
 }
+/* Small laptops (900-1099px): the copy column is too narrow for "An evidence-based" at the
+   fluid display size, which left "An" alone on the first line. Scale with the column instead. */
+@media (min-width: 900px) and (max-width: 1099px) { .s-hero .display { font-size: 5.8vw; } }
+/* Small phones (under 360px): same fix, so "An evidence-based" stays on one line and the
+   Enquire button moves up toward the first screen */
+@media (max-width: 359px) { .s-hero .display { font-size: 2.1rem; } .cta h2 { font-size: 1.75rem; } }
+/* Tablets (single column): the full-bleed photo was 768px+ wide and tall, wider than the 720px
+   source (soft) and a full screen of scrolling before the sub-nav. Frame it inside the gutters
+   at no more than its real width, with the site's photo radius. */
+@media (min-width: 600px) and (max-width: 899px) {
+  .s-hero-media { width: min(100% - 2 * var(--gutter), 45rem); height: max(20rem, min(34rem, 60vh)); margin: 0 var(--gutter) clamp(2.5rem, 6vw, 3.5rem); border-radius: var(--radius); overflow: hidden; }
+  .s-hero-copy { padding-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+}
 
 /* ---------- Speaking: sub-nav ---------- */
-.subnav { position: sticky; top: var(--header-h); z-index: 40; background: color-mix(in srgb, var(--paper) 92%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+/* Opaque: a translucent bar over the dark bands pulled the link text under 4.5:1 contrast */
+.subnav { position: sticky; top: var(--header-h); z-index: 40; background: var(--paper); border-bottom: 1px solid var(--rule); }
+/* Phones in landscape: header plus sub-nav took a third of the screen, so the sub-nav scrolls away */
+@media (max-height: 500px) { .subnav { position: static; } html.has-subnav { scroll-padding-top: calc(var(--header-h) + 1.25rem); } }
 .subnav-inner { display: flex; align-items: center; gap: 1.5rem; }
-.subnav ul { flex: 1; display: flex; gap: clamp(1rem, 2vw, 1.75rem); list-style: none; overflow-x: auto; scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, #000 92%, transparent); mask-image: linear-gradient(90deg, #000 92%, transparent); }
+.subnav ul { flex: 1; display: flex; gap: clamp(1rem, 2vw, 1.75rem); list-style: none; overflow-x: auto; scrollbar-width: none; }
 .subnav ul::-webkit-scrollbar { display: none; }
 .subnav ul a { display: block; padding: 1rem 0; font-size: .875rem; font-weight: 500; color: var(--ink-3); text-decoration: none; white-space: nowrap; position: relative; }
 .subnav ul a:hover { color: var(--ink); }
 .subnav ul a.is-active { color: var(--ink); }
 .subnav ul a.is-active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--accent); }
+.subnav ul a:focus-visible { outline-offset: -3px; }   /* the scroller would clip an outside ring */
+/* Edge fades only on the side where there is more to scroll (fade-l / fade-r set by site.js),
+   so a list that fits, or one scrolled to its end, shows every label in full */
+.subnav ul.fade-r { -webkit-mask-image: linear-gradient(90deg, #000 92%, transparent); mask-image: linear-gradient(90deg, #000 92%, transparent); }
+.subnav ul.fade-l { -webkit-mask-image: linear-gradient(90deg, transparent, #000 1.75rem); mask-image: linear-gradient(90deg, transparent, #000 1.75rem); }
+.subnav ul.fade-l.fade-r { -webkit-mask-image: linear-gradient(90deg, transparent, #000 1.75rem, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 1.75rem, #000 92%, transparent); }
 .subnav .btn { flex: none; }
-@media (max-width: 640px) { .subnav .btn { display: none; } .subnav ul { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); } }
+/* Phones: keep a compact Enquire button visible (it is the page's main action); the links scroll beside it */
+@media (max-width: 640px) {
+  .subnav-inner { gap: .75rem; }
+  .subnav .btn--sm { padding-inline: .95em; }
+  .subnav ul.fade-r { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+  .subnav ul.fade-l { -webkit-mask-image: linear-gradient(90deg, transparent, #000 1.5rem); mask-image: linear-gradient(90deg, transparent, #000 1.5rem); }
+  .subnav ul.fade-l.fade-r { -webkit-mask-image: linear-gradient(90deg, transparent, #000 1.5rem, #000 85%, transparent); mask-image: linear-gradient(90deg, transparent, #000 1.5rem, #000 85%, transparent); }
+}
 
 /* ---------- Speaking: proof strip & logos ---------- */
 .proof { display: grid; gap: 1.5rem 3rem; align-items: center; }
@@ -445,6 +552,7 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 .talk p.desc { margin: 0; font-size: var(--fs-small); line-height: 1.62; color: var(--ink-2); }
 .talk-for { margin-top: auto; padding-top: 1.1rem; border-top: 1px solid var(--rule); font-size: .875rem; line-height: 1.5; color: var(--ink-2); }
 .talk-for .label { display: block; margin-bottom: .35rem; }
+@media (max-width: 599px) { .talk-for { font-size: var(--fs-small); } }
 
 /* Flagship card (the named playbook): full width, night surface for emphasis */
 .talk--flagship { grid-column: 1 / -1; background: var(--night); border-color: var(--night); color: var(--on-night); }
@@ -457,6 +565,7 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 .flagship-meta > div { padding-top: 1.1rem; border-top: 1px solid var(--rule-night); }
 .flagship-meta dt { display: block; margin-bottom: .35rem; color: var(--on-night-2); }
 .flagship-meta dd { margin: 0; font-size: .9375rem; line-height: 1.5; color: var(--on-night); }
+@media (max-width: 599px) { .flagship-meta dd { font-size: var(--fs-small); } }
 @media (min-width: 900px) {
   .talk--flagship { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); gap: 1.5rem clamp(2rem, 5vw, 4.5rem); align-items: end; }
 }
@@ -487,8 +596,12 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 @media (min-width: 960px) { .feature { grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); } }
 .feature h3 { font-size: clamp(1.375rem, 1.2rem + .8vw, 1.875rem); font-weight: 600; letter-spacing: -0.025em; line-height: 1.2; margin: .25rem 0 .9rem; }
 .feature p { color: var(--ink-2); font-size: var(--fs-small); }
-.feature .actions { margin-top: 1.25rem; }
-.feature .jumps-label { display: block; margin: 1.1rem 0 .55rem; }
+.feature .actions { margin-top: 1.25rem; row-gap: 1.25rem; }   /* wrapped links keep separate 44px tap areas */
+.feature .jumps-label { display: block; margin: 1.1rem 0 .55rem; font-size: var(--fs-micro); color: var(--ink-3); }
+/* Long "Panel · Host · Date" labels: block-level so they get their own line height (an inline span
+   inherited the 28px body line box) and balanced so the date is not left alone on the last line */
+.feature .label { display: block; line-height: 1.55; text-wrap: balance; }
+.media-card .label, .now-card .label { line-height: 1.55; text-wrap: balance; }
 
 /* Speaker reel: self-hosted MP4 with a poster; loads nothing until played (preload="none") */
 .reel { position: relative; border-radius: var(--radius); overflow: hidden; background: var(--night-2); }
@@ -538,7 +651,8 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 .gallery figure:first-child { grid-column: span 2; grid-row: span 2; }
 .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
 .gallery figure:hover img { transform: scale(1.03); }
-.gallery figcaption { position: absolute; inset: auto 0 0 0; padding: 2.5rem 1rem .85rem; background: linear-gradient(180deg, transparent, rgba(10, 12, 15, .72)); color: #fff; font-size: .8125rem; font-weight: 500; line-height: 1.35; }
+.gallery figcaption { position: absolute; inset: auto 0 0 0; padding: 2.5rem 1rem .85rem; background: linear-gradient(180deg, transparent, rgba(10, 12, 15, .5) 45%, rgba(10, 12, 15, .82)); color: #fff; font-size: .8125rem; font-weight: 500; line-height: 1.35; text-shadow: 0 1px 2px rgba(0, 0, 0, .55); }
+@media (max-width: 599px) { .gallery figcaption { font-size: .875rem; } .copy-btn { font-size: .875rem; } }
 @media (min-width: 860px) {
   .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .gallery figure:first-child { grid-column: span 2; grid-row: span 2; }
@@ -556,11 +670,15 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 .copy-btn { display: inline-flex; align-items: center; gap: .5em; padding: .55em .95em; border-radius: 999px; border: 1px solid var(--rule-strong); background: var(--card); color: var(--ink); cursor: pointer; font: 600 .8125rem/1 var(--font-body); }
 .copy-btn:hover { border-color: var(--ink); }
 .copy-btn.is-done { border-color: var(--accent); color: var(--accent); }
+@media (pointer: coarse) { .copy-btn { min-height: 2.75rem; padding-inline: 1.15em; } }
 
 .headshot { margin: 1.75rem 0 0; max-width: min(17rem, 60%); }
 .headshot img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); background: var(--paper-2); }
 .headshot figcaption { margin-top: .75rem; font-size: var(--fs-meta); color: var(--ink-3); }
 .kit-downloads { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.25rem; }
+.kit-downloads .btn { white-space: normal; line-height: 1.25; text-align: left; }   /* long labels wrap instead of widening the page */
+/* Short laptops: the bio aside (headshot plus downloads) is taller than the space under the sticky bars */
+@media (min-width: 900px) and (max-height: 899px) { #bio .split-aside { position: static; } }
 
 /* ---------- CTA band ---------- */
 .cta { text-align: left; }
@@ -572,6 +690,8 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 .cta-checklist li { display: flex; align-items: center; gap: .6rem; padding-top: .7rem; border-top: 1px solid var(--rule-night); }
 .cta-checklist li::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: var(--accent-on-night); flex: none; }
 .cta-email { display: inline-block; margin: 1.25rem 0 0 1rem; font-size: var(--fs-small); color: var(--on-night-2); }
+/* Narrow phones: the address wraps under the button, so drop the indent that only makes sense beside it */
+@media (max-width: 479px) { .cta-email { display: block; margin: 1rem 0 0; } }
 
 /* ---------- Writing & media ---------- */
 .entries { list-style: none; border-top: 1px solid var(--rule); }
@@ -582,7 +702,7 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 .entry h3 { font-size: clamp(1.1875rem, 1.1rem + .45vw, 1.4375rem); line-height: 1.3; margin: .35rem 0 .5rem; max-width: 44rem; }
 .entry h3 a { text-decoration: none; }
 .entry h3 a:hover { color: var(--accent); }
-.entry p { margin: 0; color: var(--ink-2); font-size: var(--fs-small); max-width: 44rem; }
+.entry p { margin: 0; color: var(--ink-2); font-size: var(--fs-small); max-width: 38rem; }   /* about 80 characters a line */
 .entry .more { margin-top: .75rem; }
 .outlets { list-style: none; display: flex; flex-wrap: wrap; gap: .75rem 2.25rem; font-family: var(--font-display); font-weight: 700; font-size: clamp(1.0625rem, .95rem + .5vw, 1.375rem); letter-spacing: -0.01em; color: var(--ink-3); }
 
@@ -603,5 +723,6 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 .note { font-family: var(--font-mono); font-size: var(--fs-meta); letter-spacing: .02em; color: var(--ink-3); }
 .list-label { display: block; margin: 0 0 .75rem; font-family: var(--font-mono); font-size: var(--fs-micro); font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
 .list-label.gap-top { margin-top: clamp(2.25rem, 4vw, 3rem); }
-.build-date { margin-left: .4em; }
+.build-date { margin-left: .4em; white-space: nowrap; }
 .build-date::before { content: "· "; }
+@media (max-width: 599px) { .build-date { display: block; margin: .25rem 0 0; } .build-date::before { content: none; } }

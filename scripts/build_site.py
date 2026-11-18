@@ -77,6 +77,8 @@ def render_pub(p):
         chips.append('<span class="chip chip--note">Book chapter</span>')
     if slug == "working":
         chips.append('<span class="chip chip--note">Working paper</span>')
+    # Forthcoming papers have no DOI yet: skip the empty chip row (it left a stray gap)
+    chips_html = f'\n            <div class="chips">{"".join(chips)}</div>' if chips else ""
     note = f'\n            <p class="pub-note">{esc(p["note"])}</p>' if p.get("note") else ""
 
     # Optional `status` (e.g. "Forthcoming") replaces the year label for accepted, not-yet-issued papers.
@@ -87,8 +89,7 @@ def render_pub(p):
           <div>
             <h3 class="pub-title">{title_html}</h3>
             <p class="pub-authors">{authors}</p>
-            <p class="pub-venue">{venue}</p>
-            <div class="chips">{''.join(chips)}</div>{note}
+            <p class="pub-venue">{venue}</p>{chips_html}{note}
           </div>
         </li>"""
 

@@ -113,6 +113,9 @@ def main(argv):
                 msg = f"{name}:{line}: missing file {path}"
                 (warnings if any(path.startswith(pre) for pre in repo_assets) else errors).append(msg)
                 continue
+            # A linked PDF under 5 KB is almost certainly a stub ("Placeholder PDF..."), not a paper or syllabus
+            if target.suffix.lower() == ".pdf" and target.stat().st_size < 5000:
+                errors.append(f"{name}:{line}: {path} is only {target.stat().st_size} bytes, likely a placeholder PDF")
             if frag and target.suffix == ".html":
                 tp = pages.get(target.name)
                 if tp and frag not in tp[0].ids:

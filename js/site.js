@@ -2,6 +2,7 @@
 (function () {
   "use strict";
   var doc = document;
+  doc.documentElement.classList.add("js"); /* lets CSS hide controls that only work with JavaScript */
 
   /* Header border once the page scrolls */
   var header = doc.querySelector(".site-header");
@@ -109,6 +110,41 @@
       el.scrollIntoView({ behavior: "smooth", block: "center" });
     });
   });
+
+  /* Phone-only disclosure. <el data-collapse="Button label"> is hidden behind a button under 600px;
+     with data-collapse-after="N" only the children after the first N are hidden. Without JavaScript,
+     and on wider screens, everything shows. */
+  var phone = window.matchMedia ? window.matchMedia("(max-width: 599px)") : null;
+  var collapsibles = [];
+  doc.querySelectorAll("[data-collapse]").forEach(function (el, i) {
+    if (!el.id) el.id = "collapse-" + (i + 1);
+    var after = parseInt(el.getAttribute("data-collapse-after"), 10);
+    var parts = isNaN(after) ? [el] : Array.prototype.slice.call(el.children, after);
+    if (!parts.length) return;
+    var label = el.getAttribute("data-collapse");
+    var btn = doc.createElement("button");
+    btn.type = "button"; btn.className = "more-toggle"; btn.textContent = label;
+    btn.setAttribute("aria-expanded", "false"); btn.setAttribute("aria-controls", el.id);
+    el.parentNode.insertBefore(btn, el.nextSibling);
+    var item = { el: el, parts: parts, btn: btn, open: false };
+    btn.addEventListener("click", function () {
+      item.open = !item.open;
+      btn.setAttribute("aria-expanded", String(item.open));
+      btn.textContent = item.open ? "Show less" : label;
+      parts.forEach(function (p) { p.hidden = !item.open; });
+      if (!item.open) { var r = el.getBoundingClientRect(); if (r.top < 0) el.scrollIntoView({ block: "start" }); }
+    });
+    collapsibles.push(item);
+  });
+  var applyCollapse = function () {
+    var small = phone && phone.matches;
+    collapsibles.forEach(function (it) {
+      it.btn.hidden = !small;
+      it.parts.forEach(function (p) { p.hidden = small && !it.open; });
+    });
+  };
+  applyCollapse();
+  if (phone) { if (phone.addEventListener) phone.addEventListener("change", applyCollapse); else if (phone.addListener) phone.addListener(applyCollapse); }
 
   /* Copy buttons: <button class="copy-btn" data-copy="#id"> */
   doc.querySelectorAll(".copy-btn[data-copy]").forEach(function (btn) {

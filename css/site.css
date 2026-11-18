@@ -344,6 +344,9 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 /* ---------- Page head (interior pages) ---------- */
 .page-head { padding-block: clamp(3rem, 2rem + 4vw, 6rem) clamp(2.25rem, 1.5rem + 2.5vw, 3.75rem); border-bottom: 1px solid var(--rule); }
 .page-head .lead { max-width: 46rem; margin-top: 1.25rem; }
+.page-jumps { margin: 1.25rem 0 0; }
+.more--down::after { content: "\2193"; }
+.more--down:hover::after { transform: translateY(2px); }
 .page-head--media { display: grid; gap: 2rem 4rem; align-items: end; }
 @media (min-width: 860px) { .page-head--media { grid-template-columns: minmax(0, 1fr) 17rem; } }
 .page-head--media img { border-radius: var(--radius); background: var(--paper-2); aspect-ratio: 4 / 5; object-fit: cover; width: 100%; max-width: 17rem; }
@@ -464,6 +467,7 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 .rows h3 { font-size: 1.0625rem; }
 .rows p { grid-column: 1 / -1; margin: 0; color: var(--ink-2); font-size: var(--fs-small); max-width: 40rem; }
 .rows .label { line-height: 1.5; }
+.rows > li > .more { grid-column: 1 / -1; justify-self: start; margin-top: .4rem; }
 @media (min-width: 760px) { .rows .label { max-width: 22rem; text-align: right; } }
 
 .names { list-style: none; columns: 2 12rem; column-gap: 2rem; }
@@ -490,6 +494,12 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 /* Small phones (under 360px): same fix, so "An evidence-based" stays on one line and the
    Enquire button moves up toward the first screen */
 @media (max-width: 359px) { .s-hero .display { font-size: 2.1rem; } .cta h2 { font-size: 1.75rem; } }
+/* Phones: the portrait comes first, as a short face-centred band, so the speaker is in the first screen */
+@media (max-width: 599px) {
+  .s-hero-media { order: -1; height: clamp(13rem, 58vw, 16rem); }
+  .s-hero-media img { object-position: 50% 14%; }
+  .s-hero-copy { padding-top: 1.75rem; }
+}
 /* Tablets (single column): the full-bleed photo was 768px+ wide and tall, wider than the 720px
    source (soft) and a full screen of scrolling before the sub-nav. Frame it inside the gutters
    at no more than its real width, with the site's photo radius. */
@@ -671,6 +681,22 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 .copy-btn:hover { border-color: var(--ink); }
 .copy-btn.is-done { border-color: var(--accent); color: var(--accent); }
 @media (pointer: coarse) { .copy-btn { min-height: 2.75rem; padding-inline: 1.15em; } }
+html:not(.js) .copy-btn { display: none; }   /* they need JavaScript */
+.band-night .copy-btn { background: transparent; color: var(--on-night); border-color: #4A515B; }
+.band-night .copy-btn:hover { border-color: var(--on-night); }
+.band-night .copy-btn.is-done { color: var(--accent-on-night); border-color: var(--accent-on-night); }
+.kv dd .copy-btn { margin-left: .6rem; vertical-align: middle; }
+
+/* Phone-only "Read more" / "Show all" toggles (site.js, [data-collapse]) */
+[data-collapse][hidden], [data-collapse] > [hidden] { display: none !important; }
+.more-toggle { display: inline-flex; align-items: center; gap: .45em; min-height: 2.75rem; padding: 0; border: 0; background: none; cursor: pointer; color: var(--accent); font: 600 var(--fs-small)/1.2 var(--font-body); text-align: left; }
+.more-toggle::after { content: "+"; font-family: var(--font-mono); font-weight: 400; font-size: 1.15em; line-height: 1; }
+.more-toggle[aria-expanded="true"]::after { content: "\2212"; }
+.more-toggle:hover { color: var(--accent-strong); }
+.more-toggle[hidden] { display: none; }
+.talk .more-toggle { align-self: flex-start; margin: -.35rem 0 -.35rem; }
+.catalog-group .more-toggle { margin-top: .5rem; }
+.media-grid + .more-toggle { margin-top: 1rem; }
 
 .headshot { margin: 1.75rem 0 0; max-width: min(17rem, 60%); }
 .headshot img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); background: var(--paper-2); }
@@ -689,9 +715,9 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 .cta-checklist { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem 1.5rem; margin: 1.5rem 0 2rem; font-family: var(--font-mono); font-size: var(--fs-meta); letter-spacing: .06em; text-transform: uppercase; color: var(--on-night-2); }
 .cta-checklist li { display: flex; align-items: center; gap: .6rem; padding-top: .7rem; border-top: 1px solid var(--rule-night); }
 .cta-checklist li::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: var(--accent-on-night); flex: none; }
-.cta-email { display: inline-block; margin: 1.25rem 0 0 1rem; font-size: var(--fs-small); color: var(--on-night-2); }
+.cta-email { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; margin: 1.25rem 0 0 1rem; font-size: var(--fs-small); color: var(--on-night-2); vertical-align: middle; }
 /* Narrow phones: the address wraps under the button, so drop the indent that only makes sense beside it */
-@media (max-width: 479px) { .cta-email { display: block; margin: 1rem 0 0; } }
+@media (max-width: 479px) { .cta-email { display: flex; margin: 1rem 0 0; } }
 
 /* ---------- Writing & media ---------- */
 .entries { list-style: none; border-top: 1px solid var(--rule); }

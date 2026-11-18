@@ -20,7 +20,7 @@ The site moved off Quarto in November 2026. The `.qmd` files, `_quarto.yml`, `th
 | `publications.html`, `teaching.html`, `people.html` | Redirects to `research.html#publications`, `about.html#teaching`, `about.html#students` |
 | `404.html` | Not-found page (root-relative links; no partial markers) |
 | `css/site.css` | The whole design system. Tokens live in `:root`. |
-| `js/site.js` | Small enhancements: mobile menu, publication filters, click-to-load videos, copy buttons, sub-nav scrollspy. Every page works without it. |
+| `js/site.js` | Small enhancements: mobile menu, publication filters, click-to-load videos, copy buttons, sub-nav scrollspy, and phone-only "Read more" toggles (add `data-collapse="Button label"` to an element, plus `data-collapse-after="N"` to keep the first N children visible). Every page works without it. |
 | `fonts/` | Self-hosted Manrope, Inter, IBM Plex Mono (woff2, OFL) |
 | `partials/header.html`, `partials/footer.html` | The single source for the header and footer |
 | `papers.yml` | Single source of truth for publications |

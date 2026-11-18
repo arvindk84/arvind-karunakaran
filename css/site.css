@@ -219,10 +219,17 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 /* ---------- Header & nav ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: color-mix(in srgb, var(--paper) 90%, transparent);
-  -webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color .2s ease;
+}
+/* The frosted background lives on a pseudo-element. A backdrop-filter on the header itself
+   makes it the containing block for the fixed mobile menu, and iOS Safari then clips the
+   menu to the header's 68px box, so the page links never appear on phones. */
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: var(--paper);
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px); backdrop-filter: saturate(1.4) blur(12px);
 }
 .site-header.is-scrolled, .has-subnav .site-header { border-bottom-color: var(--rule); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: var(--header-h); }
@@ -237,9 +244,11 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 
 @media (max-width: 939px) {
   .nav-toggle {
-    display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; margin-right: -.6rem;
+    display: inline-flex; align-items: center; gap: .6rem; height: 2.75rem; padding: 0 .6rem; margin-right: -.6rem;
     border: 0; background: transparent; color: var(--ink); cursor: pointer; border-radius: 8px;
+    font: 600 .875rem/1 var(--font-body);
   }
+  .nav-toggle-text { letter-spacing: .01em; }
   .nav-toggle .bars, .nav-toggle .bars::before, .nav-toggle .bars::after { display: block; width: 1.25rem; height: 1.5px; background: currentColor; border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
   .nav-toggle .bars { position: relative; }
   .nav-toggle .bars::before, .nav-toggle .bars::after { content: ""; position: absolute; left: 0; }

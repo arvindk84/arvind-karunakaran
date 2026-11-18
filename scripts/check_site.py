@@ -47,7 +47,7 @@ class Page(HTMLParser):
             self.h1 += 1
         if tag in ("a", "link") and a.get("href"):
             self.links.append((tag, a["href"], self.getpos()[0]))
-        if tag in ("img", "script", "source", "iframe") and a.get("src"):
+        if tag in ("img", "script", "source", "iframe", "track") and a.get("src"):
             self.links.append((tag, a["src"], self.getpos()[0]))
         if tag == "img":
             self.imgs.append((a, self.getpos()[0]))

@@ -34,7 +34,7 @@ Design: modern minimal sans. Manrope for headings, Inter for body, IBM Plex Mono
 ## Content conventions
 
 - File naming: `files/papers/YYYY-<venue>-<slug>.pdf`, `files/syllabi/msandeNNN-termYEAR.pdf`, `files/cv/cv.pdf`, `files/misc/` for everything else.
-- `papers.yml` fields: `title` (no trailing period), `author` (`Karunakaran, A.` is bolded automatically), `year`, `venue`, optional `volume`/`issue`/`pages`, `doi` (bare), optional `pdf` (filename in `files/papers/`), optional `equal: true`, `type` (`Journal Article` | `Book Chapter` | `Working Paper`), `categories`, `date` (`YYYY-MM-DD`, controls order within a year), and optional `note` (a one-line takeaway shown under the entry).
+- `papers.yml` fields: `title` (no trailing period), `author` (`Karunakaran, A.` is bolded automatically), `year`, `venue`, optional `volume`/`issue`/`pages`, `doi` (bare), optional `pdf` (filename in `files/papers/`), optional `url` (link for pieces without a DOI), optional `open_access` (URL of a free copy elsewhere), optional `equal: true`, optional `status` (`Forthcoming`, `Conditionally accepted`), `type` (`Journal Article` | `Book Chapter` | `Book Review` | `Practitioner Article` | `Working Paper`), `categories`, `date` (`YYYY-MM-DD`, controls order within a year), optional `note` (a one-line takeaway shown under the entry), and optional `awards` (a list, worded as in the CV; the first three show under the paper, the rest fold into "Show N more").
 - Copy: academic pages in first person, the speaking page in third person. Avoid em dashes. Never invent clients, quotes, statistics, or links.
 - Images: always set `width`/`height` to the file's real pixel size.
 

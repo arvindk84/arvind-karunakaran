@@ -15,10 +15,13 @@
 #   volume / issue / pages   (optional) Bibliographic detail.
 #   doi      (optional)  Bare DOI, e.g. 10.1177/00018392241256303 (no URL).
 #   pdf      (optional)  Filename in files/papers/ (shows a PDF button).
+#   url      (optional)  Link for pieces without a DOI (e.g. HBR online); shows "Read online".
+#   open_access (optional) URL of a free copy hosted elsewhere; shows "Open access".
+#   awards   (optional)  List of awards for this paper, worded as in the CV; shown under the entry.
 #   equal    (optional)  true -> shows an "Equal contribution" chip.
-#   status   (optional)  e.g. "Forthcoming"; shown instead of the year and sorted first.
+#   status   (optional)  e.g. "Forthcoming", "Conditionally accepted"; shown instead of the year and sorted first.
 #   note     (optional)  One line shown under the entry.
-#   type     (required)  "Journal Article" | "Book Chapter" | "Working Paper".
+#   type     (required)  "Journal Article" | "Book Chapter" | "Book Review" | "Practitioner Article" | "Working Paper".
 #   categories (required) List (usually [<type>]).
 #   date     (required)  YYYY-MM-DD, orders entries within a year (newest first).
 # =============================================================================
@@ -28,6 +31,16 @@
   year: 2026
   status: "Forthcoming"
   venue: "Administrative Science Quarterly"
+  type: "Journal Article"
+  categories: ["Journal Article"]
+  date: "2026-12-04"
+
+- title: "“This is not our Role!” Strategic Role Repositioning, AI Stack Bundling, and the Processes of Technology Sourcing in Large Organizations"
+  author: "Vendraminelli, L., Narayanan, D., Karunakaran, A."
+  year: 2026
+  status: "Conditionally accepted"
+  venue: "Strategic Management Journal"
+  equal: true
   type: "Journal Article"
   categories: ["Journal Article"]
   date: "2026-12-03"
@@ -50,6 +63,26 @@
   categories: ["Journal Article"]
   date: "2026-12-01"
 
+- title: "AI Experiments Need Domain Experts. Here’s How to Support Them"
+  author: "Karunakaran, A., Kellogg, K.C., Wiesenfeld, B.M."
+  year: 2026
+  venue: "Harvard Business Review"
+  url: https://hbr.org/2026/08/ai-experiments-need-domain-experts-heres-how-to-support-them
+  type: "Practitioner Article"
+  categories: ["Practitioner Article"]
+  date: "2026-08-10"
+
+- title: "Tony Cheng, The Policing Machine: Enforcement, Endorsements, and the Illusion of Public Input"
+  author: "Karunakaran, A."
+  year: 2026
+  venue: "Administrative Science Quarterly"
+  volume: 71
+  issue: 4
+  doi: 10.1177/00018392261476012
+  type: "Book Review"
+  categories: ["Book Review"]
+  date: "2026-08-05"
+
 - title: "Artificial Intelligence at Work: An Integrative Review on the Impact of AI on Workplace Inequality"
   author: "Karunakaran, A., Lebovitz, S., Narayanan, D., Rahman, H.A."
   year: 2025
@@ -58,6 +91,7 @@
   issue: 2
   pages: "693–735"
   doi: 10.5465/annals.2023.0230
+  open_access: https://purl.stanford.edu/rf958bq8885
   equal: true
   type: "Journal Article"
   categories: ["Journal Article"]
@@ -94,6 +128,20 @@
   issue: 3
   pages: "747–790"
   doi: 10.1177/00018392241256303
+  awards:
+    - "Best Published Paper Award, Communications, Information Technologies, and Media Sociology Section, American Sociological Association, 2025"
+    - "William H. Newman Award for Best Paper Based on a Dissertation (all-academy award), Academy of Management, 2019"
+    - "Gerardine DeSanctis Dissertation Award, CTO Division, Academy of Management, 2019"
+    - "Best Conference Paper, CTO Division, Academy of Management Annual Meeting, 2019"
+    - "Honorable Mention (runner-up), Shils-Coleman Award, Theory Section, American Sociological Association, 2018"
+    - "Finalist, Responsible Research in Management Award, RRBM and Academy of Management Fellows Group, 2025"
+    - "Finalist, Best Published Paper Award, Reputation Symposium, Oxford University, 2025"
+    - "Best Paper Session, Labor and Employment Relations Association (LERA), 2021"
+    - "Finalist, That’s Interesting Paper Award, EGOS, 2019"
+    - "Best Doctoral Dissertation, AIS/ACM, International Conference on Information Systems, 2018"
+    - "Nominee, Research Methods Paper Prize, Strategic Management Society Annual Conference, 2020"
+    - "Finalist, Best Paper Award, Knowledge and Innovation Interest Group, Strategic Management Society, 2017"
+    - "Best Paper Award, East Coast Doctoral Conference (Columbia University and NYU), 2017"
   type: "Journal Article"
   categories: ["Journal Article"]
   date: "2024-09-01"
@@ -132,6 +180,9 @@
   issue: 3
   pages: "1027–1050"
   doi: 10.1287/orsc.2022.1607
+  awards:
+    - "Runner-up, Best Paper in Innovation and Entrepreneurship, Industry Studies Association, 2022"
+    - "Runner-up, Best Working Paper Award, Technology, Innovation Management, and Entrepreneurship Section, INFORMS, 2019"
   equal: true
   type: "Journal Article"
   categories: ["Journal Article"]
@@ -145,6 +196,9 @@
   issue: 6
   pages: "1803–1830"
   doi: 10.5465/amj.2022.0638
+  awards:
+    - "Research with Societal Impact Award, Responsible Business Education, Financial Times, 2024"
+    - "LERA/AILR Best Papers, Labor and Employment Relations Association Annual Meeting, 2023"
   equal: true
   type: "Journal Article"
   categories: ["Journal Article"]
@@ -158,6 +212,14 @@
   issue: 2
   pages: "423–468"
   doi: 10.1177/00018392211059505
+  awards:
+    - "W. Richard Scott Article Award for Distinguished Scholarship, Organizations, Occupations, and Work Section, American Sociological Association, 2024"
+    - "Responsible Research in Management Award, RRBM and Academy of Management Fellows Group, 2024"
+    - "Runner-up, ASQ Best Published Paper Based on a Dissertation Award, Administrative Science Quarterly, 2023"
+    - "Louis Pondy Best Dissertation Paper Award, OMT Division, Academy of Management, 2019"
+    - "Best Paper Proceedings, OMT Division, Academy of Management Annual Meeting, 2019"
+    - "Nominee, William H. Newman Award for Best Paper Based on a Dissertation, Academy of Management, 2019"
+    - "Best Paper Session, Advances in Industrial and Labor Relations, LERA, 2019"
   pdf: 2022-asq-status-authority-asymmetry.pdf
   type: "Journal Article"
   categories: ["Journal Article"]
@@ -171,6 +233,10 @@
   issue: 3
   pages: "1188–1211"
   doi: 10.1287/orsc.2021.1469
+  awards:
+    - "Nominee, Best Conference Paper, Strategic Management Society Annual Conference, 2021"
+    - "Best Paper Award, Industry Studies Association, 2019"
+    - "Best Graduate Student Paper Award, Communications, Information Technologies, and Media Sociology Section, American Sociological Association, 2017"
   type: "Journal Article"
   categories: ["Journal Article"]
   date: "2022-05-01"
@@ -183,6 +249,8 @@
   issue: 1
   pages: "170–193"
   doi: 10.1287/orsc.2021.1546
+  awards:
+    - "Best Published Paper Award, Communications, Information Technologies, and Media Sociology Section, American Sociological Association, 2022"
   type: "Journal Article"
   categories: ["Journal Article"]
   date: "2022-01-01"

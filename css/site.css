@@ -426,8 +426,8 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 
 .pubs { list-style: none; border-top: 1px solid var(--rule); }
 .pub { display: grid; gap: .3rem 2rem; padding: 1.6rem 0; border-bottom: 1px solid var(--rule); }
-/* 6rem fits the longest year label ("Forthcoming") inside its column */
-@media (min-width: 760px) { .pub { grid-template-columns: 6rem minmax(0, 1fr); } }
+/* 7rem fits the longest year labels ("Forthcoming", "Conditionally / accepted") inside their column */
+@media (min-width: 760px) { .pub { grid-template-columns: 7rem minmax(0, 1fr); } }
 .pub[hidden] { display: none; }
 .pub-year { font-family: var(--font-mono); font-size: var(--fs-meta); color: var(--ink-3); padding-top: .3rem; }
 .pub-title { font-size: var(--fs-h3); font-weight: 600; line-height: 1.32; letter-spacing: -0.012em; margin-bottom: .45rem; max-width: 46rem; }
@@ -438,6 +438,22 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 .pub-venue em { color: var(--ink); }
 .pub .chips { margin-top: .85rem; }
 .pub-note { margin-top: .75rem; font-size: var(--fs-small); color: var(--ink-2); max-width: 44rem; }
+/* Awards under a paper: a short list, the rest folded into a native <details> */
+.pub-awards { margin-top: 1rem; max-width: 46rem; }
+.pub-awards-h { margin: 0 0 .4rem; font-family: var(--font-mono); font-size: var(--fs-micro); font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.pub-awards ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .3rem; }
+.pub-awards li { position: relative; padding-left: 1.05rem; font-size: var(--fs-small); line-height: 1.5; color: var(--ink-2); }
+.pub-awards li::before { content: ""; position: absolute; left: .1rem; top: .62em; width: .4rem; height: .4rem; border-radius: 50%; background: var(--accent); }
+.pub-awards-more { margin-top: .3rem; }
+.pub-awards-more > ul { margin-top: .3rem; }
+.pub-awards-more summary { display: inline-flex; align-items: center; gap: .45em; min-height: 2rem; cursor: pointer; list-style: none; color: var(--accent); font-weight: 600; font-size: var(--fs-small); }
+.pub-awards-more summary::-webkit-details-marker { display: none; }
+.pub-awards-more summary::after { content: "+"; font-family: var(--font-mono); font-weight: 400; font-size: 1.15em; line-height: 1; }
+.pub-awards-more[open] summary::after { content: "\2212"; }
+.pub-awards-more .if-open, .pub-awards-more[open] .if-closed { display: none; }
+.pub-awards-more[open] .if-open { display: inline; }
+.pub-awards-more summary:hover { color: var(--accent-strong); }
+@media (pointer: coarse) { .pub-awards-more summary { min-height: 2.75rem; } }
 
 /* ---------- Dated lists (news, appearances, honors) ---------- */
 .dated { list-style: none; border-top: 1px solid var(--rule); }

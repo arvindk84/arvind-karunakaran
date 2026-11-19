@@ -137,7 +137,7 @@ def main():
     p.add_argument("--pages")
     p.add_argument("--doi")
     p.add_argument("--type", default="Journal Article",
-                   choices=["Journal Article", "Book Chapter", "Working Paper"])
+                   choices=["Journal Article", "Book Chapter", "Book Review", "Practitioner Article", "Working Paper"])
     p.add_argument("--equal", action="store_true",
                    help="Mark as an equal-contribution paper.")
     p.add_argument("--date", help="YYYY-MM-DD for sorting (default: <year>-01-01).")

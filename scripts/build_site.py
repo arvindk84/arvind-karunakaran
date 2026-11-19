@@ -33,8 +33,11 @@ import sync_partials  # noqa: E402
 PUBLIC_DIRS = ["css", "js", "fonts", "images", "files"]
 PUBLIC_FILES = ["CNAME"]
 SITE_URL = "https://www.arvindkarunakaran.com/"
-TYPE_SLUG = {"Journal Article": "article", "Book Chapter": "chapter", "Working Paper": "working"}
-FILTER_LABEL = {"article": "Journal articles", "chapter": "Book chapters", "working": "Working papers"}
+TYPE_SLUG = {"Journal Article": "article", "Book Chapter": "chapter", "Book Review": "review",
+             "Practitioner Article": "practitioner", "Working Paper": "working"}
+FILTER_LABEL = {"article": "Journal articles", "chapter": "Book chapters", "review": "Book reviews",
+                "practitioner": "Practitioner articles", "working": "Working papers"}
+AWARDS_SHOWN = 3   # awards listed under a paper before the rest fold into "Show N more"
 ME = "Karunakaran, A."
 
 
@@ -53,7 +56,9 @@ def render_pub(p):
     pdf = str(p.get("pdf") or "").strip()
     if pdf and not (ROOT / "files" / "papers" / pdf).exists():
         raise SystemExit(f"papers.yml: pdf not found in files/papers/: {pdf}")
-    href = f"https://doi.org/{doi}" if doi else (f"files/papers/{pdf}" if pdf else "")
+    url = str(p.get("url") or "").strip()             # for pieces without a DOI (e.g. HBR online)
+    oa = str(p.get("open_access") or "").strip()      # a free copy hosted elsewhere (e.g. Stanford Digital Repository)
+    href = f"https://doi.org/{doi}" if doi else (f"files/papers/{pdf}" if pdf else url)
 
     title = esc(p["title"])
     title_html = f'<a href="{esc(href)}">{title}</a>' if href else title
@@ -71,15 +76,34 @@ def render_pub(p):
         chips.append(f'<a class="chip" href="https://doi.org/{esc(doi)}">DOI</a>')
     if pdf:
         chips.append(f'<a class="chip" href="files/papers/{esc(pdf)}">PDF</a>')
+    if oa:
+        chips.append(f'<a class="chip" href="{esc(oa)}">Open access</a>')
+    if url and not doi:
+        chips.append(f'<a class="chip" href="{esc(url)}">Read online</a>')
     if p.get("equal"):
         chips.append('<span class="chip chip--note">Equal contribution</span>')
     if slug == "chapter":
         chips.append('<span class="chip chip--note">Book chapter</span>')
     if slug == "working":
         chips.append('<span class="chip chip--note">Working paper</span>')
+    if slug == "review":
+        chips.append('<span class="chip chip--note">Book review</span>')
     # Forthcoming papers have no DOI yet: skip the empty chip row (it left a stray gap)
     chips_html = f'\n            <div class="chips">{"".join(chips)}</div>' if chips else ""
     note = f'\n            <p class="pub-note">{esc(p["note"])}</p>' if p.get("note") else ""
+
+    # Optional `awards`: a list of strings (as in the CV), shown under the entry. The first few are
+    # always visible; the rest fold into a native <details> (works without JavaScript).
+    awards = [str(a).strip() for a in (p.get("awards") or []) if str(a).strip()]
+    awards_html = ""
+    if awards:
+        li = lambda items: "".join(f"<li>{esc(a)}</li>" for a in items)
+        shown, rest = awards[:AWARDS_SHOWN], awards[AWARDS_SHOWN:]
+        more = (f'<details class="pub-awards-more"><summary><span class="if-closed">Show {len(rest)} more</span><span class="if-open">Show less</span></summary>'
+                f'<ul>{li(rest)}</ul></details>') if rest else ""
+        label = "Award" if len(awards) == 1 else f"Awards ({len(awards)})"
+        awards_html = (f'\n            <div class="pub-awards"><p class="pub-awards-h">{label}</p>'
+                       f'<ul>{li(shown)}</ul>{more}</div>')
 
     # Optional `status` (e.g. "Forthcoming") replaces the year label for accepted, not-yet-issued papers.
     year_label = esc(p["status"]) if p.get("status") else esc(p["year"])
@@ -89,7 +113,7 @@ def render_pub(p):
           <div>
             <h3 class="pub-title">{title_html}</h3>
             <p class="pub-authors">{authors}</p>
-            <p class="pub-venue">{venue}</p>{chips_html}{note}
+            <p class="pub-venue">{venue}</p>{chips_html}{note}{awards_html}
           </div>
         </li>"""
 
@@ -102,7 +126,7 @@ def render_publications(papers):
         s = TYPE_SLUG.get(p.get("type"))
         if s and s not in present:
             present.append(s)
-    order = [s for s in ("article", "chapter", "working") if s in present]
+    order = [s for s in ("article", "chapter", "review", "practitioner", "working") if s in present]
     buttons = ['        <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>']
     buttons += [f'        <button class="filter" type="button" data-filter="{s}" aria-pressed="false">{FILTER_LABEL[s]}</button>' for s in order]
     return (

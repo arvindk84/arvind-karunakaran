@@ -29,7 +29,7 @@ The site moved off Quarto in November 2026. The `.qmd` files, `_quarto.yml`, `th
 | `scripts/add_paper.py` | Adds or updates a `papers.yml` entry and copies its PDF |
 | `.github/workflows/publish.yml` | Build → check → publish `_site/` to `gh-pages` |
 
-Design: modern minimal sans. Manrope for headings, Inter for body, IBM Plex Mono for small labels. Paper `#FBFAF7`, ink `#15171B`, and one accent, Stanford cardinal `#8C1515`. Academic pages stay quiet. The Speaking & Advising page uses bands, cards, and media. Details and component HTML are in the `academic-speaker-site` skill.
+Design: clean, editorial sans (direction: mattbeane.com). One family, Inter, for everything; labels, dates and chips in sentence case (no monospace, no letter-spaced capitals, no eyebrow kickers above headings, no decorative dots or numbers). Only the wordmark and the desktop nav use small letter-spaced capitals. Paper `#FFFFFF`, stone bands `#F5F5F3`, ink `#15171B`, and one accent, Stanford cardinal `#8C1515`. Academic pages stay quiet. The Speaking & Advising page uses bands, cards, and media. Details and component HTML are in the `academic-speaker-site` skill.
 
 ## Content conventions
 

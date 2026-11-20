@@ -309,7 +309,7 @@ def finalize(edl, work, only=None):
              "-af", f"{ln},aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo", "-c:a", "aac", "-b:a", "160k",
              "-shortest", "-movflags", "+faststart",
              "-metadata", f"title={cut.get('title', 'Arvind Karunakaran · Speaker reel')}", str(out)])
-        if cut.get("poster"):
+        if cut.get("poster") and not cut.get("poster_fixed"):   # poster_fixed: a hand-made poster (e.g. a photo) that finalize must not overwrite
             ps = cut.get("poster_src")
             if ps:   # a clean frame from the raw footage: no cards, tags, or lower thirds
                 run(["ffmpeg", "-hide_banner", "-y", "-ss", f"{float(ps['at']):.3f}", "-i", str(SRC_DIR / ps["src"]),

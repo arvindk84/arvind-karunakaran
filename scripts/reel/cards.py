@@ -222,6 +222,7 @@ VENUES = {
     "nyfed": "Federal Reserve Bank of New York · 2026",
     "notredame": "Notre Dame–IBM Technology Ethics Lab",
     "hai": "Stanford HAI · 2026",
+    "gsb": "Stanford GSB · 2026",
     "podcast": "Stanford Engineering · The Future of Everything",
     "online": "Stanford Online",
 }

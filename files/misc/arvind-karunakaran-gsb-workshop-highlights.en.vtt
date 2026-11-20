@@ -1,0 +1,388 @@
+WEBVTT
+
+NOTE Arvind Karunakaran, workshop at Stanford GSB (Nov 9, 2026), highlights. Captions from YouTube's automatic transcript, cleaned; review before publishing.
+
+1
+00:00:00.000 --> 00:00:01.580
+So start with the workflow, right?
+
+2
+00:00:01.580 --> 00:00:03.500
+Start with what is the
+workflow, or workflows,
+
+3
+00:00:03.500 --> 00:00:07.580
+two or three, that you're
+really trying to re-engineer,
+
+4
+00:00:07.580 --> 00:00:08.940
+because that is where the value is.
+
+5
+00:00:08.940 --> 00:00:12.220
+The workflow touches on
+different roles and functions.
+
+6
+00:00:12.220 --> 00:00:15.980
+So if you identify, this is a workflow
+that I'm really going to make better,
+
+7
+00:00:15.980 --> 00:00:19.660
+and your product is in service
+of making that workflow better,
+
+8
+00:00:19.660 --> 00:00:22.460
+then you'll have a lot more
+clarity on what needs to change:
+
+9
+00:00:22.460 --> 00:00:25.740
+what incentives, what
+job roles need to change.
+
+10
+00:00:25.740 --> 00:00:29.180
+So I would think almost like
+a workflow mindset, right?
+
+11
+00:00:29.180 --> 00:00:31.110
+And having your own playbooks around that.
+
+12
+00:00:31.444 --> 00:00:37.684
+So if the transformation unit is
+only constituted by executives
+
+13
+00:00:37.684 --> 00:00:42.244
+and technologists, like AI experts,
+then it is not going well,
+
+14
+00:00:42.244 --> 00:00:44.644
+because they don't really
+even have visibility into
+
+15
+00:00:44.644 --> 00:00:48.484
+what workflows they try to optimize,
+what job roles are implicated.
+
+16
+00:00:48.484 --> 00:00:52.004
+But if the transformation team
+is very multidisciplinary,
+
+17
+00:00:52.004 --> 00:00:54.404
+you have domain experts, your end users,
+
+18
+00:00:54.404 --> 00:00:59.284
+at least one or two representatives from
+each role implicated in that workflow.
+
+19
+00:00:59.284 --> 00:01:01.444
+And more importantly,
+what we have found is
+
+20
+00:01:01.444 --> 00:01:06.004
+if the transformation team, or the center
+of excellence, has work design experts,
+
+21
+00:01:06.004 --> 00:01:09.124
+think of your Six Sigma
+black belt type of people,
+
+22
+00:01:09.124 --> 00:01:11.044
+not process-obsessed people, right?
+
+23
+00:01:11.044 --> 00:01:13.524
+Because that's also
+another warning, right?
+
+24
+00:01:13.524 --> 00:01:15.604
+If they're too process-obsessed,
+that's not great.
+
+25
+00:01:15.604 --> 00:01:18.564
+But they should have an
+inclination towards understanding
+
+26
+00:01:18.564 --> 00:01:21.844
+work and workflow as a system,
+
+27
+00:01:21.844 --> 00:01:26.004
+and how do you go about redesigning the
+system, redesigning the work itself?
+
+28
+00:01:26.004 --> 00:01:27.204
+That makes a huge difference.
+
+29
+00:01:27.204 --> 00:01:30.164
+They think of it from that
+workflow redesign perspective
+
+30
+00:01:30.164 --> 00:01:34.084
+rather than just a technology
+adoption, or this build versus buy,
+
+31
+00:01:34.084 --> 00:01:37.524
+a classic CIO, IT department
+perspective, right?
+
+32
+00:01:37.524 --> 00:01:41.114
+Like, a work redesign
+perspective. So that works.
+
+33
+00:01:41.164 --> 00:01:45.644
+So the idea of a bundle is: if you
+think of a job as a bundle of tasks,
+
+34
+00:01:45.644 --> 00:01:48.844
+there is a glue that holds
+the different tasks together.
+
+35
+00:01:48.844 --> 00:01:51.644
+Say if you're a coder,
+there are certain tasks you do.
+
+36
+00:01:51.644 --> 00:01:54.524
+If you're an M&A lawyer,
+there are certain tasks you do.
+
+37
+00:01:54.524 --> 00:01:57.164
+If you're a radiologist,
+you do certain tasks.
+
+38
+00:01:57.164 --> 00:01:59.804
+Some of those jobs,
+the glue is very strong.
+
+39
+00:01:59.804 --> 00:02:03.964
+In other words, you have to be good
+at task A to be good at task B,
+
+40
+00:02:03.964 --> 00:02:08.124
+to be good at task C, even if AI
+is getting better at task A, right?
+
+41
+00:02:08.124 --> 00:02:13.244
+So that's an idea of a strong bundle.
+In other words, the glue is very strong.
+
+42
+00:02:13.244 --> 00:02:15.884
+Whereas there are certain other
+jobs where the glue is very weak.
+
+43
+00:02:15.884 --> 00:02:18.764
+There are only three or four tasks
+that particular individual does.
+
+44
+00:02:18.764 --> 00:02:21.724
+The tasks are loosely related.
+You don't need to be good at task A
+
+45
+00:02:21.724 --> 00:02:23.164
+to be good at task B, right?
+
+46
+00:02:23.164 --> 00:02:27.084
+So what would be the examples?
+Like a radiologist.
+
+47
+00:02:27.084 --> 00:02:30.844
+Remember Geoff Hinton's
+famous prediction in 2016
+
+48
+00:02:30.844 --> 00:02:34.444
+that you don't need to train radiologists
+anymore because AI is getting better.
+
+49
+00:02:34.444 --> 00:02:37.084
+Not only did it turn out not to be true,
+
+50
+00:02:37.084 --> 00:02:40.364
+or at least one part of
+his prediction came true.
+
+51
+00:02:40.364 --> 00:02:44.124
+The AI capabilities improved
+in interpreting these scans,
+
+52
+00:02:44.124 --> 00:02:47.324
+but the other part of the message,
+that you don't need to train radiologists,
+
+53
+00:02:47.324 --> 00:02:51.664
+or there's going to be less demand
+for them, did not come out to be true.
+
+54
+00:02:51.701 --> 00:02:56.151
+The most important reason is the job
+of a radiologist is a strong one.
+
+55
+00:02:56.151 --> 00:02:58.951
+In other words,
+you had to do at least some
+
+56
+00:02:58.951 --> 00:03:03.191
+of the interpreting of the scans
+yourself to do your other tasks:
+
+57
+00:03:03.191 --> 00:03:06.711
+talk to the attendings, train the
+residents, talk to the patients.
+
+58
+00:03:06.711 --> 00:03:10.951
+So if you try to unbundle a
+job that has a strong glue,
+
+59
+00:03:10.951 --> 00:03:14.151
+we have found time and again through
+empirical research that it's not going well.
+
+60
+00:03:14.151 --> 00:03:16.481
+The performance of that
+person suffers, right?
+
+61
+00:03:16.501 --> 00:03:19.691
+Think of a job as a
+medical transcriptionist
+
+62
+00:03:19.691 --> 00:03:22.171
+or a tier-one customer support agent.
+
+63
+00:03:22.171 --> 00:03:24.491
+That's a job where the
+glue is weak, right?
+
+64
+00:03:24.491 --> 00:03:27.131
+They do some tasks.
+They're loosely related.
+
+65
+00:03:27.131 --> 00:03:31.371
+Those types of tasks you can really
+redesign, right, between human and AI.
+
+66
+00:03:31.371 --> 00:03:34.251
+You can completely rethink,
+reimagine those jobs,
+
+67
+00:03:34.251 --> 00:03:36.401
+sometimes consolidate two roles into one.
+
+68
+00:03:36.525 --> 00:03:40.925
+You have to think about how do you
+do the chaining between human and AI.
+
+69
+00:03:40.925 --> 00:03:44.765
+Think of it as a speed breaker
+on a street, right? On a highway,
+
+70
+00:03:44.765 --> 00:03:47.645
+if you have a speed breaker every
+10 meters, it's not helpful.
+
+71
+00:03:47.645 --> 00:03:49.885
+You're really in a bumpy ride.
+
+72
+00:03:49.885 --> 00:03:54.365
+But if you have a speed breaker every
+300 miles, that's also not useful, right?
+
+73
+00:03:54.365 --> 00:03:58.045
+Here, the speed breaker is when should
+the human intervene and verify, right?
+
+74
+00:03:58.045 --> 00:03:59.485
+That's the speed breaker.
+
+75
+00:03:59.485 --> 00:04:03.005
+So you had to architect that,
+what we call a chain, right?
+
+76
+00:04:03.005 --> 00:04:07.325
+Or think of it as a seam,
+say in your clothes or your pants.
+
+77
+00:04:07.325 --> 00:04:09.005
+How are you designing that seam?
+
+78
+00:04:09.005 --> 00:04:13.325
+In other words, when should the human
+intervene, verify, give feedback,
+
+79
+00:04:13.325 --> 00:04:15.005
+and architect that loop?
+
+80
+00:04:15.005 --> 00:04:18.295
+That matters too when you're
+trying to redesign job roles.

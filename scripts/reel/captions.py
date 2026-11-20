@@ -1,19 +1,20 @@
 # Builds files/misc/arvind-karunakaran-speaker-reel.en.vtt from a reviewed transcript. Usage: python scripts/reel/captions.py files/misc/arvind-karunakaran-speaker-reel.en.vtt
 # Transcript: Whisper large-v3-turbo (run in the browser with transformers.js) run on each speech clip of the published reel (clip times from
 # scripts/reel/edl.json), cross-checked against a whisper-small.en pass, then corrected and approved by Arvind (Nov 18, 2026).
+# The two Stanford GSB clips (Nov 20, 2026) come from YouTube's automatic transcript of the workshop, cleaned.
 # " | " marks a cue break. Each clip's cues share the clip's speech span in proportion to their length.
 import sys
 CLIPS = [  # (reel start of clip, speech start, speech end within clip, text)
  (25.0,   0.0, 12.32, "What I'm going to talk about is like what happens | after it gets diffused and adopted inside companies, | like how do roles change, how does expertise change, | what happens to the organizational structure aspect."),
- (37.333, 0.0, 10.0,  "That turned out to be really, really critical | than letting the employees alone figure it out. | So here are a couple of key insights that we have found, | which might be helpful for folks in the room."),
- (47.433, 0.0, 12.78, "…that was used, this particular firm called LegalCo, | it's a pseudonym, it's in the Bay Area. | They adopted this tool like way back in 2022, | even before ChatGPT 3.5 was released to the public. | They were an early adopter."),
- (60.233, 0.0, 12.11, "Essentially, it allows people to create these long contracts, | 100-page contracts, faster by combining clauses. | And what we found was when we were studying the firm, | analyzing the logs, like doing a lot of other…"),
- (72.367, 0.0, 10.31, "But I'm worried, like, in the future, | how would management deploy this tool in a manner | that my own role would become weaker, right? | It would be consolidated into a shared service of sorts."),
- (82.7,   0.0, 10.4,  "But even more importantly, what more you could do? | What more complex, higher-order tasks potentially you could do, | given the opening created by AI, | given the excess capacity created?"),
- (93.3,   0.0, 10.08, "…not for any strategic reasons. | This person thought perhaps this is the best way | to position this technology when introducing it. | And we call it, as researchers, we call it like job enrichment."),
- (103.4,  0.0, 11.84, "Obviously you're going to see issues on AI slop, right? | If you're using the old throughput metrics, in the paralegal case, | if the divisions are still using metrics such as caseload."),
- (115.367,0.0, 9.71,  "That did not change, right? | These divisions just increased their workload, | but did not like really match how they're getting evaluated | accordingly at the end of the year."),
- (125.1,  0.0, 11.92, "The composition of the Center of Excellence: | in our own studies we have seen, if it is very homogenous, | just AI experts and some business unit people, | it's not really effective, even economically."),
+ (37.333, 0.08, 18.6, "So the idea of a bundle is: if you think of a job as a bundle of tasks, | there is a glue that holds the different tasks together. | Say if you're a coder, there are certain tasks you do. | If you're an M&A lawyer, there are certain tasks you do. | If you're a radiologist, you do certain tasks. | Some of those jobs, the glue is very strong."),
+ (56.033, 0.03, 9.7,  "So if you try to unbundle a job that has a strong glue, | we have found time and again through empirical research that it's not going well. | The performance of that person suffers, right?"),
+ (65.767, 0.0, 12.78, "…that was used, this particular firm called LegalCo, | it's a pseudonym, it's in the Bay Area. | They adopted this tool like way back in 2022, | even before ChatGPT 3.5 was released to the public. | They were an early adopter."),
+ (78.567, 0.0, 12.11, "Essentially, it allows people to create these long contracts, | 100-page contracts, faster by combining clauses. | And what we found was when we were studying the firm, | analyzing the logs, like doing a lot of other…"),
+ (90.7, 0.0, 10.31, "But I'm worried, like, in the future, | how would management deploy this tool in a manner | that my own role would become weaker, right? | It would be consolidated into a shared service of sorts."),
+ (101.033,   0.0, 10.4,  "But even more importantly, what more you could do? | What more complex, higher-order tasks potentially you could do, | given the opening created by AI, | given the excess capacity created?"),
+ (111.633,   0.0, 10.08, "…not for any strategic reasons. | This person thought perhaps this is the best way | to position this technology when introducing it. | And we call it, as researchers, we call it like job enrichment."),
+ (121.733,  0.0, 11.84, "Obviously you're going to see issues on AI slop, right? | If you're using the old throughput metrics, in the paralegal case, | if the divisions are still using metrics such as caseload."),
+ (133.7,0.0, 9.71,  "That did not change, right? | These divisions just increased their workload, | but did not like really match how they're getting evaluated | accordingly at the end of the year."),
 ]
 def two_lines(t):
     if len(t) <= 42: return t

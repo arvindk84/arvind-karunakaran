@@ -1,5 +1,5 @@
 {
-  "note": "Speaker reel edit list. Only two recordings appear: the Stanford HAI seminar (05, Sept 23, 2026) and the New York Fed panel (01, Oct 6, 2026). Times are seconds in the files in reel-source/ (raw footage, never published). The opening is a silent 'sequence' of cards and B-roll with original music (scripts/reel/music.py) that fades out as the first speech clip starts. Speech clips alternate HAI and NY Fed and are cut on pauses: each in-point sits about 0.12 s before the first word after a pause, each out-point about 0.12 s after the last word before one. HAI topics come from OCR of the slides behind him; NY Fed topics from the moderator's questions (camera, voice, and pause structure locate Arvind's answers). See the reel report for confidence.",
+  "note": "Speaker reel edit list. Three recordings appear: the Stanford HAI seminar (05, Sept 23, 2026), the New York Fed panel (01, Oct 6, 2026), and the Stanford GSB workshop (Nov 9, 2026; two clips pre-rendered with a tracked crop into reel-source/gsb-clips/). Times are seconds in the files in reel-source/ (raw footage, never published). The opening is a silent 'sequence' of cards and B-roll with original music (scripts/reel/music.py) that fades out as the first speech clip starts. Speech clips alternate HAI and NY Fed and are cut on pauses: each in-point sits about 0.12 s before the first word after a pause, each out-point about 0.12 s after the last word before one. HAI topics come from OCR of the slides behind him; NY Fed topics from the moderator's questions (camera, voice, and pause structure locate Arvind's answers). See the reel report for confidence.",
   "crf": 24,
   "segments": [
     {"id": "open-main", "type": "sequence", "xfade": 0.4, "fade_in": 0.5,
@@ -23,6 +23,11 @@
     {"id": "h1-absorption", "type": "clip", "src": "05 - Stanford HAI - Instacart Conversation [ZByKqo03krQ].mkv", "in": 1335.09, "out": 1347.43, "frame": "hai",
      "overlays": [{"png": "overlay-lower.png", "at": 0.4, "dur": 5.4}, {"png": "overlay-venue-hai.png", "at": 0.4, "dur": 5.4}]},
 
+    {"id": "g1-bundles", "type": "clip", "src": "gsb-clips/g1-bundles.mp4", "in": 0.0, "out": 18.7, "frame": "full",
+     "note": "Stanford GSB workshop (Nov 9, 2026), original 2:38:54-2:39:13, pre-rendered with a slow tracked crop by scripts/highlights/render_tracked.py",
+     "overlays": [{"png": "overlay-venue-gsb.png", "at": 0.3, "dur": 3.8}]},
+    {"id": "g2-unbundle", "type": "clip", "src": "gsb-clips/g2-unbundle.mp4", "in": 0.0, "out": 9.73, "frame": "full",
+     "note": "Stanford GSB workshop, original 2:40:27-2:40:36"},
     {"id": "f1-overview", "type": "clip", "src": "01 - New York Fed - AI in the Workplace - speaker section [6406544535112].mp4", "in": 192.96, "out": 203.07, "frame": "full",
      "overlays": [{"png": "overlay-venue-nyfed.png", "at": 0.3, "dur": 3.8}]},
 
@@ -64,8 +69,8 @@
      "music": {"wav": "music-main.wav", "lufs": -20},
      "poster": "images/speaking/reel-poster.jpg",
      "poster_fixed": "16:9 crop of the Stanford HAI seminar photo DSC06387 (Sept 2026), chosen by Arvind; finalize keeps this file as is",
-     "segments": ["open-main", "h1-absorption", "f1-overview", "h2-two-divisions", "f2-paralegals", "h3-productivity-framing",
-                  "f3-divisions", "h4-enrichment", "f4-evaluation", "h5-metrics", "f5-implementation", "end"]},
+     "segments": ["open-main", "h1-absorption", "g1-bundles", "g2-unbundle", "h2-two-divisions", "f2-paralegals", "h3-productivity-framing",
+                  "f3-divisions", "h4-enrichment", "f4-evaluation", "h5-metrics", "end"]},
     {"out": "files/misc/arvind-karunakaran-speaker-reel-60s.mp4", "title": "Arvind Karunakaran · Speaker reel (1 minute)",
      "music": {"wav": "music-short.wav", "lufs": -20},
      "segments": ["open-short", "h1-absorption", "f2-paralegals-stat", "h4-enrichment", "f4-evaluation", "end-short"]}

@@ -63,7 +63,7 @@
     {"out": "files/misc/arvind-karunakaran-speaker-reel.mp4", "title": "Arvind Karunakaran · Speaker reel",
      "music": {"wav": "music-main.wav", "lufs": -20},
      "poster": "images/speaking/reel-poster.jpg",
-     "poster_fixed": "16:9 crop of the professional photo DSC03448 (Stanford GSB workshop, Nov 9, 2026); finalize keeps this file as is",
+     "poster_fixed": "16:9 crop of the Stanford HAI seminar photo DSC06387 (Sept 2026), chosen by Arvind; finalize keeps this file as is",
      "segments": ["open-main", "h1-absorption", "f1-overview", "h2-two-divisions", "f2-paralegals", "h3-productivity-framing",
                   "f3-divisions", "h4-enrichment", "f4-evaluation", "h5-metrics", "f5-implementation", "end"]},
     {"out": "files/misc/arvind-karunakaran-speaker-reel-60s.mp4", "title": "Arvind Karunakaran · Speaker reel (1 minute)",

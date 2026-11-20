@@ -146,6 +146,19 @@
   applyCollapse();
   if (phone) { if (phone.addEventListener) phone.addEventListener("change", applyCollapse); else if (phone.addListener) phone.addListener(applyCollapse); }
 
+  /* Seek links for self-hosted videos: <a data-seek="#video-id" data-t="101"> plays that <video> from the given second */
+  doc.querySelectorAll("a[data-seek][data-t]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var v = doc.querySelector(a.getAttribute("data-seek"));
+      if (!v || typeof v.play !== "function") return;
+      e.preventDefault();
+      var t = parseFloat(a.getAttribute("data-t")) || 0;
+      var go = function () { try { v.currentTime = t; } catch (err) {} var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+      if (v.readyState >= 1) go(); else { v.preload = "metadata"; v.addEventListener("loadedmetadata", go, { once: true }); v.load(); }
+      v.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  });
+
   /* Copy buttons: <button class="copy-btn" data-copy="#id"> */
   doc.querySelectorAll(".copy-btn[data-copy]").forEach(function (btn) {
     var label = btn.textContent;
